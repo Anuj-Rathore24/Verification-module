@@ -1,4 +1,4 @@
-# Verfication Module
+# Verification Module
 
 # Idea:
 Generating a unified portal which can act as the collection interface for students,
