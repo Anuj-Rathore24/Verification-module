@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import SignUpInfo from "./AgencyInfo";
-import PersonalInfo from "./CandidateInfo";
-import OtherInfo from "./PaymentInfo";
-import "../styles/VerificationForm.css"
+import SignUpInfo from "./AgencyInfo.js";
+import PersonalInfo from "./CandidateInfo.js";
+import OtherInfo from "./PaymentInfo.js";
+import "../../styles/VerificationForm.css"
 
 function Form() {
   const [page, setPage] = useState(0);
@@ -44,19 +44,19 @@ function Form() {
            onClick={() => {
             setPage((0));
           }}
-          style={{ backgroundColor: page === 0 ? "white" : page == 1 ? "#FFC107" : "#FFC107" }}
+          style={{ backgroundColor: page === 0 ? "white" : page===1 ? "#FFC107" : "#FFC107" }}
         ></div>
         <div
            onClick={() => {
             setPage((1));
           }}
-          style={{ backgroundColor: page === 0 ? "#FFC107" : page == 1 ? "white" : "#FFC107" }}
+          style={{ backgroundColor: page === 0 ? "#FFC107" : page===1 ? "white" : "#FFC107" }}
         ></div>
         <div
            onClick={() => {
             setPage((2));
           }}
-          style={{ backgroundColor: page === 0 ? "#FFC107" : page == 1 ? "#FFC107" : "white" }}
+          style={{ backgroundColor: page === 0 ? "#FFC107" : page===1 ? "#FFC107" : "white" }}
         ></div>
       </div>
       <div className="form-container">
@@ -66,7 +66,7 @@ function Form() {
         <div className="body">{PageDisplay()}</div>
         <div className="footer">
           <button
-            disabled={page == 0}
+            disabled={page===0}
             onClick={() => {
               setPage((currPage) => currPage - 1);
             }}
