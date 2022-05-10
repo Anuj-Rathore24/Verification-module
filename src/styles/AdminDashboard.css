@@ -208,3 +208,29 @@
     background: #D7D6D6;
     border-radius: 10px;
 }
+
+.studentQueryTitle {
+    display: flex;
+    position: absolute;
+    left: 45px;
+}
+
+.queryOne {
+    display: flex;
+    position: absolute;
+    left:155px;
+}
+
+.queryTwo {
+    display: flex;
+    position: absolute;
+    width: 222px;
+    height: 40px;
+    left: 526px;
+}
+
+.queryThree {
+    display: flex;
+    position: absolute;
+    left: 887px;
+}

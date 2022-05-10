@@ -3,6 +3,60 @@ import "./../../styles/AdminDashboard.css";
 import MitWpuLogo from "../../pages/admin-dashboard/images/MIT-WPU-Logo.png";
 import profilePicture from "../../pages/admin-dashboard/images/profilepic-modified.png";
 
+function UserQuery() {
+    return (
+        <content>
+            <div className="outer_box">
+
+            </div>
+            <div className="inner_white_1">
+            <h4 className="studentQueryTitle">Student Query - 1</h4>
+            </div>
+
+            <div className="inner_white_2">
+            <h4 className="studentQueryTitle">Student Query - 2</h4>
+            </div>
+
+            <div className="inner_white_3">
+            <h4 className="studentQueryTitle">Student Query - 3</h4>
+            </div>
+        <div className="inner_blue_content">
+        <h4 className="queryOne">Query-Example 1</h4>
+        <h4 className="queryTwo">Query-Example 1</h4>
+        <h4 className="queryThree">Query-Example 1</h4>
+        </div>
+
+        <div className="inner_white_content_1">
+        <h4 className="queryOne">Query-Example 2</h4>
+        <h4 className="queryTwo">Query-Example 2</h4>
+        <h4 className="queryThree">Query-Example 2</h4>
+        </div>
+
+        <div className="inner_offwhite_1">
+        <h4 className="queryOne">Query-Example 3</h4>
+        <h4 className="queryTwo">Query-Example 3</h4>
+        <h4 className="queryThree">Query-Example 3</h4>
+        </div>
+
+        <div className="inner_white_content_2">
+        <h4 className="queryOne">Query-Example 4</h4>
+        <h4 className="queryTwo">Query-Example 4</h4>
+        <h4 className="queryThree">Query-Example 4</h4>
+        </div>
+        
+        <div className="inner_offwhite_2">
+        <h4 className="queryOne">Query-Example 5</h4>
+        <h4 className="queryTwo">Query-Example 5</h4>
+        <h4 className="queryThree">Query-Example 5</h4>
+        </div>
+
+        <div>
+
+        </div>
+        </content>
+    )
+} 
+
 function dashboard() {
     return (
         <div>
@@ -38,40 +92,8 @@ function dashboard() {
     </display>
 
     <content>
-        <div className="outer_box">
-
-        </div>
-        <div className="inner_white_1">
-
-        </div>
-
-        <div className="inner_white_2">
-
-        </div>
-
-        <div className="inner_white_3">
-            
-        </div>
-
-        <div className="inner_blue_content">
-
-        </div>
-
-        <div className="inner_white_content_1">
-
-        </div>
-
-        <div className="inner_offwhite_1">
-
-        </div>
-
-        <div className="inner_white_content_2">
-
-        </div>
-        
-        <div className="inner_offwhite_2">
-
-        </div>
+        <UserQuery />
+       
     </content>
 
     <div class="pane">
