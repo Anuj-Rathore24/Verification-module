@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import SignUpInfo from "./AgencyInfo.js";
-import PersonalInfo from "./CandidateInfo.js";
+// import PersonalInfo from "./CandidateInfo.js";
 import OtherInfo from "./PaymentInfo.js";
 import "../../styles/VerificationForm.css"
 
@@ -30,14 +30,15 @@ function Form() {
   const PageDisplay = () => {
     if (page === 0) {
       return <SignUpInfo formData={formData} setFormData={setFormData} />;
-    } else if (page === 1) {
-      return <PersonalInfo formData={formData} setFormData={setFormData} />;
-    } else {
+     } //else if (page === 1) {
+    //   return <PersonalInfo formData={formData} setFormData={setFormData} />;}
+     else if (page === 2)  {
       return <OtherInfo formData={formData} setFormData={setFormData} />;
     }
   };
 
   return (
+    <div className="main">
     <div className="form">
       <div className="progressbar">
         <div
@@ -87,6 +88,7 @@ function Form() {
           </button>
         </div>
       </div>
+    </div>
     </div>
   );
 }
