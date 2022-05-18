@@ -1,0 +1,51 @@
+/* Phones */
+@media only screen and (max-width: 767px) {
+    .main {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .signinCard1 {
+        align-self: center !important;
+        justify-content: center !important;
+        margin-left: 2.5% !important;
+        margin-top: 20% !important;
+        width: 95% !important;
+        height: 80%;
+        display: flex;
+        background-color: white;
+        border-radius: 4%;
+        z-index: 1;
+        box-shadow: 23px 18px 64px -19px rgba(0, 0, 0, 0.75);
+    }
+
+    .title {
+        font-size: 150%;
+        font-weight: bold;
+        margin-left: 5%;
+    }
+}
+
+
+/* Laptops */
+@media only screen and (min-width: 768px) {
+    .title {
+        font-size: 200%;
+        font-weight: bold;
+        width: 100%;
+        padding-left: 6%;
+    }
+
+    .signinCard {
+        width: 30%;
+        height: 97%;
+        display: flex;
+        margin-right: 35%;
+        margin-top: 5%;
+        background-color: white;
+        float: right;
+        border-radius: 4%;
+        z-index: 1;
+        box-shadow: 23px 18px 64px -19px rgba(0, 0, 0, 0.75);
+    }
+}
