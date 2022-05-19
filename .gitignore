@@ -4,8 +4,15 @@
 /node_modules
 /.pnp
 .pnp.js
+
+#ignoring Credentials files
 /src/apis/credentials.json
 /src/apis/credentials.js
+
+/src/pages/Firebase/FirebaseConfig.js
+
+
+
 # testing
 /coverage
 
