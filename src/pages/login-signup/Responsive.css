@@ -1,0 +1,109 @@
+/* Phone */
+@media only screen and (max-width: 767px) {
+    .main {
+        display: flex;
+        flex-direction: column;
+        padding-top: 5%;
+        width: 100%;
+        /* height: 75%; */
+    }
+
+    .group63 p {
+        width: 100vw;
+        /* padding-left: 1%; */
+        /* height: 50vh; */
+    }
+
+
+    .signinCard {
+        align-self: center !important;
+        justify-content: center !important;
+        margin-left: 5% !important;
+        margin-right: 5% !important;
+        margin-top: 0% !important;
+        width: 95% !important;
+    }
+
+    .SigninAs {
+        margin-top: 20%;
+        align-self: center;
+    }
+
+    .profiles {
+        width: 80%;
+    }
+
+    .profile1 img {
+        width: 100%;
+    }
+
+    .profile2 img {
+        width: 100%;
+    }
+
+
+}
+
+/* laptops */
+@media screen and (min-width:1023px) {
+    .signinCard {
+        width: 30%;
+        margin-top: -18%;
+        margin-right: 10%;
+    }
+
+    .group63 {
+        width: 35%;
+    }
+
+    .signinCard {
+        display: 'none';
+        margin-right: 10%;
+        margin-top: -17.5%;
+        background-color: white;
+        border-radius: 4%;
+        z-index: 1;
+        box-shadow: 23px 18px 64px -19px rgba(0, 0, 0, 0.75);
+    }
+
+    .profiles {
+        width: 60%;
+    }
+
+    .profile1 img {
+        width: 50%;
+    }
+
+    .profile2 img {
+        width: 50%;
+    }
+
+}
+
+/* Tablet */
+@media screen and (max-width:1023px) and (min-width: 768px) {
+    .signinCard {
+        width: 45%;
+        margin-top: -18%;
+        margin-right: 10%;
+    }
+
+    .group63 {
+        width: 35%;
+    }
+
+    .profiles {
+        width: 70%;
+    }
+
+
+    .profile1 img {
+        width: 50%;
+    }
+
+    .profile2 img {
+        width: 50%;
+    }
+
+
+}
