@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import SignUpInfo from "./AgencyInfo.js";
-// import PersonalInfo from "./CandidateInfo.js";
-import OtherInfo from "./PaymentInfo.js";
+import OtherInfo from "./DocumentVerification.js";
 import "../../styles/VerificationForm.css"
 
 function Form() {
@@ -25,20 +24,21 @@ function Form() {
     verificationDocument: "",
   });
 
-  const FormTitles = ["Ageny-Details", "Candidate-Info", "Payement-Info"];
+  const FormTitles = ["Ageny-Details", "Payement-Info", "Document-verification"];
 
   const PageDisplay = () => {
     if (page === 0) {
       return <SignUpInfo formData={formData} setFormData={setFormData} />;
-     } //else if (page === 1) {
-    //   return <PersonalInfo formData={formData} setFormData={setFormData} />;}
-     else if (page === 2)  {
+    } 
+    // else if (page === 1) {
+    //   return <Payement-page formData={formData} setFormData={setFormData} />;
+    // }
+     else {
       return <OtherInfo formData={formData} setFormData={setFormData} />;
     }
   };
 
   return (
-    <div className="main">
     <div className="form">
       <div className="progressbar">
         <div
@@ -61,11 +61,8 @@ function Form() {
         ></div>
       </div>
       <div className="form-container">
-        {/* <div className="header">
-          <h1>{FormTitles[page]}</h1>
-        </div> */}
         <div className="body">{PageDisplay()}</div>
-        <div className="footer">
+        <div className="pageChange">
           <button
             disabled={page===0}
             onClick={() => {
@@ -88,7 +85,6 @@ function Form() {
           </button>
         </div>
       </div>
-    </div>
     </div>
   );
 }

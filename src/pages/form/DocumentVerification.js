@@ -2,63 +2,9 @@ import React from "react";
 
 function OtherInfo({ formData, setFormData }) {
   return (
-    <div className="Payement-Info-container">
-      <label id="l2">Documents To be Verified:</label>
-      <div className="checkboxes">
+    <div>
 
-        <input
-          type="checkbox"
-          value={"Final Degree Certificate/Final Diploma Certificate"}
-          onChange={(e) => {
-            setFormData({ ...formData, document: e.target.value });
-          }}
-        />
-        <label>Final Degree Certificate/Final Diploma Certificate</label>
-      </div>
-      <div className="checkboxes">
-
-        <input
-          type="checkbox"
-          value={"Provisional Degree Certificate"}
-          onChange={(e) => {
-            setFormData({ ...formData, document: e.target.value });
-          }}
-        />
-        <label>Provisional Degree Certificate</label>
-      </div>
-      <div className="checkboxes">
-
-        <input
-          type="checkbox"
-          value={"Official Transcript"}
-          onChange={(e) => {
-            setFormData({ ...formData, document: e.target.value });
-          }}
-        />
-        <label>Official Transcript</label>
-      </div>
-      <div className="checkboxes">
-        <input
-          type="checkbox"
-          value={"Grade Card"}
-          onChange={(e) => {
-            setFormData({ ...formData, document: e.target.value });
-          }}
-        />
-        <label> Grade Card </label>
-      </div>
-      <div className="checkboxes">
-        <input
-          type="checkbox"
-          value={"Other Edcational Document/Certificate"}
-          onChange={(e) => {
-            setFormData({ ...formData, document: e.target.value });
-          }}
-        />
-        <label> Other Edcational Document/Certificate </label>
-      </div>
-
-
+    <div className="document-container">
       <h4>Payement Date</h4>
       <input
         type="date"
@@ -82,6 +28,74 @@ function OtherInfo({ formData, setFormData }) {
         type="file"
         placeholder="Attach PNG/JPG/PDF Files"
       />
+      <label id="l2" >Documents To be Verified:</label>
+      <div className="checkboxes">
+        <input
+          type="checkbox"
+          value={"Final Degree Certificate/Final Diploma Certificate"}
+          onChange={(e) => {
+            setFormData({ ...formData, document: e.target.value });
+          }}
+        />
+        <label>Final Degree Certificate/Final Diploma Certificate</label>
+        {/* <input className="doc-inp"
+        type="file"
+      /> */}
+      </div>
+      <div className="checkboxes">
+
+        <input
+          type="checkbox"
+          value={"Provisional Degree Certificate"}
+          onChange={(e) => {
+            setFormData({ ...formData, document: e.target.value });
+          }}
+        />
+        <label>Provisional Degree Certificate</label>
+        {/* <input className="doc-inp"
+        type="file"
+      /> */}
+      </div>
+      <div className="checkboxes">
+
+        <input
+          type="checkbox"
+          value={"Official Transcript"}
+          onChange={(e) => {
+            setFormData({ ...formData, document: e.target.value });
+          }}
+        />
+        <label>Official Transcript</label>
+        {/* <input className="doc-inp"
+        type="file"
+      /> */}
+      </div>
+      <div className="checkboxes">
+        <input
+          type="checkbox"
+          value={"Grade Card"}
+          onChange={(e) => {
+            setFormData({ ...formData, document: e.target.value });
+          }}
+        />
+        <label> Grade Card </label> 
+        {/* <input className="doc-inp"
+        type="file"
+      /> */}
+      </div>
+      <div className="checkboxes">
+        <input
+          type="checkbox"
+          value={"Other Edcational Document/Certificate"}
+          onChange={(e) => {
+            setFormData({ ...formData, document: e.target.value });
+          }}
+        />
+        <label> Other Edcational Document/Certificate </label>
+        {/* <input className="doc-inp"
+        type="file"
+      /> */}
+      </div>
       <h4>Attach Document To be Verified</h4>
       <input
         type="file"
@@ -89,6 +103,7 @@ function OtherInfo({ formData, setFormData }) {
         placeholder="Attach PNG/JPG/PDF Files"
       />
     </div>
+    </div>    
   );
 }
 

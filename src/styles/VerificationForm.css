@@ -1,6 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Montserrat);
 
-
 .main {
   margin: 0%;
   padding: 0%;
@@ -8,219 +7,33 @@
   position: relative;
   overflow-x: hidden;
 }
-
-.navbar {
-  top: 0;
-  height: 60px;
-  width: 100%;
-  position: sticky;
-  background-color: inherit;
-  z-index: 100;
+.body{
+  background: white;
+  padding: 2%;
+  border-radius: 10px;
 }
-
 .form {
   width: 100%;
   height: 100%;
+  margin-top: 80px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   overflow-x: hidden;
-}
-
-.form-container {
-  width: 100vw;
-  height: 80vh;
-  background-color: white;
-  display: flex;
-  flex-direction: column;
-}
-
-.header {
-  font-size: 10px;
-}
-
-.form-container .body {
-  flex: 80%;
-  align-self: center;
-  justify-self: center;
-}
-
-.form-container .footer {
-  flex: 20%;
-  display: flex;
-  justify-content: space-around;
-  margin-top: 30px;
-}
-
-.form-container .footer button {
-  border-radius: 7px;
-  width: 100px;
-  height: 40px;
-  background-color: #0089ED;
-  font-weight: bold;
-  color: white;
-  border: 0 none;
-  border-radius: 1px;
-  cursor: pointer;
-  padding: 10px 5px;
-  margin: 5px;
-}
-
-
-
-.label {
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-  width: 100%;
-}
-
-.label3 {
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-  width: 5%;
-}
-
-
-.label-name {
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-  width: 100%;
-}
-
-.name {
-  display: flex;
-  width: 85%;
-  justify-content: space-between;
-
-}
-
-.Ageny-Details-container {
-  height: 100%;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  font-size: 15px;
-  font-weight: bold;
-}
-
-.Ageny-Details-container input {
-
-  margin: 4% 0%;
-  width: 45%;
-  height: 40px;
-  padding-left: 5px;
-  font-size: 15px;
-}
-
-.Ageny-Details-container label {
-  margin-left: 5%;
-}
-
-.Candidate-Info-container {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  font-size: 15px;
-  font-weight: bold;
-}
-
-.name-container {
-  width: 125%;
-  display: flex;
-  flex-direction: column;
-  font-size: 15px;
-  font-weight: bold;
-}
-
-.Candidate-Info-container input {
-  margin: 4% 0%;
-  width: 45%;
-  height: 40px;
-  padding-left: 5px;
-  font-size: 15px;
-}
-
-.Candidate-Info-container .name input {
-  width: 75%;
-  margin: 8% -56% 5% 0%;
-}
-
-.Candidate-Info-container label {
-  margin-left: 0%;
-}
-
-.Payement-Info-container {
-  width: 75%;
-  display: flex;
-  flex-direction: column;
-  font-size: 15px;
-  font-weight: bold;
-  margin-left: -22%;
-  align-items: start;
-}
-
-.Payement-Info-container input {
-  margin: 4% 0%;
-  width: 100%;
-  height: 40px;
-  padding-left: 5px;
-  font-size: 15px;
-}
-
-.Payement-Info-container label {
-  margin: 3%;
-}
-
-input {
-  border: 2px solid #0089ED;
-  border-radius: 5px;
-}
-
-input:focus {
-  border: 3px solid #0089ED;
-
-}
-
-input[type=radio] {
-  margin: 3%;
-  width: 5%;
-  height: 14px;
-}
-
-input[type=checkbox] {
-  margin: 3%;
-  width: 5%;
-  height: 15px;
-}
-
-.radios {
-  display: flex;
-  align-self: normal;
-  margin: 2%;
-  font-size: 15px;
-}
-
-.checkboxes {
-  display: flex;
-  align-self: normal;
-  margin: 2%;
-  width: 150%;
-  font-size: 15px;
+  background-color: #ccf2ff;
 }
 
 /* PROGRESS BAR */
 .progressbar {
   display: flex;
   width: 40%;
+  max-width: 600px;
   height: 60px;
   justify-content: space-around;
   background-color: #0089ED;
-  margin-bottom: 50px;
-  margin-top: 10px;
+  margin-bottom: 25px;
+  margin-top: 25px;
   border-radius: 2px;
 }
 
@@ -233,61 +46,202 @@ input[type=checkbox] {
   border-radius: 10px;
 }
 
-.flex {
+.form-container {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.name {
+  width: 100%;
+}
+
+.label,
+.label2 {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  width: 100%;
+}
+
+.label-name {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  width: 100%;
+}
+
+.radios label, .checkboxes label {
+  padding: 15px;
+}
+
+#l2{
+  margin-top: 1em;
+}
+
+.Ageny-Details-container,
+.Candidate-Info-container,
+.document-container {
+  height: 100%;
+  width: 100%;
+  margin-right: 5em;
+  display: flex;
+  flex-direction: column;
+  font-size: 15px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+
+.Ageny-Details-container input,
+.Candidate-Info-container input,
+.document-container input {
+  width: 100%;
+  height: 2.5em;
+  padding-left: 5px;
+  font-size: 15px;
+}
+
+
+input {
+  border: 2px solid #0089ED;
+  border-radius: 5px;
+}
+
+input:focus {
+  border: 3px solid #0089ED;
+
+}
+/* .checkboxes input{
+  width: 30%;
+} */
+input[type=radio], input[type=checkbox] {
+  margin: 3%;
+  width: 5%;
+  height: 14px;
+}
+
+.radios,.checkboxes {
+  display: flex;
+  align-self: normal;
+  margin: 2%;
+  font-size: 15px;
+}
+
+/* .checkboxes{
+  justify-content: space-between;
+} */
+
+.form-container .pageChange {
+  flex: 20%;
+  width: 45%;
   display: flex;
   justify-content: space-between;
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 
-.flex input {
-  width: 90%;
-  margin-right: 2%;
-}
-#l1, #l2{
-  align-self: start;
-  margin-left: 0%;
+.form-container .pageChange button {
+  border-radius: 7px;
+  width: 7.5em;
+  height: 40px;
+  background-color: #0089ED;
+  font-weight: bold;
+  color: white;
+  border: 0 none;
+  border-radius: 1px;
+  cursor: pointer;
+  padding: 10px 5px;
+  margin: 5px;
 }
 
-/* @media (max-width:670px){
-.Payement-Info-container input {
-    margin: 4% 4%;
-    width: 34em;
+
+@media (min-width:750px) {
+  .name {
+    display: flex;
+    gap: 1.5em;
   }
-.Ageny-Details-container input {
-  margin: 4% 12%;
-  width: 25em;
+
+  .flex {
+    display: flex;
+    gap: 2.5em;
+  }
+  
+  .document-container{
+    margin: 0em 20em 0 0;
+  }
 }
-.Payement-Info-container label {
-  margin-left: 8%;
- }
-.flex{
-  flex-wrap: wrap;
+
+@media (max-width:750px) and (min-width:550px) {
+  .name {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5em;
+  }
+  .document-container{
+    margin: 1em 0em 0 0;
+  }
+
+  .Ageny-Details-container input,
+  .Candidate-Info-container input,.document-container input  {
+    width: 95%;
+    height: 2em;
+    padding-left: 5px;
+    font-size: 15px;
+  }
+
+  .label-name {
+    width: 49%;
+  }
+
+  .flex {
+    display: flex;
+    gap: 0.5em;
+  }
+
+  #ln {
+    width: 215%;
+  }
+  /* .checkboxes input{
+    width: 20%;
+  } */
+
+  input[type=radio], input[type=checkbox]  {
+    margin: 3%;
+    width: 5%;
+    height: 14px;
+  }
+  
+  /* .checkboxes{
+    justify-content: space-between;
+  } */
 }
+
+@media (max-width:550px) {
+
+  .Ageny-Details-container input,
+  .Candidate-Info-container input  {
+    width: 90%;
+    height: 2em;
+    padding-left: 5px;
+    font-size: 15px;
+  }
+  .document-container{
+    width: 80%;
+    margin: 1em -5em 0 0;
+  }
+  /* .checkboxes input{
+    width: 20%;
+  } */
+   
+  input[type=radio], input[type=checkbox]  {
+    margin: 3%;
+    width: 5%;
+    height: 14px;
+  }
+  /* .checkboxes{
+    justify-content: space-between;
+  } */
+  
 }
-@media (max-width:450px){
-.Ageny-Details-container input {
-  width: 23em;
-}
-.Payement-Info-container input {
-  margin: 4% 16%;
-  width: 23em;
-}
-.Payement-Info-container label {
-  margin-left: 10%;
- }
-}
-@media (max-width:320px){
-.Ageny-Details-container input {
-  width: 16em;
-  margin-left: 5%;
-}
-.Payement-Info-container input {
-  margin: 4% 24%;
-  width: 16em;
-}
-.Payement-Info-container label {
-  margin-left: 15%;
- }
-.name {
-flex-wrap: wrap;
-}
-} */
