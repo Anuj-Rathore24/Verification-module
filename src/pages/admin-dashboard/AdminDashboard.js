@@ -1,5 +1,5 @@
 import React from 'react'
-
+import ContainerItem from "./ContainerItem"
 import "../styles/AdminDashboard.css";
 import Topbar from "./AdminTopbar"
 // import Footer from "../Footer"
@@ -13,10 +13,7 @@ function user ()  {
       <div className='d1'>
      </div>
      </div>
-     
-     <div className = 'container'>
-
-     </div>
+      <ContainerItem/>
      </div>
      {/* <Footer/> */}
   </div> 
