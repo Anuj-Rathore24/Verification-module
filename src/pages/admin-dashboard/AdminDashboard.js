@@ -1,8 +1,8 @@
 import React from 'react'
 import ContainerItem from "./ContainerItem"
-import "../styles/AdminDashboard.css";
+import "./../../styles/AdminDashboard.css";
 import Topbar from "./AdminTopbar"
-// import Footer from "../Footer"
+//import Footer from "./../Footer.js"
 
 function user ()  {
   return (
