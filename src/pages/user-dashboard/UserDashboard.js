@@ -1,5 +1,6 @@
 import React from 'react'
 
+//changed class to className
 import "./../../styles/UserDashboard.css";
 import MitWpuLogo from "../../pages/user-dashboard/images/MIT-WPU-Logo.png";
 import image from "../../pages/user-dashboard/images/img_avatar.png";
@@ -12,9 +13,9 @@ function user ()  {
         <img src={MitWpuLogo} alt="MIT-WPU-Logo" width={90} height={80}/>
       </div>
       <div className="topRight">
-      <div class="admin_info">
-                <img class = 'avatar' src ={image} alt="profilePicture" height={90} width={90}/>
-                <div class = 'details'>
+      <div className="admin_info">
+                <img className = 'avatar' src ={image} alt="profilePicture" height={90} width={90}/>
+                <div className = 'details'>
                   
                   <h3 id="admin_name" >
                       Your Name
@@ -27,16 +28,16 @@ function user ()  {
             </div>
         </div>
     </div>
-    <div class='dashboard'>
-      <h2 class='heading'>Dashboard</h2>
+    <div className='dashboard'>
+      <h2 className='heading'>Dashboard</h2>
      </div>
-     <div class = 'options'>
+     <div className = 'options'>
        <a href="/">Upload Documents</a>
        <a href="/">Review Documents</a>
        <a href="/">Raise a Ticket</a>
        <a href="/">Help Centre</a>
      </div>
-     <div class = 'container'>
+     <div className = 'container'>
 
      </div>
   </div> 

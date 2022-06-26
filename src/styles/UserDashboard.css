@@ -40,8 +40,8 @@ body {
 .heading{
     margin: 0;
     top: 50%;
-    padding-top:38px;
-    margin-left:45%
+    /* padding-top:38px; */
+    margin-left:11%
 }
 .options{
     margin:2%;

@@ -9,6 +9,6 @@ const auth = getAuth();
 const googleAuthProvider = new GoogleAuthProvider(auth);
 
 const checkLoggedIn = () => {
-    return auth.currentUser != null;
+    return auth.currentUser !== null;
 }
 export { checkLoggedIn, auth, googleAuthProvider };

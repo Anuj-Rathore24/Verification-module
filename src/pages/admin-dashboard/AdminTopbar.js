@@ -1,6 +1,6 @@
 import React from 'react'
 import MitWpuLogo from "./images/logo.svg";
-import image from "../images/admin.svg";
+import image from "./images/admin.svg";
 
 function AdminTopbar() {
     return (
@@ -11,7 +11,7 @@ function AdminTopbar() {
                         <img className='logo' src={MitWpuLogo} alt="MIT-WPU-Logo" />
                     </div>
                     <div className="topRight">
-                        <div class="admin_info">
+                        <div className="admin_info">
                             <img className='avatar' src={image} alt="profilePicture" />
                             <div className='details'>
 
@@ -32,3 +32,5 @@ function AdminTopbar() {
 }
 
 export default AdminTopbar
+
+//changed Class to className

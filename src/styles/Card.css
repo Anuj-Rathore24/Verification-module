@@ -6,7 +6,6 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    background-color: #fcfcfc;
     justify-content: space-evenly;
     position: relative;
 }
@@ -53,6 +52,10 @@
 .card_button img {
     height: 2em;
     width: 2em;
+}
+
+.content{
+    margin: 5px;
 }
 
 #btnHeading{

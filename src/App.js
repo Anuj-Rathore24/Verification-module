@@ -22,6 +22,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/form" element={<VerificationForm />} />
           {/* <Route path="/verifydoc" element={<DocumentVerification/>}/> */}
+          <Route path="/admin" element={<AdminDashboard/>}/>
+
           {/* <Route path="/admindashboard" element={<AdminDashboard/>}/> */}
           <Route path="/UserDashboard" element={<UserDashboard />} />
         </Routes>

@@ -1,7 +1,7 @@
 import React from "react";
-import Cards from "./Cards";
-import styles from './../../styles/Card.css';
-import "./../../styles/AdminDashboard.css";
+import Cards from "./Card";
+import styles from '../../styles/Card.css';
+import "../../styles/AdminDashboard.css";
 
 let arr = [
   {
@@ -47,11 +47,11 @@ export default function EventsItem() {
 
   return (
     <div id="Main_Item_Container">
-      <div className={styles.main_card_container}>
-          <h2 className={styles.heading}> Date </h2>  
-          <h2 className={styles.heading}> QueryId </h2> 
-          <h2 className={styles.heading}> Name </h2> 
-          <h2 className={styles.heading} id={styles.btnHeading}>Show Details</h2> 
+      <div className="main_card_container">
+          <h2 className="heading"> Date </h2>  
+          <h2 className="heading"> QueryId </h2> 
+          <h2 className="heading"> Name </h2> 
+          <h2 className="heading" id="btnHeading">Show Details</h2> 
         </div>
       {arr.map((element, i) => {
         return (
@@ -61,6 +61,7 @@ export default function EventsItem() {
               date={element.Date}
               queryId={element.Query}
               name={element.Name}
+              color={element.Query%2===0?("#D1D1D1"):("#FFFFFF")}
             />
           </>
         );

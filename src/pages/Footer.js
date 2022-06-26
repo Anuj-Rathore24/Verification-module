@@ -4,8 +4,8 @@ function Footer() {
   return (
     <div className='footer'>
          <div className="media-icons">
-           <a href="#"><i class="fab fa-facebook-f"></i></a>
-           <a href="#"><i class="fab fa-instagram"></i></a>
+           <a href="#"><i className="fab fa-facebook-f"></i></a>
+           <a href="#"><i className="fab fa-instagram"></i></a>
          </div>
 
    <div class="bottom">
@@ -17,3 +17,6 @@ function Footer() {
 }
 
 export default Footer
+
+
+//chaned class to className
