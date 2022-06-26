@@ -1,8 +1,6 @@
 import "./styles/App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import VerificationForm from "./pages/form/VerificationForm.js";
-import DocumentVerification from "./pages/DocumentVerification/DocumentVerification.js";
-// import 'semantic-ui-css/semantic.min.css';
 import AdminDashboard from "./pages/admin-dashboard/AdminDashboard.js";
 import UserDashboard from "./pages/user-dashboard/UserDashboard.js";
 import Home from "./pages/Home.js";
@@ -21,10 +19,8 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/" element={<Home />} />
           <Route path="/form" element={<VerificationForm />} />
-          {/* <Route path="/verifydoc" element={<DocumentVerification/>}/> */}
           <Route path="/admin" element={<AdminDashboard/>}/>
 
-          {/* <Route path="/admindashboard" element={<AdminDashboard/>}/> */}
           <Route path="/UserDashboard" element={<UserDashboard />} />
         </Routes>
       </BrowserRouter>
