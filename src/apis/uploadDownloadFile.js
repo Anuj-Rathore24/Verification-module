@@ -24,35 +24,55 @@ async function upload() {
   }
 
   async function getfile(){
+
+
     const storage=getStorage(app);
     
-    //File Location wrt Firebase 
-    const filelocation=`gs://total-pillar-302403.appspot.com/files/File0`;
+    //Location of w.r.t FireBase 
+    const filelocation=`gs://total-pillar-302403.appspot.com/files/`;
     
-    //Promise to Get Download Url
-    await getDownloadURL(ref(storage,filelocation)).then((url)=>{
-      
+    const listref=ref(storage,filelocation);
+
+    //function for getting all the References for Files in that Folder 
+     listAll(listref)
+    .then((res)=>{
+      console.log(res);
+      res.items.forEach((itemsRef)=>{
+
+        // Promise for Download URL from Firebase
+        getDownloadURL(ref(storage,itemsRef)).then((url)=>{
         console.log(url);
+      
     })
     .catch((error)=>{
+
+      //For Handling Errors
+
       switch (error.code) {
         case 'storage/object-not-found':
-          // File doesn't exist
+          console.log("\nFile Not Found")
           break;
         case 'storage/unauthorized':
-          // User doesn't have permission to access the object
+          console.log("\n User doesn't have permission to access the object")
           break;
         case 'storage/canceled':
-          // User canceled the upload
-          break;
-  
-        // ...
-  
+          console.log("\nUser canceled the upload")
+          break; 
         case 'storage/unknown':
-          // Unknown error occurred, inspect the server response
+          console.log("\nUnknown error occurred, inspect the server response")
           break;
       }
+      alert("Error While Uploading!");
   
     }
     )
+      })
+    }).catch((err)=>{
+        alert("Error While Uploading!");
+        console.log("\nError ->"+err)
+    })
+
+    
+    
+    
   }
