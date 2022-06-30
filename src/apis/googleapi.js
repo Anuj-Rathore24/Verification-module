@@ -1,14 +1,14 @@
-//To run function written on appscript!
-
-
-
 const fs = require('fs');
 const readline = require('readline');
 const {google} = require('googleapis');
 
 // If modifying these scopes, delete token.json.
-const SCOPES = ['https://www.googleapis.com/auth/script.projects',"https://www.googleapis.com/auth/drive",
-"https://www.googleapis.com/auth/documents"];
+
+//scopes for access to drive(edit/create/update) document(edit/create), and Mail(for sending mails only) 
+const SCOPES = ["https://www.googleapis.com/auth/drive",
+                "https://www.googleapis.com/auth/documents",
+                "https://www.googleapis.com/auth/script.send_mail"
+              ];
 // The file token.json stores the user's access and refresh tokens, and is
 // created automatically when the authorization flow completes for the first
 // time.
@@ -75,21 +75,42 @@ function getAccessToken(oAuth2Client, callback) {
  * Creates a new script project, upload a file, and log the script's URL.
  * @param {google.auth.OAuth2} auth An authorized OAuth2 client.
  */
-var scriptId='AKfycbyya2DCwsztpyjIfFzwZBAPVioua6k23etBYFGB2-qol9RcOX4MPiRGEGrP4LjjuY-s9w';
+var para={name:"working",title:"Nice"}
+var scriptId='1yd9wpJ93r42NzgUWLIU8_8DZrmAMymz7uLdkNvAIINpEut6yPK2lfJsY';
 function callAppsScript(auth) {
   const script = google.script({version: 'v1', auth});
   script.scripts.run({
     'scriptId': scriptId,
     'resource': {
-      'function': 'myfunction'
+      'function': 'sendMail',
+      "parameters":[
+        "Last Time"
+      ],
+      "devMode":true
     }
   }
   
   )
   .then(function(resp) {
-    console.log("\n\tresponse:",resp.data);
+    //for handling errors
+    if(resp.data.error) console.log("error"+resp.data.error);
+    
+    //Response that the function or script
+    console.log("\n\tresponse:",resp.data.response.result);
+
    
     }
   );
 };
+
+
+
+
+/*possible reasons for error
+1)Give Permissions Again googleaccount>security>ManageThirdPartyApps
+2)Didn't toggle "run function" button in apps script permission
+3)Scope not set auth0 screen
+4)Not using web type service
+5)Use Email given by google rather than service id   
+*/
 
