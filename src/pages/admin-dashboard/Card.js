@@ -1,8 +1,7 @@
 import { React, useState } from "react";
 import "../../styles/Card.css";
 import { Button, Modal } from "react-bootstrap";
-import { Label } from "semantic-ui-react";
-
+import getfile from "../../apis/firebasecloud.js"
 export default function Card(props) {
   //Use State for invoking close and open button
 
@@ -38,7 +37,7 @@ export default function Card(props) {
 
           {/*Main Body of the Modal */}
 
-          <Modal.Body>
+          <Modal.Body id="MainBodyContainer" style={{display:"flex",flexDirection:"column"}}>
             <div style={{display:"flex",flexDirection:"row"}}>
               <p className="content">Name :</p>
               <p className="content">{props.name}</p>
@@ -56,10 +55,14 @@ export default function Card(props) {
             <Button variant="secondary" onClick={handleClose}>
               Close
             </Button>
-            <Button variant="primary" onClick={handleClose}>
+            <Button variant="primary" onClick={async ()=>{
+              console.log("Working in cards 1");
+              await getfile()
+              
+              }}>
               View Documents
             </Button>
-            <Button variant="primary" onClick={handleClose}>
+            <Button variant="primary" onClick={()=>{console.log("Working Properly")}}>
               Verify Documents
             </Button>
           </Modal.Footer>

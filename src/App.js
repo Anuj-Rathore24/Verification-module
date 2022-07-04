@@ -23,10 +23,9 @@ function App() {
           <Route path="/Signup" element={<Signup />} />
           <Route path="/OTP" element={<OTP />} />
           {/* <Route path="/home" element={<Home />} /> */}
-          <Route path="/" element={<Home />} />
+          {/* <Route path="/" element={<Home />} /> */}
           <Route path="/form" element={<VerificationForm />} />
           <Route path="/admin" element={<AdminDashboard/>}/>
-
           <Route path="/UserDashboard" element={<UserDashboard />} />
         </Routes>
       </BrowserRouter>
