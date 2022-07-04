@@ -1,4 +1,5 @@
 const mail =require("./src/apis/appsScriptApi.js");
+const MakeCertificate =require("./src/apis/appsScriptApi.js");
 const express=require("express")
 const app = express();
 const cors = require("cors");
@@ -29,6 +30,15 @@ app.get("/sendMail",async (req,res)=>{
 })
 
 
+app.get("/MakeCert",async (req,res)=>{
+    console.log("Making Certificate");
+    try{
+        await MakeCertificate()
+    }catch(err){
+        console.log("\n\nerror ->"+err)
+    }
+    res.send("Mailed Perfectely");
+})
 
 const PORT = process.env.PORT || 8080;
 
