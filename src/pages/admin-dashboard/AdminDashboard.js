@@ -10,8 +10,8 @@ function user ()  {
          <Topbar/>
       <div className='main'>
     <div className='info-label'>
-      <div className='d1'>
-     </div>
+      <div className='d1'> </div>
+      <div className='d2'> </div>
      </div>
       <ContainerItem/>
      </div>

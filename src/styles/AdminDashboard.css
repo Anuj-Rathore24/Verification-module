@@ -74,6 +74,13 @@ body {
     height: 100%;
 }
 
+.d2{
+    background-color: #F8F4F4;
+    border-radius: 6px;
+    width: 62%;
+    height: 100%;
+}
+
 #Main_Item_Container{
     display: flex;
     width: 100%;
