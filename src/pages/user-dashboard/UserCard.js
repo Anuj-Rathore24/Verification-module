@@ -1,5 +1,5 @@
 import { React, useState } from "react";
-import "../../styles/Card.css";
+import "../../styles/UserCard.css";
 import { Button, Modal } from "react-bootstrap";
 // import getfile from "../../apis/firebasecloud.js"
 // import axios from "axios"

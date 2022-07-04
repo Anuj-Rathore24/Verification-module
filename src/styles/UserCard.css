@@ -1,0 +1,108 @@
+.main_card_container {
+    width: 90vw;
+    height: 4vw;
+    overflow: hidden;
+    border-radius: 1vw;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    position: relative;
+}
+
+.card_heading {
+    color: #000;
+    padding: 1.5vw;
+    font-size: 1vw;
+    font-family: "Poppins", sans-serif;
+    font-weight: bold;
+}
+
+.heading{
+    font-size: 1.8vw;
+    font-family: "Poppins", sans-serif;
+    font-weight: bold;
+    margin-left: 10%;
+}
+.card_button {
+    height: 2em;
+    width: 8em;
+    background-color: #0089ED;
+    border-radius: 5px;
+    color: #000;
+    font-weight: bold;
+    padding: 4px;
+    font-size: 1vw;
+    font-family: "Poppins", sans-serif;
+    font-weight: bold;
+}
+
+.card_button{
+    display: block;
+    height: 2em;
+    width: 2em;
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+}
+.card_button img {
+    height: 2em;
+    width: 2em;
+}
+
+.content{
+    margin: 5px;
+}
+
+#btnHeading{
+    margin-left: 5%;
+    margin-right: 5%;
+}
+@media only screen and (max-width: 1030px) {
+    .main_card_container {
+        width: 80vw;
+    }
+
+    .heading_containers {
+        margin-top: 5vh;
+    }
+}
+
+@media only screen and (max-width: 750px) {
+    .main_card_container {
+        width: 80vw;
+        height: fit-content;
+    }
+
+    .card_heading {
+        font-size: 2vw;
+    }
+    .card_button img{
+        height: 1.5em;
+     }
+    .heading{
+        font-size: 2.3vw;
+    }
+}
+
+@media only screen and (max-width: 430px) {
+    .main_card_container {
+        width: 80vw;
+        justify-content: space-evenly;
+    }
+
+    .card_heading {
+        font-size: 2.5vw;
+    }
+
+    .card_button img {
+       height: 1.3em;
+    }
+    .heading{
+        font-size: 2.8vw;
+    }
+}
