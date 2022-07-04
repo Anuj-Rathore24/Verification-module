@@ -1,9 +1,8 @@
-
 {
-  
   "name": "msf-tut",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://anuj-rathore24.github.io/Verification-module/",
   "dependencies": {
     "@material-ui/core": "^4.12.4",
     "@testing-library/jest-dom": "^5.11.4",
@@ -12,6 +11,7 @@
     "axios": "^0.27.2",
     "cors": "^2.8.5",
     "firebase": "^9.8.0",
+    "gh-pages": "^4.0.0",
     "googleapis": "^39.2.0",
     "http2": "^3.3.7",
     "nodemon": "^2.0.18",
@@ -28,6 +28,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "predeploy": "npm run build", 
+    "deploy": "gh-pages -d build", 
     "eject": "react-scripts eject",
     "dev": "concurrently \"nodemon server.js\" \"npm start\""
   },
@@ -55,5 +57,4 @@
     "react-bootstrap": "^2.4.0",
     "react-error-overlay": "6.0.9"
   }
-  
 }
