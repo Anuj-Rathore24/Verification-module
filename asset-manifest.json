@@ -1,27 +1,26 @@
 {
   "files": {
-    "main.css": "/Verification-module/static/css/main.8fb688f4.chunk.css",
-    "main.js": "/Verification-module/static/js/main.7b933199.chunk.js",
-    "main.js.map": "/Verification-module/static/js/main.7b933199.chunk.js.map",
-    "runtime-main.js": "/Verification-module/static/js/runtime-main.e43ef142.js",
-    "runtime-main.js.map": "/Verification-module/static/js/runtime-main.e43ef142.js.map",
-    "static/js/2.4cabe418.chunk.js": "/Verification-module/static/js/2.4cabe418.chunk.js",
-    "static/js/2.4cabe418.chunk.js.map": "/Verification-module/static/js/2.4cabe418.chunk.js.map",
-    "static/js/3.2e599dac.chunk.js": "/Verification-module/static/js/3.2e599dac.chunk.js",
-    "static/js/3.2e599dac.chunk.js.map": "/Verification-module/static/js/3.2e599dac.chunk.js.map",
+    "main.css": "/Verification-module/static/css/main.8ba3fde4.chunk.css",
+    "main.js": "/Verification-module/static/js/main.a3b1ad60.chunk.js",
+    "main.js.map": "/Verification-module/static/js/main.a3b1ad60.chunk.js.map",
+    "runtime-main.js": "/Verification-module/static/js/runtime-main.0306d3b9.js",
+    "runtime-main.js.map": "/Verification-module/static/js/runtime-main.0306d3b9.js.map",
+    "static/js/2.55e866aa.chunk.js": "/Verification-module/static/js/2.55e866aa.chunk.js",
+    "static/js/2.55e866aa.chunk.js.map": "/Verification-module/static/js/2.55e866aa.chunk.js.map",
+    "static/js/3.b1bf33ff.chunk.js": "/Verification-module/static/js/3.b1bf33ff.chunk.js",
+    "static/js/3.b1bf33ff.chunk.js.map": "/Verification-module/static/js/3.b1bf33ff.chunk.js.map",
     "index.html": "/Verification-module/index.html",
-    "static/css/main.8fb688f4.chunk.css.map": "/Verification-module/static/css/main.8fb688f4.chunk.css.map",
-    "static/js/2.4cabe418.chunk.js.LICENSE.txt": "/Verification-module/static/js/2.4cabe418.chunk.js.LICENSE.txt",
-    "static/media/MIT-WPU-Logo.2fbd9207.png": "/Verification-module/static/media/MIT-WPU-Logo.2fbd9207.png",
+    "static/css/main.8ba3fde4.chunk.css.map": "/Verification-module/static/css/main.8ba3fde4.chunk.css.map",
+    "static/js/2.55e866aa.chunk.js.LICENSE.txt": "/Verification-module/static/js/2.55e866aa.chunk.js.LICENSE.txt",
     "static/media/admin.2cf29ba4.png": "/Verification-module/static/media/admin.2cf29ba4.png",
     "static/media/admin.86b65556.svg": "/Verification-module/static/media/admin.86b65556.svg",
     "static/media/logo.8c9beb56.svg": "/Verification-module/static/media/logo.8c9beb56.svg",
     "static/media/student.6e08d05d.png": "/Verification-module/static/media/student.6e08d05d.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.e43ef142.js",
-    "static/js/2.4cabe418.chunk.js",
-    "static/css/main.8fb688f4.chunk.css",
-    "static/js/main.7b933199.chunk.js"
+    "static/js/runtime-main.0306d3b9.js",
+    "static/js/2.55e866aa.chunk.js",
+    "static/css/main.8ba3fde4.chunk.css",
+    "static/js/main.a3b1ad60.chunk.js"
   ]
 }
