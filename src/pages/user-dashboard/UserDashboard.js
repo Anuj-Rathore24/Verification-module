@@ -13,9 +13,7 @@ function user ()  {
       <div className='info-d2'> </div>
      </div>
      <div className = 'options'>
-       <a href="/">Upload Documents</a>
-       <a href="/">Review Documents</a>
-       <a href="/">Raise a Ticket</a>
+       <a href="/">Submit a query</a>
        <a href="/">Help Centre</a>
      </div>
      <ContainerItem/>

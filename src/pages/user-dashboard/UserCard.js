@@ -1,8 +1,8 @@
 import { React, useState } from "react";
 import "../../styles/UserCard.css";
 import { Button, Modal } from "react-bootstrap";
-// import getfile from "../../apis/firebasecloud.js"
-// import axios from "axios"
+import getfile from "../../apis/firebasecloud.js"
+
 
 export default function Card(props) {
   //Use State for invoking close and open button
@@ -11,16 +11,6 @@ export default function Card(props) {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-
-  //Axios Request to server to revoke google api
-//   async function MakeCert(para){
-    
-//     await axios.get("/sendMail",{
-//       params:{message:para},
-//     }).then((res)=>{
-//       console.log(res)
-//     })
-// }
 
 
   return (
@@ -71,9 +61,7 @@ export default function Card(props) {
               Close
             </Button>
             <Button variant="primary" onClick={async ()=>{
-              console.log("Working in cards 1");
-              // await getfile()
-              
+              await getfile()
               }}>
               View Documents
             </Button>
