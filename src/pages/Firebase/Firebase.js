@@ -1,14 +1,14 @@
-import * as firebase from 'firebase/app';
-import { getAuth, GoogleAuthProvider } from 'firebase/auth';
+// import * as firebase from 'firebase/app';
+// import { getAuth, GoogleAuthProvider } from 'firebase/auth';
 
-import FirebaseConfig from './FirebaseConfig';
+// import FirebaseConfig from './FirebaseConfig';
 
-firebase.initializeApp(FirebaseConfig);
+// firebase.initializeApp(FirebaseConfig);
 
-const auth = getAuth();
-const googleAuthProvider = new GoogleAuthProvider(auth);
+// const auth = getAuth();
+// const googleAuthProvider = new GoogleAuthProvider(auth);
 
-const checkLoggedIn = () => {
-    return auth.currentUser !== null;
-}
-export { checkLoggedIn, auth, googleAuthProvider };
+// const checkLoggedIn = () => {
+//     return auth.currentUser !== null;
+// }
+// export { checkLoggedIn, auth, googleAuthProvider };

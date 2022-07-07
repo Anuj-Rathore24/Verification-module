@@ -81,6 +81,11 @@ body {
     height: 100%;
 }
 
+.ChildContainer{
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+}
 #Main_Item_Container{
     display: flex;
     width: 100%;
