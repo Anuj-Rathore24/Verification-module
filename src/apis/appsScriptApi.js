@@ -2,7 +2,10 @@ const readline = require("readline")
 const fs = require("fs");
 const { google } = require("googleapis");
 
-module.exports = async function mail(message) {
+
+module.exports={
+
+ mail:async function(message) {
   // If modifying these scopes, delete token.json.
 
   //scopes for access to drive(edit/create/update) document(edit/create), and Mail(for sending mails only)
@@ -81,20 +84,8 @@ module.exports = async function mail(message) {
    * @param {google.auth.OAuth2} auth An authorized OAuth2 client.
    */
 
-  let para = {
-    userId: "",
-    name: "",
-    prn: 12,
-    programme: "",
-    mode: "",
-    status: "",
-    document: {
-      doc1: "docType",
-      doc2: "docType",
-    },
-  };
 
-  var scriptId = "1yd9wpJ93r42NzgUWLIU8_8DZrmAMymz7uLdkNvAIINpEut6yPK2lfJsY";
+  var scriptId = "1JI5y3eTll4inwaN06cxRZAcRDgfEjQf4FSLN_3-_4ljsiKltWjLMklPN";
   function callAppsScript(auth) {
     const script = google.script({ version: "v1", auth });
     script.scripts
@@ -108,17 +99,16 @@ module.exports = async function mail(message) {
       })
       .then(function (resp) {
         //for handling errors
-        if (resp.data.error) console.log("error" + resp.data.error);
+        if (resp.data.error) console.log("Error :" + resp.data.error.details);
 
-        //Response that the function or script
+        //Response that the function or script returns
         console.log("\n\tresponse:", resp.data.response.result);
       });
   }
-}
+},
 
 
-
-module.exports = async function MakeCertificate(message) {
+MakeCertificate:async function() {
   // If modifying these scopes, delete token.json.
 
   //scopes for access to drive(edit/create/update) document(edit/create), and Mail(for sending mails only)
@@ -198,19 +188,23 @@ module.exports = async function MakeCertificate(message) {
    */
 
   let para = {
-    userId: "",
-    name: "",
-    prn: 12,
-    programme: "",
-    mode: "",
-    status: "",
-    document: {
-      doc1: "docType",
-      doc2: "docType",
-    },
+    Date:12/32/23,
+    OutwardNumber:"Don't Know",
+    EmailId:"1234@gmail.com",
+    userId: "a213a381dasda15s3",
+    queryId:"a3sd21adf3a2s1",
+    name: "Test Name",
+    prn: 10032201083,
+    programme: "DK",
+    mode: "Offline",
+    status: "Verified",
+    document: [
+       "docType1",
+       "docType2",
+    ],
   };
 
-  var scriptId = "1yd9wpJ93r42NzgUWLIU8_8DZrmAMymz7uLdkNvAIINpEut6yPK2lfJsY";
+  var scriptId = "1JI5y3eTll4inwaN06cxRZAcRDgfEjQf4FSLN_3-_4ljsiKltWjLMklPN";
   function callAppsScript(auth) {
     const script = google.script({ version: "v1", auth });
     script.scripts
@@ -218,13 +212,13 @@ module.exports = async function MakeCertificate(message) {
         scriptId: scriptId,
         resource: {
           function: "makeCert",
-          // parameters: message,
+          parameters: para,
           devMode: true,
         },
       })
       .then(function (resp) {
         //for handling errors
-        if (resp.data.error) console.log("error" + resp.data.error);
+        if (resp.data.error) console.log("error :" + resp.data.error);
 
         //Response that the function or script
         console.log("\n\tresponse:", resp.data);
@@ -232,7 +226,10 @@ module.exports = async function MakeCertificate(message) {
   }
 }
 
-/*possible reasons for error
+
+}
+
+/*possible Solutions for error
 1)Give Permissions Again googleaccount>security>ManageThirdPartyApps
 2)Didn't toggle "run function" button in apps script permission
 3)Scope not set auth0 screen
