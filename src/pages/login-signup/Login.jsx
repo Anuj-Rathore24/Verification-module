@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import './Responsive.css';
 import logo from '../images/logo.png';
-import Card from 'react-bootstrap/Card';
+import Card from "react-bootstrap/Card";
 import Button from 'react-bootstrap/esm/Button';
 import Form from 'react-bootstrap/esm/Form';
 import Admin from '../images/admin.png'
@@ -31,31 +31,32 @@ export default function Login() {
         }
     }
 
+    // Setting States for Email and Password
     const [formData, setFormData] = useState({
         email: "",
         password: "",
     })
 
-    //Input Handling Function
+    //Input Handling Function - Used at every input field
     const handleinput = (e) => {
         const name = e.target.name;
         const value = e.target.value;
-        console.log(name, value);
+        // console.log(name, value);
 
         setFormData({ ...formData, [name]: value })
     }
 
-    //Form Submit Function
+    //Form Submit Function - Used in the submit button
     const handleSubmit = (e) => {
         e.preventDefault()
-        clickFunctionSignin(formData.email, formData.password)
+        clickFunctionSignin(formData.email, formData.password) //Passing Email and password collected from the form
     }
 
     return (
         <>
             <div className="main">
                 <div className="upper" style={{
-                    width: '100vw',
+                    width: '100%',
                     overflow: "auto",
                     backgroundColor: '#0089ED',
                 }}>
@@ -72,12 +73,13 @@ export default function Login() {
 
                     <div className="group63"
                         style={{
+                            width:'40%',
                             padding: '0% 3% 0% 3%',
                             color: 'white',
                         }}>
                         <h1>Sign In to</h1>
                         <h4>MIT-WPU Verification System</h4>
-                        <p style={{ fontSize: '13px' }}>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officiis mollitia qui nostrum rem voluptates reiciendis praesentium, earum vel incidunt consectetur.</p>
+                        <p style={{ fontSize: '13px' }}>University-side document verification is integral to every student's future academic and professional ventures as it  confirms the authenticity of details submitted by the student with regards to their academic program, CGPA course etc.</p>
                     </div>
                 </div>
 
@@ -114,11 +116,9 @@ export default function Login() {
                                     backgroundColor: '#E9F1FF',
                                 }}>
 
-                                <img src="https://media-public.canva.com/MADnBiAubGA/3/screen.svg" style={{
+                                <img src="https://media-public.canva.com/MADnBiAubGA/3/screen.svg" alt="Google" style={{
                                     width: '75px',
-                                    height: '75px',
                                     margin: '1% 0% 0% 1%',
-                                    backgroundColor: 'white',
                                     height: "20px",
                                     objectFit: "contain",
                                     backgroundColor: 'transparent'
@@ -196,7 +196,6 @@ export default function Login() {
                                         marginTop: '5%',
                                         marginBottom: '5%',
                                         textAlign: 'center',
-                                        marginBottom: '5%'
                                     }}>
                                     <Form.Label>Don't have an Account? <a href="/signup" style={{
                                         textDecoration: 'none'
@@ -211,7 +210,7 @@ export default function Login() {
                 </div>
 
                 <div className="SigninAs"
-                    style={{                        
+                    style={{
                         marginTop: '8%',
                         marginLeft: '8%',
                         height: '50%',
@@ -220,7 +219,6 @@ export default function Login() {
                     }}>
                     <div className='heading'>
                         <span style={{
-                            textAlign:'left',
                             padding: '3%',
                             fontSize: '120%'
                         }}>Sign In as</span>
