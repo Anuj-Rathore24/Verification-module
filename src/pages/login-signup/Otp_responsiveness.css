@@ -24,6 +24,27 @@
         font-weight: bold;
         margin-left: 5%;
     }
+
+    .mb-3{
+        margin-left: 20% !important;
+    width: 60% !important;
+    padding: 3% !important;
+    border-radius: 2% !important;
+    }
+
+    .otp_label{
+        width: 90%;
+    }
+
+    .otp_input{
+        width: 90%;
+        padding-top: 3% !important;
+        padding-bottom: 3% !important;
+        padding-left: 4% !important;
+        margin-top: 1% !important;
+        border-radius: 2% !important;
+        border-color: #4285F4 !important;
+    }
 }
 
 
@@ -47,5 +68,10 @@
         border-radius: 4%;
         z-index: 1;
         box-shadow: 23px 18px 64px -19px rgba(0, 0, 0, 0.75);
+    }
+
+    .otp_input{
+        width: 23.5%;
+        margin-left: 36%;
     }
 }
