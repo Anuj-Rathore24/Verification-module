@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import SignUpInfo from "./AgencyInfo.js";
 import OtherInfo from "./DocumentVerification.js";
 import "../../styles/VerificationForm.css"
+import {createQuery} from "../../apis/firestoreDatabase"
 
 function Form() {
   const [page, setPage] = useState(0);
@@ -17,7 +18,7 @@ function Form() {
     progamName: "",
     prn: "",
     graduationDate: "",
-    document: "",
+    Documents: "",
     queryDate: "",
     NEFT: "",
     paymentSS: "",
@@ -72,10 +73,11 @@ function Form() {
             Prev
           </button>
           <button
-            onClick={() => {
+            onClick={async() => {
               if (page === FormTitles.length - 1) {
-                alert("FORM SUBMITTED");
                 console.log(formData);
+                await createQuery(formData)
+                alert("FORM SUBMITTED");
               } else {
                 setPage((currPage) => currPage + 1);
               }

@@ -13,12 +13,11 @@ function user ()  {
       <div className='info-d2'> </div>
      </div>
      <div className = 'options'>
-       <a href="/">Submit a query</a>
-       <a href="/">Help Centre</a>
+       <button href="/#/form">Submit a query</button>
+       <button href="/#/" >Help Centre</button>
      </div>
      <ContainerItem/>
      </div>
- 
   </div>
       )
 }

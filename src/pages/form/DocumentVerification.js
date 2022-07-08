@@ -34,7 +34,7 @@ function OtherInfo({ formData, setFormData }) {
           type="checkbox"
           value={"Final Degree Certificate/Final Diploma Certificate"}
           onChange={(e) => {
-            setFormData({ ...formData, document: e.target.value });
+            setFormData({ ...formData, Documents: formData.Documents+e.target.value });
           }}
         />
         <label>Final Degree Certificate/Final Diploma Certificate</label>
@@ -48,7 +48,7 @@ function OtherInfo({ formData, setFormData }) {
           type="checkbox"
           value={"Provisional Degree Certificate"}
           onChange={(e) => {
-            setFormData({ ...formData, document: e.target.value });
+            setFormData({ ...formData, Documents: formData.Documents+e.target.value });
           }}
         />
         <label>Provisional Degree Certificate</label>
@@ -62,7 +62,7 @@ function OtherInfo({ formData, setFormData }) {
           type="checkbox"
           value={"Official Transcript"}
           onChange={(e) => {
-            setFormData({ ...formData, document: e.target.value });
+            setFormData({ ...formData, Documents: formData.Documents+e.target.value });
           }}
         />
         <label>Official Transcript</label>
@@ -75,7 +75,7 @@ function OtherInfo({ formData, setFormData }) {
           type="checkbox"
           value={"Grade Card"}
           onChange={(e) => {
-            setFormData({ ...formData, document: e.target.value });
+            setFormData({ ...formData, Documents: formData.Documents+e.target.value });
           }}
         />
         <label> Grade Card </label> 
@@ -88,7 +88,7 @@ function OtherInfo({ formData, setFormData }) {
           type="checkbox"
           value={"Other Edcational Document/Certificate"}
           onChange={(e) => {
-            setFormData({ ...formData, document: e.target.value });
+            setFormData({ ...formData, Documents: formData.Documents+e.target.value });
           }}
         />
         <label> Other Edcational Document/Certificate </label>
