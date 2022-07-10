@@ -6,7 +6,7 @@ function SignUpInfo({ formData, setFormData }) {
       <div className="Candidate-Info-container name-container">
         <div className="name">
         <div className="label-name">
-          <h4>First Name: </h4>
+          <p class="data">First Name: </p>
             <input
               type="text"
               placeholder="First Name..."
@@ -17,7 +17,7 @@ function SignUpInfo({ formData, setFormData }) {
             />
          </div>
          <div className="label-name">
-          <h4>Middle Name: </h4>
+          <p class="data">Middle Name: </p>
             <input
               type="text"
               placeholder="Middle Name..."
@@ -28,7 +28,7 @@ function SignUpInfo({ formData, setFormData }) {
             />
             </div>
           <div className="label-name">
-          <h4>Last Name: </h4>
+          <p class="data">Last Name: </p>
             <input
               type="text"
               placeholder="Last Name..."
@@ -44,7 +44,7 @@ function SignUpInfo({ formData, setFormData }) {
       <div className="Ageny-Details-container">
         <div className="flex">
       <div className="label">
-      <h4> Email: </h4>
+      <p class="data"> Email: </p>
       <input
         type="text"
         placeholder="email@example.com ..."
@@ -54,7 +54,7 @@ function SignUpInfo({ formData, setFormData }) {
         }      
       /></div>
        <div className="label">
-     <h4>Agency Contact No :</h4>
+     <p class="data">Agency Contact No :</p>
       <input
         type="text"
         placeholder="9187532..."
@@ -67,7 +67,7 @@ function SignUpInfo({ formData, setFormData }) {
       </div>
       <div className="flex">
       <div className="label">
-     <h4>Name of Agency:</h4>
+     <p class="data">Name of Agency:</p>
       <input
         type="text"
         placeholder="SCET..."
@@ -77,7 +77,7 @@ function SignUpInfo({ formData, setFormData }) {
         }
       /></div>
       <div className="label">
-     <h4>Email Id of Agency : </h4>
+     <p class="data">Email Id of Agency : </p>
       <input
       required
         type="text"
@@ -90,7 +90,7 @@ function SignUpInfo({ formData, setFormData }) {
       </div>
 
       <div className="label label2">
-     <h4>Name and Designation:</h4>
+     <p class="data">Name and Designation:</p>
       <input
         type="text"
         placeholder="Name and Designation..."
@@ -102,7 +102,7 @@ function SignUpInfo({ formData, setFormData }) {
      
     </div>
       <div className="Candidate-Info-container">
-        <label id="l1">Select Your University:</label>
+        <label id="l1"><p class="data">Select Your University:</p></label>
         <div className="radios">
           <input
             name="university-radio"
@@ -138,7 +138,7 @@ function SignUpInfo({ formData, setFormData }) {
         </div>
         <div className="flex">
         <div className="label label2">
-        <h4>Name of Program:&nbsp;</h4>
+        <p class="data">Name of Program:&nbsp;</p>
           <input
             type="text"
             placeholder="MBA/B.Tech "
@@ -149,7 +149,7 @@ function SignUpInfo({ formData, setFormData }) {
           />
           </div>
           <div className="label label2">
-        <h4>Month & Year of Passing:</h4>
+        <p class="data">Month & Year of Passing:</p>
           <input
             type="date"
             placeholder="Date of graduation..."
@@ -161,7 +161,7 @@ function SignUpInfo({ formData, setFormData }) {
         </div>
         </div>
         <div className="label label2">
-        <h4>Permanent Registration Number(PNR):&nbsp;</h4>
+        <p class="data">Permanent Registration Number(PRN):&nbsp;</p>
           <input
             type="text"
             placeholder="Permanent Registration Number..."
