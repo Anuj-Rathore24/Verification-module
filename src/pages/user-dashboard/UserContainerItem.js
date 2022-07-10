@@ -4,40 +4,118 @@ import "../../styles/AdminDashboard.css";
 
 let arr = [
   {
-    Number: 0,
-    Date: "10/10/21",
-    Query: 1,
-    Name: "XYZ", 
+    Query:1,
+    email: "xyz@gmail.com",
+    agencyName: "Oxford Times",
+    agencyEmail: "oxford@gmail.com",
+    Designation: "",
+    agencyNo: "1",
+    firstName: "XYZ",
+    lastName: "ABC",
+    universityName: "MIT WPU",
+    progamName: "BTECH",
+    prn: "1032190937",
+    graduationDate: "07/07/2023",
+    document: "",
+    queryDate: "10/10/22",
+    NEFT: "",
+    paymentSS: "",
+    verificationDocument: "",
   },
   {
-    Number: 1,
-    Date: "10/10/21",
-    Query: 2,
-    Name: "XYZ",
+    Query:2,
+    email: "xyz@gmail.com",
+    agencyName: "Oxford Times",
+    agencyEmail: "oxford@gmail.com",
+    Designation: "",
+    agencyNo: "1",
+    firstName: "XYZ",
+    lastName: "ABC",
+    universityName: "MIT WPU",
+    progamName: "BTECH",
+    prn: "1032190937",
+    graduationDate: "07/07/2023",
+    document: "",
+    queryDate: "10/10/22",
+    NEFT: "",
+    paymentSS: "",
+    verificationDocument: "",
   },
   {
-    Number: 2,
-    Date: "10/10/21",
-    Query: 3,
-    Name: "XYZ",
+    Query:3,
+    email: "xyz@gmail.com",
+    agencyName: "Oxford Times",
+    agencyEmail: "oxford@gmail.com",
+    Designation: "",
+    agencyNo: "1",
+    firstName: "XYZ",
+    lastName: "ABC",
+    universityName: "MIT WPU",
+    progamName: "BTECH",
+    prn: "1032190937",
+    graduationDate: "07/07/2023",
+    document: "",
+    queryDate: "10/10/22",
+    NEFT: "",
+    paymentSS: "",
+    verificationDocument: "",
   },
   {
-    Number: 2,
-    Date: "10/10/21",
-    Query: 4,
-    Name: "XYZ",
+    Query:4,
+    email: "xyz@gmail.com",
+    agencyName: "Oxford Times",
+    agencyEmail: "oxford@gmail.com",
+    Designation: "",
+    agencyNo: "1",
+    firstName: "XYZ",
+    lastName: "ABC",
+    universityName: "MIT WPU",
+    progamName: "BTECH",
+    prn: "1032190937",
+    graduationDate: "07/07/2023",
+    document: "",
+    queryDate: "10/10/22",
+    NEFT: "",
+    paymentSS: "",
+    verificationDocument: "",
   },
   {
-    Number: 2,
-    Date: "10/10/21",
-    Query: 5,
-    Name: "XYZ",
+    Query:5,
+    email: "xyz@gmail.com",
+    agencyName: "Oxford Times",
+    agencyEmail: "oxford@gmail.com",
+    Designation: "",
+    agencyNo: "1",
+    firstName: "XYZ",
+    lastName: "ABC",
+    universityName: "MIT WPU",
+    progamName: "BTECH",
+    prn: "1032190937",
+    graduationDate: "07/07/2023",
+    document: "",
+    queryDate: "10/10/22",
+    NEFT: "",
+    paymentSS: "",
+    verificationDocument: "",
   },
   {
-    Number: 2,
-    Date: "10/10/21",
-    Query: 6,
-    Name: "XYZ",
+    Query:6,
+    email: "xyz@gmail.com",
+    agencyName: "Oxford Times",
+    agencyEmail: "oxford@gmail.com",
+    Designation: "",
+    agencyNo: "1",
+    firstName: "XYZ",
+    lastName: "ABC",
+    universityName: "MIT WPU",
+    programName: "BTECH",
+    prn: "1032190937",
+    graduationDate: "07/07/2023",
+    document: "",
+    queryDate: "10/10/22",
+    NEFT: "",
+    paymentSS: "",
+    verificationDocument: "",
   },
   
 ];
@@ -49,7 +127,7 @@ export default function EventsItem() {
       <div className="main_card_container">
           <h2 className="heading"> Date </h2>  
           <h2 className="heading"> QueryId </h2> 
-          <h2 className="heading"> Name </h2> 
+          <h2 className="heading"> First Name </h2> 
           <h2 className="heading" id="btnHeading">Show Details</h2> 
         </div>
       {arr.map((element, i) => {
@@ -57,9 +135,23 @@ export default function EventsItem() {
           <>
             <Cards
               key={i}
-              date={element.Date}
+              queryDate={element.queryDate}
               queryId={element.Query}
-              name={element.Name}
+              firstName={element.firstName}
+              lastName={element.lastName}
+              email={element.email}
+              agencyName={element.agencyName}
+              agencyEmail={element.agencyEmail}
+              designation={element.designation}
+              agencyNo={element.agencyNo}
+              universityName={element.universityName}
+              programName={element.programName}
+              prn={element.prn}
+              graduationDate={element.graduationDate}
+              document={element.document}
+              NEFT={element.NEFT}
+              paymentSS={element.paymentSS}
+              verificationDocument={element.verificationDocument}
               color={element.Query%2===0?("#D1D1D1"):("#FFFFFF")}
             />
           </>

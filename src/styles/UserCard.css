@@ -57,7 +57,9 @@
 .content{
     margin: 5px;
 }
-
+p{
+    font-size: 15px;
+}
 #btnHeading{
     margin-left: 5%;
     margin-right: 5%;
