@@ -38,7 +38,7 @@ export default function Card(props) {
 
         <Modal show={show} onHide={handleClose} animation={false}>
           {/* Header for the modal */}
-          <div style={{ border: "2px solid grey" }}>
+          <div>
             <Modal.Header closeButton>
               <Modal.Title>ID : {props.queryId}</Modal.Title>
             </Modal.Header>
@@ -49,7 +49,12 @@ export default function Card(props) {
             id="MainBodyContainer"
             style={{ display: "flex", flexDirection: "column" }}
           >
-            <div style={{ overflow: "auto", height: "300px" }}>
+            <div style={
+              { 
+                overflow: "auto", 
+                height: "300px"
+              
+              }}>
               <div style={{ display: "flex", flexDirection: "row" }}>
                 <p className="content">Query Date :</p>
                 <p className="content">{props.date}</p>
@@ -117,7 +122,7 @@ export default function Card(props) {
               <hr></hr>
             </div>
           </Modal.Body>
-          <Modal.Footer>
+          <Modal.Footer style={{justifyContent:"center"}}>
             <Button variant="secondary" onClick={handleClose}>
               Cancel
             </Button>
