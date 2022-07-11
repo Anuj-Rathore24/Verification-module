@@ -5,7 +5,7 @@ function OtherInfo({ formData, setFormData }) {
     <div>
 
     <div className="document-container">
-      <h4>Payement Date</h4>
+      <p class="data">Payment Date</p>
       <input
         type="date"
         value={formData.queryDate}
@@ -14,7 +14,7 @@ function OtherInfo({ formData, setFormData }) {
         }}
       />
       
-      <h4>NEFT Reference No./ Transaction Id</h4>
+      <p class="data">NEFT Reference No./ Transaction Id</p>
       <input
         type="text"
         placeholder="NEFT Reference No./ Transaction Id..."
@@ -23,12 +23,14 @@ function OtherInfo({ formData, setFormData }) {
           setFormData({ ...formData, NEFT: e.target.value });
         }}
       />
-      <h4 style={{ width: "400px"}}>Attach Screenshot of Payment Aknowledgement</h4>
+      <p class="data" style={{ width: "400px"}}>Screenshot of Payment Aknowledgement</p>
+      <div class="select-image-btn">
       <input
         type="file"
         placeholder="Attach PNG/JPG/PDF Files"
       />
-      <label id="l2" >Documents To be Verified:</label>
+      </div>
+      <label id="l2" ><p class="data">Documents To be Verified:</p></label>
       <div className="checkboxes">
         <input
           type="checkbox"
@@ -96,12 +98,14 @@ function OtherInfo({ formData, setFormData }) {
         type="file"
       /> */}
       </div>
-      <h4>Attach Document To be Verified</h4>
+      <p class="data">Attach Document To be Verified</p>
+      <div class="select-image-btn">
       <input
         type="file"
         multiple
         placeholder="Attach PNG/JPG/PDF Files"
       />
+      </div>
     </div>
     </div>    
   );

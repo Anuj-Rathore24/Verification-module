@@ -21,6 +21,7 @@ companyEmail: ""
 companyName: ""
 */
 
+
 export default function EventsItem() {
   const [queryArr, changeQueries] = useState([]);
   const [queryId, changeQueryId] = useState([]);
@@ -69,8 +70,8 @@ export default function EventsItem() {
                 PYear={element.PassingYear}
                 Prog={element.Program}
                 Uni={element.Univerity}
-                UniContactNumber={element.companyContactNumber}
-                UniContactPersonal={element.companyContactPersonal}
+                compContactNumber={element.companyContactNumber}
+                compContactPersonal={element.companyContactPersonal}
                 CompEmail={element.companyEmail}
                 CompName={element.companyName}
                 queryId={queryId[i]}

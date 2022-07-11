@@ -21,14 +21,15 @@
   justify-content: center;
   align-items: center;
   overflow-x: hidden;
-  background-color: #ccf2ff;
+  background-color: white;
 }
+
 
 /* PROGRESS BAR */
 .progressbar {
   display: flex;
-  width: 40%;
-  max-width: 600px;
+  width: 65%;
+  max-width: 700px;
   height: 60px;
   justify-content: space-around;
   background-color: #0089ED;
@@ -60,6 +61,10 @@
   width: 100%;
 }
 
+.data{
+  font-size: 20px;
+}
+
 .label,
 .label2 {
   display: flex;
@@ -76,9 +81,18 @@
 }
 
 .radios label, .checkboxes label {
-  padding: 15px;
+  padding: 1rem;
+  padding-left: 0;
 }
 
+.radios input{
+  margin-right: 0;
+}
+
+div.radios{
+  margin-top:0;
+  margin-bottom: 0;
+}
 #l2{
   margin-top: 1em;
 }
@@ -93,7 +107,7 @@
   flex-direction: column;
   font-size: 15px;
   font-weight: bold;
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
 }
 
 
@@ -104,6 +118,7 @@
   height: 2.5em;
   padding-left: 5px;
   font-size: 15px;
+  margin-bottom: 1.5rem;
 }
 
 
@@ -125,11 +140,20 @@ input[type=radio], input[type=checkbox] {
   height: 14px;
 }
 
+.select-image-btn input[type=file] {
+  padding-top:0.2rem;
+  }
+
 .radios,.checkboxes {
   display: flex;
   align-self: normal;
   margin: 2%;
   font-size: 15px;
+}
+
+div.checkboxes{
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 /* .checkboxes{
@@ -202,6 +226,8 @@ input[type=radio], input[type=checkbox] {
     display: flex;
     gap: 0.5em;
   }
+
+
 
   #ln {
     width: 215%;

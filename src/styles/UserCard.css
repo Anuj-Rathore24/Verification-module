@@ -57,10 +57,18 @@
 .content{
     margin: 5px;
 }
-
+p{
+    font-size: 15px;
+}
 #btnHeading{
     margin-left: 5%;
     margin-right: 5%;
+}
+
+.valueContainer{
+    width: 220px;
+    display: flex;
+    justify-content: center;
 }
 @media only screen and (max-width: 1030px) {
     .main_card_container {

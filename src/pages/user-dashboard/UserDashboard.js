@@ -5,7 +5,7 @@ import Topbar from "./UserTopbar";
 import "../../styles/UserDashboard.css";
 
 function User() {
-  const navigate=useNavigate();
+  const navigate = useNavigate();
   return (
     <div>
       <Topbar />
@@ -13,26 +13,26 @@ function User() {
         <div className="user-info-label">
           <div className="info-d1"> </div>
           <div className="info-d2"> </div>
-        <div className="options">
         </div>
-          <button
-            href="/form"
-            onClick={() => {
-              navigate("/form");
-            }}
-          >
-            Submit a query
-          </button>
-          <button
-            href="/#/"
-            onClick={() => {
-              // requestQuery("anuj@gmail.com");
-            }}
-          >
-            Help Centre
-          </button>
-        </div>
-        <ContainerItem/>
+          <div className="options">
+            <button
+              href="/form"
+              onClick={() => {
+                navigate("/form");
+              }}
+            >
+              Submit a query
+            </button>
+            <button
+              href="/#/"
+              onClick={() => {
+                // requestQuery("anuj@gmail.com");
+              }}
+            >
+              Help Centre
+            </button>
+          </div>
+        <ContainerItem />
       </div>
     </div>
   );
