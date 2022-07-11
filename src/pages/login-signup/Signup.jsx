@@ -62,7 +62,7 @@ export default function Signup() {
 
                 window.confirmationResult = confirmationResult;
                 PageStatus.pageStatus = true; //Setting pageStatus true so OTP page is accesible
-                navigate("/otp", { replace: true }); //Navigates to OTP page which is protected as defined in App.js
+                navigate("/#/otp", { replace: true }); //Navigates to OTP page which is protected as defined in App.js
 
             }).catch((error) => {
                 // Error; SMS not sent
@@ -546,7 +546,7 @@ export default function Signup() {
                                         textAlign: 'center'
                                     }}>
                                     <Form.Label style={{
-                                    }}>Already have an Account? <a href="/login" style={{
+                                    }}>Already have an Account? <a href="/#/login" style={{
                                         textDecoration: 'none'
                                     }}>SignIn</a></Form.Label>
                                 </Form.Group>

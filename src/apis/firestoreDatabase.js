@@ -1,4 +1,4 @@
-const { addDoc, collection, doc, getDoc } = require("firebase/firestore");
+const { addDoc, collection, getDocs } = require("firebase/firestore");
 const { db } = require("../pages/Firebase/FirebaseConfig");
 /*
 creds={
@@ -25,6 +25,7 @@ module.exports = {
 
     //function for creating query and storing its value on firestore database
   createQuery: async function (creds) {
+    var message="Form Submitted";
     try {
       const docRef = await addDoc(collection(db, `${creds.agencyEmail}`), {
         Email: creds.email,
@@ -32,7 +33,7 @@ module.exports = {
         companyEmail: creds.agencyEmail,
         companyContactPersonal: creds.Designation,
         companyContactNumber: creds.agencyNo,
-        candidateName: creds.firstName+creds.lastName,
+        candidateName: creds.firstName+" "+creds.lastName,
         Univerity: creds.universityName,
         Program: creds.progamName,
         PRN: creds.prn,
@@ -42,18 +43,18 @@ module.exports = {
         NEFTrefNumber: creds.NEFT,
       });
     } catch (err) {
+        message="Error Submitting Form"
         console.log("The Error is :" + err);
     }
+    return message;
 },
 
     //function for requesting query from firestore database
 
  requestQuery:async function(userId){
     try{
-        const querySnapshot=await getDoc(collection(db,`${userId}`),)
-        querySnapshot.array.forEach(doc => {
-            
-        });
+        const querySnapshot=await getDocs(collection(db,`${userId}`),)        
+        return querySnapshot; 
 
     }catch(err){
         console.log("The Error is->"+err)

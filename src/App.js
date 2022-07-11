@@ -6,7 +6,8 @@ import AdminDashboard from "./pages/admin-dashboard/AdminDashboard.js";
 import UserDashboard from "./pages/user-dashboard/UserDashboard.js";
 import Login from "./pages/login-signup/Login.jsx";
 import Signup from "./pages/login-signup/Signup.jsx";
-import ProtectedRoute from './Pages/login-signup/ProtectedRoute'//importing protected route 
+import ProtectedRoute from './pages/login-signup/ProtectedRoute.jsx'//importing protected route 
+import {PageStatus} from './pages/login-signup/State'
 
 function App() {
   PageStatus.pageStatus = false;//Initiaizing pageStatus as false at the initialization of the app itself

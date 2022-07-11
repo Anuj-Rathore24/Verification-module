@@ -49,7 +49,7 @@ export default function OTP() {
                 clickFunctionSignup(localStorage.getItem('email'), localStorage.getItem('password')); //Creating User with email and password signup. Email and password are collected from signup form and stored in local storage.
                 localStorage.removeItem('email'); // Deleting from local storage once email is used
                 localStorage.removeItem('password'); //Deleting from local storage once password is used
-                navigate("/home", { replace: true }) //Navigate to home once signup is complete
+                navigate("/Userdashboard", { replace: true }) //Navigate to home once signup is complete
 
                 // ...
             }).catch((error) => {

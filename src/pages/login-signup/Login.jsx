@@ -17,7 +17,7 @@ export default function Login() {
     async function clickFunctionGoogle() {
         let result = await FireAuth.googleSignIn();
         if (result) {
-            navigate("/home");
+            navigate("/#/UserDashboard");
         }
     }
 
@@ -27,7 +27,7 @@ export default function Login() {
         result = await FireAuth.signIn(email, password);
         console.log(result);
         if (result) {
-            navigate("/home");
+            navigate("/#/UserDashboard");
         }
     }
 
@@ -197,7 +197,7 @@ export default function Login() {
                                         marginBottom: '5%',
                                         textAlign: 'center',
                                     }}>
-                                    <Form.Label>Don't have an Account? <a href="/signup" style={{
+                                    <Form.Label>Don't have an Account? <a href="/#/signup" style={{
                                         textDecoration: 'none'
                                     }}>SignUP</a></Form.Label>
                                 </Form.Group>
