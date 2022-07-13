@@ -5,7 +5,7 @@ function OtherInfo({ formData, setFormData }) {
     <div>
 
     <div className="document-container">
-      <p class="data">Payment Date</p>
+      <p className="data">Payment Date</p>
       <input
         type="date"
         value={formData.queryDate}
@@ -14,7 +14,7 @@ function OtherInfo({ formData, setFormData }) {
         }}
       />
       
-      <p class="data">NEFT Reference No./ Transaction Id</p>
+      <p className="data">NEFT Reference No./ Transaction Id</p>
       <input
         type="text"
         placeholder="NEFT Reference No./ Transaction Id..."
@@ -23,20 +23,23 @@ function OtherInfo({ formData, setFormData }) {
           setFormData({ ...formData, NEFT: e.target.value });
         }}
       />
-      <p class="data" style={{ width: "400px"}}>Screenshot of Payment Aknowledgement</p>
-      <div class="select-image-btn">
+      <p className="data" style={{ width: "400px"}}>Screenshot of Payment Aknowledgement</p>
+      <div className="select-image-btn">
       <input
         type="file"
         placeholder="Attach PNG/JPG/PDF Files"
       />
       </div>
-      <label id="l2" ><p class="data">Documents To be Verified:</p></label>
+      <label id="l2" ><p className="data">Documents To be Verified:</p></label>
       <div className="checkboxes">
         <input
           type="checkbox"
           value={"Final Degree Certificate/Final Diploma Certificate"}
           onChange={(e) => {
-            setFormData({ ...formData, Documents: formData.Documents+e.target.value });
+            if(!formData.Documents.includes(e.target.value)){
+
+              setFormData({ ...formData, Documents: formData.Documents+e.target.value });
+            }
           }}
         />
         <label>Final Degree Certificate/Final Diploma Certificate</label>
@@ -50,8 +53,15 @@ function OtherInfo({ formData, setFormData }) {
           type="checkbox"
           value={"Provisional Degree Certificate"}
           onChange={(e) => {
-            setFormData({ ...formData, Documents: formData.Documents+e.target.value });
+            if(!formData.Documents.includes(e.target.value)){
+              setFormData({ ...formData, Documents: formData.Documents+e.target.value });
+            }else{
+              
+              console.log(formData.Documents.includes(e.target.value))
+              console.log("working in outside")
+            }
           }}
+          
         />
         <label>Provisional Degree Certificate</label>
         {/* <input className="doc-inp"
@@ -64,8 +74,12 @@ function OtherInfo({ formData, setFormData }) {
           type="checkbox"
           value={"Official Transcript"}
           onChange={(e) => {
-            setFormData({ ...formData, Documents: formData.Documents+e.target.value });
+            if(!formData.Documents.includes(e.target.value)){
+
+              setFormData({ ...formData, Documents: formData.Documents+e.target.value });
+            }
           }}
+          
         />
         <label>Official Transcript</label>
         {/* <input className="doc-inp"
@@ -77,8 +91,12 @@ function OtherInfo({ formData, setFormData }) {
           type="checkbox"
           value={"Grade Card"}
           onChange={(e) => {
-            setFormData({ ...formData, Documents: formData.Documents+e.target.value });
+            if(!formData.Documents.includes(e.target.value)){
+
+              setFormData({ ...formData, Documents: formData.Documents+e.target.value });
+            }
           }}
+          
         />
         <label> Grade Card </label> 
         {/* <input className="doc-inp"
@@ -90,7 +108,10 @@ function OtherInfo({ formData, setFormData }) {
           type="checkbox"
           value={"Other Edcational Document/Certificate"}
           onChange={(e) => {
-            setFormData({ ...formData, Documents: formData.Documents+e.target.value });
+            if(!formData.Documents.includes(e.target.value)){
+
+              setFormData({ ...formData, Documents: formData.Documents+e.target.value });
+            }
           }}
         />
         <label> Other Edcational Document/Certificate </label>
@@ -98,8 +119,8 @@ function OtherInfo({ formData, setFormData }) {
         type="file"
       /> */}
       </div>
-      <p class="data">Attach Document To be Verified</p>
-      <div class="select-image-btn">
+      <p className="data">Attach Document To be Verified</p>
+      <div className="select-image-btn">
       <input
         type="file"
         multiple

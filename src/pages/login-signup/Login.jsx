@@ -17,7 +17,9 @@ export default function Login() {
     async function clickFunctionGoogle() {
         let result = await FireAuth.googleSignIn();
         if (result) {
-            navigate("/#/UserDashboard");
+            navigate("/UserDashboard");
+        }else{
+            alert("Error")
         }
     }
 
@@ -25,9 +27,11 @@ export default function Login() {
     async function clickFunctionSignin(email, password) {
         let result = "";
         result = await FireAuth.signIn(email, password);
-        console.log(result);
+        console.log(result)
         if (result) {
-            navigate("/#/UserDashboard");
+            navigate("/UserDashboard");
+        }else{
+            alert("Wrong Username or Password")
         }
     }
 

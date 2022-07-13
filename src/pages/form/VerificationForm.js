@@ -11,7 +11,7 @@ function Form() {
   const [formData, setFormData] = useState({
     email: "",
     agencyName: "",
-    agencyEmail: "",
+    agencyEmail: "dummy@gmail.com",
     Designation: "",
     agencyNo: "",
     firstName: "",
@@ -92,7 +92,15 @@ function Form() {
               if (page === FormTitles.length - 1) {
 
                 //Function for calling api for storing data on our firestore database
-                
+                // for (let index = 0; index < 5; index++) {
+                //   var objects=document.getElementsByClassName("checkboxes")[index];
+                //   console.log(objects.checked)
+                //   if(objects.checked){
+                //     console.log("Element ->"+objects)
+                //     setFormData({ ...formData, Documents: formData.Documents+objects.value});
+                //   }
+                // }
+                console.log(formData.Documents)
                 const message = await createQuery(formData);
                 alert(message);
                 navigate("/userDashboard");

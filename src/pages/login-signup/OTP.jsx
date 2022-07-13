@@ -21,12 +21,10 @@ export default function OTP() {
     const handleinput = (e) => {
         const name = e.target.name;
         const otp = e.target.value;
-        console.log(name, otp);
 
         setFormData({ ...formData, [name]: otp })
 
         if (otp.length === 6) {
-            // console.log("hello");
             let confirmationResult = window.confirmationResult;
             confirmationResult.confirm(otp).then((result) => {
                 // User signed in successfully.
@@ -47,7 +45,6 @@ export default function OTP() {
 
                 // console.log(localStorage);
                 clickFunctionSignup(localStorage.getItem('email'), localStorage.getItem('password')); //Creating User with email and password signup. Email and password are collected from signup form and stored in local storage.
-                localStorage.removeItem('email'); // Deleting from local storage once email is used
                 localStorage.removeItem('password'); //Deleting from local storage once password is used
                 navigate("/Userdashboard", { replace: true }) //Navigate to home once signup is complete
 
@@ -57,6 +54,7 @@ export default function OTP() {
                 const errorCode = error.code;
                 const errorMessage = error.message;
                 console.log(errorCode, errorMessage);
+                alert("Wrong OTP Entered")
                 navigate("/signup") // Navigate to signup if OTP entered is wrong
             });
         }
@@ -121,19 +119,6 @@ export default function OTP() {
                                             }} />
                                     </Form.Group>
 
-                                    {/* <Button variant="primary" type="submit" style={{
-                                        marginLeft: '5%',
-                                        width: '90%',
-                                        backgroundColor: '#0089ED',
-                                        border: 'none',
-                                        borderRadius: '2%',
-                                        paddingTop: '4%',
-                                        paddingBottom: '4%',
-                                        color: 'white',
-                                        fontSize: '100%',
-                                    }}>
-                                        Submit
-                                    </Button> */}
                                 </Form>
 
                             </Card.Body>

@@ -27,7 +27,7 @@ module.exports = {
   createQuery: async function (creds) {
     var message="Form Submitted";
     try {
-      const docRef = await addDoc(collection(db, `${creds.agencyEmail}`), {
+      const docRef = await addDoc(collection(db, `Users/${creds.agencyEmail}`), {
         Email: creds.email,
         companyName: creds.agencyName,
         companyEmail: creds.agencyEmail,
@@ -41,6 +41,7 @@ module.exports = {
         Documents: creds.Documents,
         PaymentDate: creds.queryDate,
         NEFTrefNumber: creds.NEFT,
+        status:"notVerified"
       });
     } catch (err) {
         message="Error Submitting Form"
@@ -53,7 +54,7 @@ module.exports = {
 
  requestQuery:async function(userId){
     try{
-        const querySnapshot=await getDocs(collection(db,`${userId}`),)        
+        const querySnapshot=await getDocs(collection(db,`Users/${userId}`),)        
         return querySnapshot; 
 
     }catch(err){

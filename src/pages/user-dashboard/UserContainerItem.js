@@ -19,6 +19,7 @@ companyContactNumber: ""
 companyContactPersonal: ""
 companyEmail: ""
 companyName: ""
+status:""
 */
 
 
@@ -76,6 +77,7 @@ export default function EventsItem() {
                 CompName={element.companyName}
                 queryId={queryId[i]}
                 name={element.candidateName}
+                status={element.status}
                 color={element.Query % 2 === 0 ? "#D1D1D1" : "#FFFFFF"}
               />
             </>
