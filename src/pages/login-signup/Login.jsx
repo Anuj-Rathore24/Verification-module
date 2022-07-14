@@ -90,7 +90,7 @@ export default function Login() {
                 <div className="signinCard" style={{
                     display: 'flex',
                     marginRight:'10%',
-                    marginTop:'-17.5%',
+                    // marginTop:'-17.5%', 
                     backgroundColor: 'white',
                     float: 'right',
                     borderRadius: '4%',
