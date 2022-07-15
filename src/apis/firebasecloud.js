@@ -1,5 +1,5 @@
 import { ref, uploadBytesResumable, getStorage,getDownloadURL,listAll } from "firebase/storage";
-import app from "../pages/Firebase/FirebaseConfig";
+import {app} from "../pages/Firebase/FirebaseConfig";
 
 // Function for Uploading files on Firebase Cloud
 
@@ -31,7 +31,7 @@ export default async function getfile(){
     
     console.log(res);
     var Maincontainer=document.getElementById("MainBodyContainer");
-    Maincontainer.innerHTML="";
+    // Maincontainer.innerHTML="";
     const ChildContainer=document.createElement("div")
     ChildContainer.className="ChildContainer";
     ChildContainer.innerHTML="Files"

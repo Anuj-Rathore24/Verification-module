@@ -123,9 +123,7 @@ export default function Card(props) {
             </div>
           </Modal.Body>
           <Modal.Footer style={{justifyContent:"center"}}>
-            <Button variant="secondary" onClick={handleClose}>
-              Cancel
-            </Button>
+            
             <Button
               variant="primary"
               onClick={async () => {
@@ -134,6 +132,7 @@ export default function Card(props) {
             >
               View Documents
             </Button>
+            
           </Modal.Footer>
         </Modal>
       </div>

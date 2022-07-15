@@ -1,4 +1,4 @@
-const { addDoc, collection, getDocs } = require("firebase/firestore");
+const { collection, getDocs,setDoc,doc } = require("firebase/firestore");
 const { db } = require("../pages/Firebase/FirebaseConfig");
 /*
 creds={
@@ -25,9 +25,11 @@ module.exports = {
 
     //function for creating query and storing its value on firestore database
   createQuery: async function (creds) {
+    const userId=localStorage.getItem("email");
     var message="Form Submitted";
     try {
-      const docRef = await addDoc(collection(db, `Users/${creds.agencyEmail}`), {
+      // var doc=await db.collection("users").collection(`${userId}`).set()
+      const docRef = await setDoc(doc(db,`Users/${userId}`), {
         Email: creds.email,
         companyName: creds.agencyName,
         companyEmail: creds.agencyEmail,
@@ -52,9 +54,10 @@ module.exports = {
 
     //function for requesting query from firestore database
 
- requestQuery:async function(userId){
+ requestQuery:async function(){
     try{
-        const querySnapshot=await getDocs(collection(db,`Users/${userId}`),)        
+      const userId=localStorage.getItem("email");
+        const querySnapshot=await getDocs(collection(db,`anuj@gmail.com`),)        
         return querySnapshot; 
 
     }catch(err){
