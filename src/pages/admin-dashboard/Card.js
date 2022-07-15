@@ -2,13 +2,28 @@ import { React, useState } from "react";
 import "../../styles/Card.css";
 import { Button, Modal } from "react-bootstrap";
 import getfile from "../../apis/firebasecloud.js";
+// import { MakeCertificate } from "../../apis/appsScriptApi";
+import axios from "axios"
+
+function verifyDocument(){
+  axios.get("/MakeCert").then((res)=>{
+    console.log("response -> "+res)
+  })
+
+}
+
+
 
 export default function Card(props) {
   //Use State for invoking close and open button
 
   const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
+  const handleClose = () => {
+    setDisable(false)
+    setShow(false)
+  };
   const handleShow = () => setShow(true);
+  const [disable,setDisable]=useState(false);
 
   return (
     <div>
@@ -144,10 +159,12 @@ export default function Card(props) {
             >
               Decline Query Request
             </Button>
-            <Button
+            <Button disabled={disable}
               variant="primary"
               onClick={async () => {
                 await getfile();
+                setDisable(true)
+
               }}
             >
               View Documents
@@ -155,7 +172,8 @@ export default function Card(props) {
             <Button
               variant="success"
               onClick={async () => {
-                await getfile();
+                verifyDocument()
+                
               }}
             >
               Verify Request
