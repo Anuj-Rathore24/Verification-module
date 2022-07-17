@@ -62,7 +62,7 @@ export default function Signup() {
                 // user in with confirmationResult.confirm(code).
 
                 window.confirmationResult = confirmationResult;
-                // PageStatus.pageStatus = true; //Setting pageStatus true so OTP page is accesible
+                PageStatus.pageStatus = true; //Setting pageStatus true so OTP page is accesible
                 navigate("/otp", { replace: true }); //Navigates to OTP page which is protected as defined in App.js
 
             }).catch((error) => {
