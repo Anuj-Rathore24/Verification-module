@@ -25,6 +25,7 @@ export default function Card(props) {
         <h2 className="card_heading">{props.queryDate}</h2>
         <h2 className="card_heading">{props.queryId}</h2>
         <h2 className="card_heading">{props.firstName}</h2>
+        <h2 className="card_heading">{props.prn}</h2>
 
         {/* Modal for Showing Full Information */}
 

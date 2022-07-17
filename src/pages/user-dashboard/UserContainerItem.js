@@ -124,10 +124,24 @@ export default function EventsItem() {
 
   return (
     <div id="Main_Item_Container">
+      <div id="main_card_header">
+      <label for="show" class="show">Show</label>
+      <select name="show" id="show">
+      <option value="query">Query</option>
+      <option value="graph">Graph</option>
+      </select>
+      <label for="sort" class="sort">Sort By</label>
+      <select name="sort" id="sort">
+      <option value="date">Date</option>
+      <option value="adherence">Adherence</option>
+      </select> 
+      </div>
       <div className="main_card_container">
+        <br></br>
           <h2 className="heading"> Date </h2>  
           <h2 className="heading"> QueryId </h2> 
           <h2 className="heading"> First Name </h2> 
+          <h2 className="heading"> PRN Number </h2> 
           <h2 className="heading" id="btnHeading">Show Details</h2> 
         </div>
       {arr.map((element, i) => {
