@@ -8,7 +8,7 @@ function user ()  {
   return (
      <div>
          <Topbar/>
-      <div className='main'>
+      <div className='ad_main'>
     <div className='info-label'>
       <div className='d1'> </div>
       <div className='d2'> </div>

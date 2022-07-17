@@ -29,7 +29,7 @@ body {
     align-items: center;
     justify-content: space-between;
 }
-.logo{
+.ad_logo{
     height: 3em;
 }
 
@@ -49,7 +49,7 @@ body {
 }
 
 
-.main{
+.ad_main{
     /* background-color: #E5E5E5; */
     height: 100%;
     max-width: 100%;

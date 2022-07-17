@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+import { ref, uploadBytesResumable, getStorage,getDownloadURL,listAll } from "firebase/storage";
+import app from "../pages/Firebase/FirebaseConfig";
+=======
 const {
   ref,
   uploadBytesResumable,
@@ -7,6 +11,7 @@ const {
 } = require("firebase/storage")
 
 const {app}=require("../pages/Firebase/FirebaseConfig")
+>>>>>>> e3d5762ecd13f22b577c898540014743d1b5d12f
 
 // Function for Uploading files on Firebase Cloud
 
