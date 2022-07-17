@@ -4,6 +4,8 @@ import OtherInfo from "./DocumentVerification.js";
 import "../../styles/VerificationForm.css";
 import { createQuery } from "../../apis/firestoreDatabase";
 import { useNavigate } from "react-router-dom";
+import {upload} from "../../apis/firebasecloud"
+// const upload=require("../../apis/firebasecloud")
 
 function Form() {
   const navigate=useNavigate();
@@ -11,7 +13,7 @@ function Form() {
   const [formData, setFormData] = useState({
     email: "",
     agencyName: "",
-    agencyEmail: "dummy@gmail.com",
+    agencyEmail: "",
     Designation: "",
     agencyNo: "",
     firstName: "",
@@ -90,19 +92,9 @@ function Form() {
           <button
             onClick={async () => {
               if (page === FormTitles.length - 1) {
-
-                //Function for calling api for storing data on our firestore database
-                // for (let index = 0; index < 5; index++) {
-                //   var objects=document.getElementsByClassName("checkboxes")[index];
-                //   console.log(objects.checked)
-                //   if(objects.checked){
-                //     console.log("Element ->"+objects)
-                //     setFormData({ ...formData, Documents: formData.Documents+objects.value});
-                //   }
-                // }
                 console.log(formData.Documents)
-                const message = await createQuery(formData);
-                alert(message);
+                const Id = await createQuery(formData);
+                await upload("testing@gmail.com",Id);
                 navigate("/userDashboard");
 
               } else {

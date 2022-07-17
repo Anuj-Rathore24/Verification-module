@@ -1,9 +1,9 @@
 import { React, useState } from "react";
 import "../../styles/Card.css";
 import { Button, Modal } from "react-bootstrap";
-import getfile from "../../apis/firebasecloud.js";
-// import { MakeCertificate } from "../../apis/appsScriptApi";
 import axios from "axios"
+// import {getfile} from "../../apis/firebasecloud.js";
+const getfile =require("../../apis/firebasecloud.js");
 
 function verifyDocument(){
   axios.get("/MakeCert").then((res)=>{
@@ -11,8 +11,6 @@ function verifyDocument(){
   })
 
 }
-
-
 
 export default function Card(props) {
   //Use State for invoking close and open button
@@ -23,6 +21,9 @@ export default function Card(props) {
     setShow(false)
   };
   const handleShow = () => setShow(true);
+
+  //for disabling document fetching button 
+
   const [disable,setDisable]=useState(false);
 
   return (
