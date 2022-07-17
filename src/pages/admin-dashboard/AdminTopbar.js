@@ -8,7 +8,7 @@ function AdminTopbar() {
             <div className="topbar">
                 <div className="topbarWrap">
                     <div className="topLeft">
-                        <img className='logo' src={MitWpuLogo} alt="MIT-WPU-Logo" />
+                        <img className='ad_logo' src={MitWpuLogo} alt="MIT-WPU-Logo" />
                     </div>
                     <div className="topRight">
                         <div className="admin_info">

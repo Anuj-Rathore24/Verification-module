@@ -77,7 +77,7 @@ function Form() {
         ></div>
       </div>
       <div className="form-container">
-        <div className="body">{PageDisplay()}</div>
+        <div className="vf_body">{PageDisplay()}</div>
         <div className="pageChange">
           <button
             disabled={page === 0}

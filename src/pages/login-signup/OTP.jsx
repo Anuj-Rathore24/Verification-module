@@ -63,24 +63,29 @@ export default function OTP() {
 
     return (
         <>
-            <div className="main">
-                <div className="upper" style={{
-                    width: '100%',
-                    height: '20rem',
-                    backgroundColor: '#0089ED',
+            <div className="otp_main" style={{
+                        width: '100%',
+                        minHeight: '100vh',
+                        background: 'linear-gradient(to top,white 0%,white 50%,#0089ED 50%,#0089ED 100%)',
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
                 }}>
 
                     <div className="showcase-top">
                         <img src={logo} alt="MIT Logo" style={{
                             width: '75px',
                             height: '75px',
-                            margin: '1% 0% 0% 1%',
+                            margin: '-700% 0% 0% -500%',
                             backgroundColor: 'white',
                             borderRadius: '5%',
                         }} />
                     </div>
 
-                    <div className="signinCard1" >
+                    <div className="signinCard1" style={{
+                        zIndex: '1',
+                        boxShadow: '23px 18px 64px -19px rgba(0, 0, 0, 0.75)',
+                    }} >
 
                         <Card style={{ width: '100%' }}>
                             <Card.Body>
@@ -92,8 +97,8 @@ export default function OTP() {
                                     // marginLeft: '2%',
                                 }}>
                                     <Form.Group className="mb-3" controlId="formBasicEmail" style={{
-                                        marginLeft: '40%',
-                                        width: '20%',
+                                        marginLeft: '10%',
+                                        width: '80%',
                                         padding: '3% 3% 3% 3%',
                                         backgroundColor: '#D4ECDE',
                                         borderRadius: '2%',
@@ -103,12 +108,14 @@ export default function OTP() {
 
                                     <Form.Group className="mb-3" controlId="formBasicPassword"
                                         style={{
+                                            width:'80%',
                                             padding: '1% 0% 8% 6%',
                                         }}>
                                         <input className='otp_input' type="password" placeholder="Enter Verification Code"
                                             name="otp" id="otp"
                                             onChange={handleinput} value={formData.otp}
                                             style={{
+                                                width:'80%',
                                                 paddingTop: '3%',
                                                 paddingBottom: '3%',
                                                 paddingLeft: "4%",
@@ -124,8 +131,6 @@ export default function OTP() {
                             </Card.Body>
                         </Card>
                     </div>
-
-                </div>
             </div>
         </>
     )
