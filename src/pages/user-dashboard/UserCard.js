@@ -1,14 +1,22 @@
 import { React, useState } from "react";
 import "../../styles/UserCard.css";
 import { Button, Modal } from "react-bootstrap";
-import getfile from "../../apis/firebasecloud.js";
+const getfile =require("../../apis/firebasecloud.js");
+
 
 export default function Card(props) {
   //Use State for invoking close and open button
 
   const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
+  const handleClose = () => {
+    setDisable(false)
+    setShow(false)
+  };
   const handleShow = () => setShow(true);
+  
+  //for disabling document fetching button 
+  const [disable,setDisable]=useState(false);
+
 
   return (
     <div>
@@ -124,10 +132,12 @@ export default function Card(props) {
           </Modal.Body>
           <Modal.Footer style={{justifyContent:"center"}}>
             
-            <Button
+            <Button disabled={disable}
               variant="primary"
               onClick={async () => {
                 await getfile();
+                setDisable(true)
+
               }}
             >
               View Documents

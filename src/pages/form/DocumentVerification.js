@@ -26,6 +26,7 @@ function OtherInfo({ formData, setFormData }) {
       <p className="data" style={{ width: "400px"}}>Screenshot of Payment Aknowledgement</p>
       <div className="select-image-btn">
       <input
+        id="inputPayment"
         type="file"
         placeholder="Attach PNG/JPG/PDF Files"
       />
@@ -122,6 +123,7 @@ function OtherInfo({ formData, setFormData }) {
       <p className="data">Attach Document To be Verified</p>
       <div className="select-image-btn">
       <input
+        id="inputFiles"
         type="file"
         multiple
         placeholder="Attach PNG/JPG/PDF Files"
