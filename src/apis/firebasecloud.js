@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-import { ref, uploadBytesResumable, getStorage,getDownloadURL,listAll } from "firebase/storage";
-import app from "../pages/Firebase/FirebaseConfig";
-=======
 const {
   ref,
   uploadBytesResumable,
@@ -11,7 +7,6 @@ const {
 } = require("firebase/storage")
 
 const {app}=require("../pages/Firebase/FirebaseConfig")
->>>>>>> e3d5762ecd13f22b577c898540014743d1b5d12f
 
 // Function for Uploading files on Firebase Cloud
 
@@ -20,6 +15,7 @@ module.exports = {
   upload: async function (userId, queryId) {
     var i = 0;
     const storage = getStorage(app);
+
     //While Loop for uploading multiple Files
     while (document.getElementById("inputFiles").files[i]) {
       let File = document.getElementById("inputFiles").files[i];
@@ -28,8 +24,7 @@ module.exports = {
       var storageref = ref(storage, `/${userId}/${queryId}/File/File${i}`);
 
       //promise for uploading file
-
-      const upload_task = await uploadBytesResumable(storageref, File).then(
+      await uploadBytesResumable(storageref, File).then(
         (snapshot) => {
           //status for each Upload
           console.log("\nFile Number->" + i + " \nStatus :" + snapshot);
@@ -40,13 +35,13 @@ module.exports = {
     storageref = ref(storage, `/${userId}/${queryId}/Payment/PaymentFile`);
 
     let File=document.getElementById("inputPayment").files[0];
-    const upload_task = await uploadBytesResumable(storageref, File).then(
+    await uploadBytesResumable(storageref, File).then(
       (snapshot) => {
         //status for each Upload
         console.log("Payment Status :" + snapshot);
       }
     );
-    alert("Document submitted !!");
+    alert("Form submitted !!");
   },
 
   //Function for getting Files From Firebase Cloud
@@ -55,7 +50,6 @@ module.exports = {
     const storage = getStorage(app);
 
     //Location of w.r.t FireBase
-    // const filelocation=`gs://total-pillar-302403.appspot.com/files/`;
     const filelocation = `gs://verification-module.appspot.com/testing/`;
 
     const listref = ref(storage, filelocation + "Files/");

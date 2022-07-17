@@ -29,7 +29,7 @@ export default function EventsItem() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const res = await requestQuery("anuj@gmail.com");
+        const res = await requestQuery(localStorage.getItem("email"));
         const temp=[];
         const tempId=[];
         res.forEach((doc)=>{
