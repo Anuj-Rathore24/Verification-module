@@ -21,12 +21,10 @@ export default function OTP() {
     const handleinput = (e) => {
         const name = e.target.name;
         const otp = e.target.value;
-        console.log(name, otp);
 
         setFormData({ ...formData, [name]: otp })
 
         if (otp.length === 6) {
-            // console.log("hello");
             let confirmationResult = window.confirmationResult;
             confirmationResult.confirm(otp).then((result) => {
                 // User signed in successfully.
@@ -47,9 +45,8 @@ export default function OTP() {
 
                 // console.log(localStorage);
                 clickFunctionSignup(localStorage.getItem('email'), localStorage.getItem('password')); //Creating User with email and password signup. Email and password are collected from signup form and stored in local storage.
-                localStorage.removeItem('email'); // Deleting from local storage once email is used
                 localStorage.removeItem('password'); //Deleting from local storage once password is used
-                navigate("/home", { replace: true }) //Navigate to home once signup is complete
+                navigate("/Userdashboard", { replace: true }) //Navigate to home once signup is complete
 
                 // ...
             }).catch((error) => {
@@ -57,6 +54,7 @@ export default function OTP() {
                 const errorCode = error.code;
                 const errorMessage = error.message;
                 console.log(errorCode, errorMessage);
+                alert("Wrong OTP Entered")
                 navigate("/signup") // Navigate to signup if OTP entered is wrong
             });
         }
@@ -65,24 +63,29 @@ export default function OTP() {
 
     return (
         <>
-            <div className="main">
-                <div className="upper" style={{
-                    width: '100%',
-                    height: '20rem',
-                    backgroundColor: '#0089ED',
+            <div className="otp_main" style={{
+                        width: '100%',
+                        minHeight: '100vh',
+                        background: 'linear-gradient(to top,white 0%,white 50%,#0089ED 50%,#0089ED 100%)',
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
                 }}>
 
                     <div className="showcase-top">
                         <img src={logo} alt="MIT Logo" style={{
                             width: '75px',
                             height: '75px',
-                            margin: '1% 0% 0% 1%',
+                            margin: '-700% 0% 0% -500%',
                             backgroundColor: 'white',
                             borderRadius: '5%',
                         }} />
                     </div>
 
-                    <div className="signinCard1" >
+                    <div className="signinCard1" style={{
+                        zIndex: '1',
+                        boxShadow: '23px 18px 64px -19px rgba(0, 0, 0, 0.75)',
+                    }} >
 
                         <Card style={{ width: '100%' }}>
                             <Card.Body>
@@ -94,8 +97,8 @@ export default function OTP() {
                                     // marginLeft: '2%',
                                 }}>
                                     <Form.Group className="mb-3" controlId="formBasicEmail" style={{
-                                        marginLeft: '40%',
-                                        width: '20%',
+                                        marginLeft: '10%',
+                                        width: '80%',
                                         padding: '3% 3% 3% 3%',
                                         backgroundColor: '#D4ECDE',
                                         borderRadius: '2%',
@@ -105,12 +108,14 @@ export default function OTP() {
 
                                     <Form.Group className="mb-3" controlId="formBasicPassword"
                                         style={{
+                                            width:'80%',
                                             padding: '1% 0% 8% 6%',
                                         }}>
                                         <input className='otp_input' type="password" placeholder="Enter Verification Code"
                                             name="otp" id="otp"
                                             onChange={handleinput} value={formData.otp}
                                             style={{
+                                                width:'80%',
                                                 paddingTop: '3%',
                                                 paddingBottom: '3%',
                                                 paddingLeft: "4%",
@@ -121,26 +126,11 @@ export default function OTP() {
                                             }} />
                                     </Form.Group>
 
-                                    {/* <Button variant="primary" type="submit" style={{
-                                        marginLeft: '5%',
-                                        width: '90%',
-                                        backgroundColor: '#0089ED',
-                                        border: 'none',
-                                        borderRadius: '2%',
-                                        paddingTop: '4%',
-                                        paddingBottom: '4%',
-                                        color: 'white',
-                                        fontSize: '100%',
-                                    }}>
-                                        Submit
-                                    </Button> */}
                                 </Form>
 
                             </Card.Body>
                         </Card>
                     </div>
-
-                </div>
             </div>
         </>
     )

@@ -50,6 +50,8 @@ async function register(email, password) {
 
 async function signIn(email, password) {
     let a = 0;
+    console.log("username->"+email)
+    console.log("password->"+password)
     await signInWithEmailAndPassword(auth, email, password).then((userCredential) => {
         console.log(auth.currentUser);
         // Signed in 

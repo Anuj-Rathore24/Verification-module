@@ -1,10 +1,14 @@
 import React, { useState } from "react";
 import SignUpInfo from "./AgencyInfo.js";
 import OtherInfo from "./DocumentVerification.js";
-import "../../styles/VerificationForm.css"
-import {createQuery} from "../../apis/firestoreDatabase"
+import "../../styles/VerificationForm.css";
+import { createQuery } from "../../apis/firestoreDatabase";
+import { useNavigate } from "react-router-dom";
+import {upload} from "../../apis/firebasecloud"
+// const upload=require("../../apis/firebasecloud")
 
 function Form() {
+  const navigate=useNavigate();
   const [page, setPage] = useState(0);
   const [formData, setFormData] = useState({
     email: "",
@@ -25,16 +29,20 @@ function Form() {
     verificationDocument: "",
   });
 
-  const FormTitles = ["Ageny-Details", "Payement-Info", "Document-verification"];
+  const FormTitles = [
+    "Ageny-Details",
+    "Payement-Info",
+    "Document-verification",
+  ];
 
   const PageDisplay = () => {
     if (page === 0) {
       return <SignUpInfo formData={formData} setFormData={setFormData} />;
-    } 
+    }
     // else if (page === 1) {
     //   return <Payement-page formData={formData} setFormData={setFormData} />;
     // }
-     else {
+    else {
       return <OtherInfo formData={formData} setFormData={setFormData} />;
     }
   };
@@ -43,29 +51,38 @@ function Form() {
     <div className="form">
       <div className="progressbar">
         <div
-           onClick={() => {
-            setPage((0));
+          onClick={() => {
+            setPage(0);
           }}
-          style={{ backgroundColor: page === 0 ? "white" : page===1 ? "#FFC107" : "#FFC107" }}
+          style={{
+            backgroundColor:
+              page === 0 ? "white" : page === 1 ? "#FFC107" : "#FFC107",
+          }}
         ></div>
         <div
-           onClick={() => {
-            setPage((1));
+          onClick={() => {
+            setPage(1);
           }}
-          style={{ backgroundColor: page === 0 ? "#FFC107" : page===1 ? "white" : "#FFC107" }}
+          style={{
+            backgroundColor:
+              page === 0 ? "#FFC107" : page === 1 ? "white" : "#FFC107",
+          }}
         ></div>
         <div
-           onClick={() => {
-            setPage((2));
+          onClick={() => {
+            setPage(2);
           }}
-          style={{ backgroundColor: page === 0 ? "#FFC107" : page===1 ? "#FFC107" : "white" }}
+          style={{
+            backgroundColor:
+              page === 0 ? "#FFC107" : page === 1 ? "#FFC107" : "white",
+          }}
         ></div>
       </div>
       <div className="form-container">
-        <div className="body">{PageDisplay()}</div>
+        <div className="vf_body">{PageDisplay()}</div>
         <div className="pageChange">
           <button
-            disabled={page===0}
+            disabled={page === 0}
             onClick={() => {
               setPage((currPage) => currPage - 1);
             }}
@@ -73,11 +90,13 @@ function Form() {
             Prev
           </button>
           <button
-            onClick={async() => {
+            onClick={async () => {
               if (page === FormTitles.length - 1) {
-                console.log(formData);
-                await createQuery(formData)
-                alert("FORM SUBMITTED");
+                console.log(formData.Documents)
+                const Id = await createQuery(formData);
+                await upload("testing@gmail.com",Id);
+                navigate("/userDashboard");
+
               } else {
                 setPage((currPage) => currPage + 1);
               }

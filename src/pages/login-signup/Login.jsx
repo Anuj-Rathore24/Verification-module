@@ -17,7 +17,9 @@ export default function Login() {
     async function clickFunctionGoogle() {
         let result = await FireAuth.googleSignIn();
         if (result) {
-            navigate("/home");
+            navigate("/UserDashboard");
+        }else{
+            alert("Error")
         }
     }
 
@@ -25,9 +27,11 @@ export default function Login() {
     async function clickFunctionSignin(email, password) {
         let result = "";
         result = await FireAuth.signIn(email, password);
-        console.log(result);
+        console.log(result)
         if (result) {
-            navigate("/home");
+            navigate("/UserDashboard");
+        }else{
+            alert("Wrong Username or Password")
         }
     }
 
@@ -54,7 +58,7 @@ export default function Login() {
 
     return (
         <>
-            <div className="main">
+            <div className="ls_main">
                 <div className="upper" style={{
                     width: '100%',
                     overflow: "auto",
@@ -67,14 +71,13 @@ export default function Login() {
                             height: '75px',
                             margin: '1% 0% 0% 1%',
                             backgroundColor: 'white',
-                            borderRadius: '5%',
-                        }} />
+                            borderRadius: '5%',                        }} />
                     </div>
 
                     <div className="group63"
                         style={{
                             width:'40%',
-                            padding: '0% 3% 0% 3%',
+                            padding: '2% 3% 0% 3%',
                             color: 'white',
                         }}>
                         <h1>Sign In to</h1>
@@ -86,7 +89,7 @@ export default function Login() {
                 <div className="signinCard" style={{
                     display: 'flex',
                     marginRight:'10%',
-                    marginTop:'-17.5%',
+                    marginTop:'-17.5%', 
                     backgroundColor: 'white',
                     float: 'right',
                     borderRadius: '4%',
@@ -197,7 +200,7 @@ export default function Login() {
                                         marginBottom: '5%',
                                         textAlign: 'center',
                                     }}>
-                                    <Form.Label>Don't have an Account? <a href="/signup" style={{
+                                    <Form.Label>Don't have an Account? <a href="/#/signup" style={{
                                         textDecoration: 'none'
                                     }}>SignUP</a></Form.Label>
                                 </Form.Group>

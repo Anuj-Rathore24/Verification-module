@@ -1,63 +1,46 @@
-const { addDoc, collection, doc, getDoc } = require("firebase/firestore");
+const { collection, getDocs, setDoc, doc,getDoc, addDoc } = require("firebase/firestore");
 const { db } = require("../pages/Firebase/FirebaseConfig");
-/*
-creds={
-    email: "",
-    agencyName: "",
-    agencyEmail: "",
-    Designation: "",
-    agencyNo: "",
-    firstName: "",
-    lastName: "",
-    universityName: "",
-    progamName: "",
-    prn: "",
-    graduationDate: "",
-    document: "",
-    queryDate: "",
-    NEFT: "",
-    paymentSS: "",
-    verificationDocument: "",
-}
-*/
 
 module.exports = {
-
-    //function for creating query and storing its value on firestore database
+  //function for creating query and storing its value on firestore database
   createQuery: async function (creds) {
+    const userId = localStorage.getItem("email");
+    const objectData={
+      Email: creds.email,
+      companyName: creds.agencyName,
+      companyEmail: creds.agencyEmail,
+      companyContactPersonal: creds.Designation,
+      companyContactNumber: creds.agencyNo,
+      candidateName: creds.firstName + " " + creds.lastName,
+      Univerity: creds.universityName,
+      Program: creds.progamName,
+      PRN: creds.prn,
+      PassingYear: creds.graduationDate,
+      Documents: creds.Documents,
+      PaymentDate: creds.queryDate,
+      NEFTrefNumber: creds.NEFT,
+      status: "notVerified",
+    }
     try {
-      const docRef = await addDoc(collection(db, `${creds.agencyEmail}`), {
-        Email: creds.email,
-        companyName: creds.agencyName,
-        companyEmail: creds.agencyEmail,
-        companyContactPersonal: creds.Designation,
-        companyContactNumber: creds.agencyNo,
-        candidateName: creds.firstName+creds.lastName,
-        Univerity: creds.universityName,
-        Program: creds.progamName,
-        PRN: creds.prn,
-        PassingYear: creds.graduationDate,
-        Documents: creds.Documents,
-        PaymentDate: creds.queryDate,
-        NEFTrefNumber: creds.NEFT,
-      });
+      
+      //Adding new Document in our Firestore
+      const docRef=await addDoc(collection(db, `users`), objectData)      
+      return docRef.id;
+
     } catch (err) {
-        console.log("The Error is :" + err);
+      console.log("the Error Must Be :" + err);
     }
-},
+  },
 
-    //function for requesting query from firestore database
+  //function for requesting query from firestore database
 
- requestQuery:async function(userId){
-    try{
-        const querySnapshot=await getDoc(collection(db,`${userId}`),)
-        querySnapshot.array.forEach(doc => {
-            
-        });
-
-    }catch(err){
-        console.log("The Error is->"+err)
+  requestQuery: async function () {
+    try {
+      const userId = localStorage.getItem("email");
+      const querySnapshot = await getDocs(collection(db, `anuj@gmail.com`));
+      return querySnapshot;
+    } catch (err) {
+      console.log("The Error is->" + err);
     }
- }
-
+  },
 };

@@ -1,7 +1,8 @@
-const {mail,MakeCertificate} =require("./src/apis/appsScriptApi.js");
+const {mail,MakeCertificate} =require("./src/apis/appsScriptApi");
 const express=require("express")
 const app = express();
 const cors = require("cors");
+
 
 //cors libarary is for handling security messages from browser(while using xhttp requests)
 app.use(

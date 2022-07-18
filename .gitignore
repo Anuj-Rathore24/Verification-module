@@ -31,3 +31,5 @@ yarn-debug.log*
 yarn-error.log*
 package-lock.json
 src/apis/firestoreConfig.js
+credentials.json
+token.json
