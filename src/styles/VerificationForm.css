@@ -183,6 +183,10 @@ div.checkboxes{
   margin: 5px;
 }
 
+.invalid{
+  color:red;
+}
+
 
 @media (min-width:750px) {
   .name {
