@@ -135,7 +135,7 @@ function OtherInfo({ formData, setFormData }) {
             type="file"
             multiple
             placeholder="Attach PNG/JPG/PDF Files"
-            onInput={()=>{console.log("")}}
+            
           />
         </div>
       </div>

@@ -1,14 +1,26 @@
 import { React, useState } from "react";
 import "../../styles/Card.css";
 import { Button, Modal } from "react-bootstrap";
-import axios from "axios"
-import {getfile} from "../../apis/firebasecloud.js";
+import axios from "axios";
+import { getfile } from "../../apis/firebasecloud.js";
 
-function verifyDocument(){
-  axios.get("/MakeCert").then((res)=>{
-    console.log("response -> "+res)
-  })
+async function verifyDocument(dataObject) {
+  await axios.post("/MakeCert", { data: dataObject });
+  alert("Mail in Progess");
+}
+function declineButtonFunction() {
 
+  var container = document.getElementById("MainBodyContainer");
+  
+  //creating text input 
+  const inputdecline = document.createElement("textarea");
+  inputdecline.rows = 5;
+  container.appendChild(inputdecline);
+  //creating button  
+  const buttonDecline = document.createElement("button");
+  buttonDecline.innerHTML = "Send";
+  buttonDecline.className = "btn btn-primary";
+    container.appendChild(buttonDecline);
 }
 
 export default function Card(props) {
@@ -16,16 +28,16 @@ export default function Card(props) {
 
   const [show, setShow] = useState(false);
   const handleClose = () => {
-    setDisable(false)
-    setShow(false)
-    setdeclineButton(false)
+    setDisable(false);
+    setShow(false);
+    setdeclineButton(false);
   };
   const handleShow = () => setShow(true);
 
-  //for disabling document fetching button 
+  //for disabling document fetching button
 
-  const [disable,setDisable]=useState(false);
-  const [declineButton,setdeclineButton] = useState(false)
+  const [disable, setDisable] = useState(false);
+  const [declineButton, setdeclineButton] = useState(false);
 
   return (
     <div>
@@ -140,46 +152,31 @@ export default function Card(props) {
             </div>
           </Modal.Body>
           <Modal.Footer style={{ justifyContent: "center" }}>
+            <Button variant="primary">Send to Verify Payment</Button>
             <Button
-              variant="primary"
-              
-            >
-              Send to Verify Payment
-            </Button>
-            <Button disabled={declineButton}
+              disabled={declineButton}
               variant="danger"
               onClick={() => {
-                setdeclineButton(true)
-                var container=document.getElementById("MainBodyContainer");
-                
-                const inputdecline=document.createElement("textarea")
-                inputdecline.cols=40;
-                inputdecline.rows=5;
-                container.appendChild(inputdecline);
-                const buttonDecline=document.createElement("button");
-                buttonDecline.innerHTML="Send"
-                buttonDecline.className="btn btn-primary"
-                container.appendChild(buttonDecline);
-                console.log("working");
-
+                setdeclineButton(true);
+                declineButtonFunction()
               }}
             >
               Decline Query Request
             </Button>
-            <Button disabled={disable}
+            <Button
+              disabled={disable}
               variant="primary"
               onClick={async () => {
-                await getfile(props.CompEmail,props.queryId);
-                setDisable(true)
-
+                await getfile(props.CompEmail, props.queryId);
+                setDisable(true);
               }}
             >
               View Documents
             </Button>
             <Button
               variant="success"
-              onClick={async () => {
-                verifyDocument() 
+              onClick={() => {
+                verifyDocument(props);
               }}
             >
               Verify Request
