@@ -1,4 +1,4 @@
-const { collection, getDocs, addDoc } = require("firebase/firestore");
+const { collection, getDocs, addDoc, doc, setDoc } = require("firebase/firestore");
 const { db } = require("../pages/Firebase/FirebaseConfig");
 
 module.exports = {
@@ -22,9 +22,12 @@ module.exports = {
     }
     try {
       
-      //Adding new Document in our Firestore
+      //Adding new Document user Database
       var collectionRef=collection(db,`${creds.agencyEmail}`)
-      const docRef=await addDoc(collectionRef, objectData)      
+      const docRef=await addDoc(collectionRef, objectData)     
+      
+      //adding new record in Admin Database  
+      var adminRef=setDoc(doc(db,"admin@gmail.com",`${docRef.id}`),objectData)
       return docRef.id;
 
     } catch (err) {

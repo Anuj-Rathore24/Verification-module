@@ -91,11 +91,13 @@ function Form() {
           <button
             onClick={async () => {
               if (page === FormTitles.length - 1) {
-                console.log(formData.Documents)
+                console.log(formData.Documents)  
+                
                 try{
                   
                   const Id = await createQuery(formData);
                   await upload(localStorage.getItem("email"),Id);
+
                   navigate("/userDashboard");
                 }catch(err){
                   console.log("new Error =>"+err);

@@ -19,7 +19,6 @@ module.exports = {
     //While Loop for uploading multiple Files
     while (document.getElementById("inputFiles").files[i]) {
       let File = document.getElementById("inputFiles").files[i];
-
       //Name of the Files would be File1, File2 and so on
       var storageref = ref(storage, `/${userId}/${queryId}/File/File${i}`);
 
@@ -46,13 +45,13 @@ module.exports = {
 
   //Function for getting Files From Firebase Cloud
 
-  getfile: async function () {
+  getfile: async function (userId, queryId) {
     const storage = getStorage(app);
 
     //Location of w.r.t FireBase
-    const filelocation = `gs://verification-module.appspot.com/testing/`;
+    const filelocation = `gs://verification-module.appspot.com/${userId}/${queryId}/`;
 
-    const listref = ref(storage, filelocation + "Files/");
+    const listref = ref(storage, filelocation + "File/");
 
     //function for getting all the Reference Link in Files Folder
     listAll(listref).then((res) => {

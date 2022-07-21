@@ -2,7 +2,6 @@ import { React, useState } from "react";
 import "../../styles/UserCard.css";
 import { Button, Modal } from "react-bootstrap";
 import {getfile} from "../../apis/firebasecloud.js"
-// const getfile =require("../../apis/firebasecloud.js");
 
 
 export default function Card(props) {

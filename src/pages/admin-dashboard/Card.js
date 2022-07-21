@@ -2,8 +2,7 @@ import { React, useState } from "react";
 import "../../styles/Card.css";
 import { Button, Modal } from "react-bootstrap";
 import axios from "axios"
-// import {getfile} from "../../apis/firebasecloud.js";
-const getfile =require("../../apis/firebasecloud.js");
+import {getfile} from "../../apis/firebasecloud.js";
 
 function verifyDocument(){
   axios.get("/MakeCert").then((res)=>{
@@ -19,12 +18,14 @@ export default function Card(props) {
   const handleClose = () => {
     setDisable(false)
     setShow(false)
+    setdeclineButton(false)
   };
   const handleShow = () => setShow(true);
 
   //for disabling document fetching button 
 
   const [disable,setDisable]=useState(false);
+  const [declineButton,setdeclineButton] = useState(false)
 
   return (
     <div>
@@ -141,21 +142,26 @@ export default function Card(props) {
           <Modal.Footer style={{ justifyContent: "center" }}>
             <Button
               variant="primary"
-              onClick={() => {
-                console.log("working");
-                return (
-                  <>
-                    <input key={1} value={"some Value"} />
-                  </>
-                );
-              }}
+              
             >
               Send to Verify Payment
             </Button>
-            <Button
+            <Button disabled={declineButton}
               variant="danger"
               onClick={() => {
-                console.log("decline");
+                setdeclineButton(true)
+                var container=document.getElementById("MainBodyContainer");
+                
+                const inputdecline=document.createElement("textarea")
+                inputdecline.cols=40;
+                inputdecline.rows=5;
+                container.appendChild(inputdecline);
+                const buttonDecline=document.createElement("button");
+                buttonDecline.innerHTML="Send"
+                buttonDecline.className="btn btn-primary"
+                container.appendChild(buttonDecline);
+                console.log("working");
+
               }}
             >
               Decline Query Request
@@ -163,7 +169,7 @@ export default function Card(props) {
             <Button disabled={disable}
               variant="primary"
               onClick={async () => {
-                await getfile();
+                await getfile(props.CompEmail,props.queryId);
                 setDisable(true)
 
               }}
@@ -173,8 +179,7 @@ export default function Card(props) {
             <Button
               variant="success"
               onClick={async () => {
-                verifyDocument()
-                
+                verifyDocument() 
               }}
             >
               Verify Request
