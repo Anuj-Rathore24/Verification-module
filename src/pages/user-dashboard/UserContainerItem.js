@@ -5,24 +5,6 @@ import { requestQuery } from "../../apis/firestoreDatabase";
 import { useState, useEffect } from "react";
 
 
-/*
-Documents: ""
-Email: ""
-NEFTrefNumber: ""
-PRN: ""
-PassingYear: ""
-PaymentDate: ""
-Program: ""
-Univerity: ""
-candidateName: ""
-companyContactNumber: ""
-companyContactPersonal: ""
-companyEmail: ""
-companyName: ""
-status:""
-*/
-
-
 export default function EventsItem() {
   const [queryArr, changeQueries] = useState([]);
   const [queryId, changeQueryId] = useState([]);

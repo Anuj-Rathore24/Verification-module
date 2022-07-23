@@ -1,22 +1,26 @@
 import { React, useState } from "react";
 import "../../styles/UserCard.css";
 import { Button, Modal } from "react-bootstrap";
-import {getfile} from "../../apis/firebasecloud.js"
+import { getfile } from "../../apis/firebasecloud.js";
 
-
+function colorScheme(variable) {
+  var color = "yellow";
+  if (variable === "Verified") color = "green";
+  else if (variable === "Denied") color = "red";
+  return color;
+}
 export default function Card(props) {
   //Use State for invoking close and open button
 
   const [show, setShow] = useState(false);
   const handleClose = () => {
-    setDisable(false)
-    setShow(false)
+    setDisable(false);
+    setShow(false);
   };
   const handleShow = () => setShow(true);
-  
-  //for disabling document fetching button 
-  const [disable,setDisable]=useState(false);
 
+  //for disabling document fetching button
+  const [disable, setDisable] = useState(false);
 
   return (
     <div>
@@ -27,10 +31,28 @@ export default function Card(props) {
           margin: 5,
         }}
       >
-        <h2 className="card_heading">{props.queryDate}</h2>
-        <h2 className="card_heading">{props.queryId}</h2>
-        <h2 className="card_heading">{props.firstName}</h2>
-        <h2 className="card_heading">{props.prn}</h2>
+        <div
+          className="rounded-circle"
+          style={{
+            backgroundColor: colorScheme(props.status),
+            width: "15px",
+            height: "15px",
+          }}
+        ></div>
+        <div className="valueContainer">
+          <h2 className="card_heading">{props.date}</h2>
+        </div>
+        <div className="valueContainer">
+          <h2 className="card_heading">{props.queryId}</h2>
+        </div>
+        <div className="valueContainer">
+          <h2 className="card_heading">{props.name}</h2>
+        </div>
+        <div className="valueContainer">
+          <Button variant="primary" onClick={handleShow}>
+            Show
+          </Button>
+        </div>
 
         {/* Modal for Showing Full Information */}
 
@@ -38,7 +60,14 @@ export default function Card(props) {
           {/* Header for the modal */}
           <div>
             <Modal.Header closeButton>
-              <Modal.Title>ID : {props.queryId}</Modal.Title>
+              <Modal.Title style={{ fontSize: "1.25rem" }}>
+                ID : {props.queryId}
+              </Modal.Title>
+              <p
+                style={{ fontSize: "0.95rem", margin: 0, marginLeft: "2.6vw" }}
+              >
+                {props.status}
+              </p>
             </Modal.Header>
           </div>
           {/*Main Body of the Modal */}
@@ -47,12 +76,12 @@ export default function Card(props) {
             id="MainBodyContainer"
             style={{ display: "flex", flexDirection: "column" }}
           >
-            <div style={
-              { 
-                overflow: "auto", 
-                height: "300px"
-              
-              }}>
+            <div
+              style={{
+                overflow: "auto",
+                height: "300px",
+              }}
+            >
               <div style={{ display: "flex", flexDirection: "row" }}>
                 <p className="content">Query Date :</p>
                 <p className="content">{props.date}</p>
@@ -120,19 +149,17 @@ export default function Card(props) {
               <hr></hr>
             </div>
           </Modal.Body>
-          <Modal.Footer style={{justifyContent:"center"}}>
-            
-            <Button disabled={disable}
+          <Modal.Footer style={{ justifyContent: "center" }}>
+            <Button
+              disabled={disable}
               variant="primary"
               onClick={async () => {
                 await getfile();
-                setDisable(true)
-
+                setDisable(true);
               }}
             >
               View Documents
             </Button>
-            
           </Modal.Footer>
         </Modal>
       </div>
