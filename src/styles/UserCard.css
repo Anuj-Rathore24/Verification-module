@@ -1,13 +1,14 @@
 .main_card_container {
-  width: 90vw;
-  height: 4vw;
-  overflow: hidden;
-  border-radius: 1vw;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-evenly;
-  position: relative;
+    width: 90vw;
+    height: 4vw;
+    overflow: hidden;
+    border-radius: 1vw;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    position: relative;
+   
 }
 
 .card_heading {

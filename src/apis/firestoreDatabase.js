@@ -1,10 +1,9 @@
-const { collection, getDocs, setDoc, doc,getDoc, addDoc } = require("firebase/firestore");
+const { collection, getDocs, addDoc, doc, setDoc } = require("firebase/firestore");
 const { db } = require("../pages/Firebase/FirebaseConfig");
 
 module.exports = {
   //function for creating query and storing its value on firestore database
   createQuery: async function (creds) {
-    const userId = localStorage.getItem("email");
     const objectData={
       Email: creds.email,
       companyName: creds.agencyName,
@@ -23,21 +22,24 @@ module.exports = {
     }
     try {
       
-      //Adding new Document in our Firestore
-      const docRef=await addDoc(collection(db, `users`), objectData)      
+      //Adding new Document user Database
+      var collectionRef=collection(db,`${creds.agencyEmail}`)
+      const docRef=await addDoc(collectionRef, objectData)     
+      
+      //adding new record in Admin Database  
+      var adminRef=setDoc(doc(db,"admin@gmail.com",`${docRef.id}`),objectData)
       return docRef.id;
 
     } catch (err) {
-      console.log("the Error Must Be :" + err);
+      throw(err);
     }
   },
 
   //function for requesting query from firestore database
 
-  requestQuery: async function () {
+  requestQuery: async function (userID) {
     try {
-      const userId = localStorage.getItem("email");
-      const querySnapshot = await getDocs(collection(db, `anuj@gmail.com`));
+      const querySnapshot = await getDocs(collection(db, `${userID}`));
       return querySnapshot;
     } catch (err) {
       console.log("The Error is->" + err);

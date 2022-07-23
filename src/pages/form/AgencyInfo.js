@@ -1,5 +1,21 @@
 import React from "react";
 
+const isTenChars = (value) => value.trim().length === 10;
+const regex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+const isEmail= (value)=>{
+  if(regex.test(value)===false)
+  {
+    return false;
+  }
+  else{
+    return true;
+  }
+}
+let prnValidity=true;
+let agencyEmailValidity=true;
+let emailValidity=true;
+let agencyPhoneValidity=true;
+
 function SignUpInfo({ formData, setFormData }) {
   return (
     <div >
@@ -13,6 +29,7 @@ function SignUpInfo({ formData, setFormData }) {
               value={formData.firstName}
               onChange={(e) => {
                 setFormData({ ...formData, firstName: e.target.value });
+                console.log(e.target.value);
               }}
             />
          </div>
@@ -49,20 +66,41 @@ function SignUpInfo({ formData, setFormData }) {
         type="text"
         placeholder="email@example.com ..."
         value={formData.email}
-        onChange={(event) =>
+        onChange={(event) =>{
           setFormData({ ...formData, email: event.target.value })
-        }      
-      /></div>
+          if(isEmail(event.target.value)){
+            emailValidity = true;
+          }else if(event.target.value.length == 0){
+            emailValidity = true;
+          }
+          else if(!isEmail(event.target.value))
+          {
+            emailValidity=false;
+          }
+        } }
+      />
+      {!emailValidity && <p class="invalid">Please enter a valid Email Address</p>}
+      </div>
        <div className="label">
-     <p class="data">Agency Contact No :</p>
+     <p class="data">Agency Contact Number:</p>
       <input
         type="text"
         placeholder="9187532..."
         value={formData.agencyNo}
-        onChange={(event) =>
+        onChange={(event) =>{
           setFormData({ ...formData, agencyNo: event.target.value })
-        }
+          if(isTenChars(event.target.value)){
+            agencyPhoneValidity = true;
+          }else if(event.target.value.length === 0){
+            agencyPhoneValidity = true;
+          }
+          else if(!isTenChars(event.target.value))
+          {
+            agencyPhoneValidity=false;
+          }
+        }}
       />
+      {!agencyPhoneValidity && <p class="invalid">Please enter Phone number of 10 digits</p>}
       </div>
       </div>
       <div className="flex">
@@ -74,6 +112,7 @@ function SignUpInfo({ formData, setFormData }) {
         value={formData.agencyName}
         onChange={(event) =>
           setFormData({ ...formData, agencyName: event.target.value })
+          
         }
       /></div>
       <div className="label">
@@ -83,10 +122,21 @@ function SignUpInfo({ formData, setFormData }) {
         type="text"
         placeholder="agency@email.com ..."
         value={formData.agencyEmail}
-        onChange={(event) =>
+        onChange={(event) =>{
           setFormData({ ...formData, agencyEmail: event.target.value })
-        }
-      /></div>
+          if(isEmail(event.target.value)){
+            agencyEmailValidity = true;
+          }else if(event.target.value.length == 0){
+            agencyEmailValidity = true;
+          }
+          else if(!isEmail(event.target.value))
+          {
+            agencyEmailValidity=false;
+          }
+        }}
+      />
+      {!agencyEmailValidity && <p class="invalid">Please enter a valid Email Address</p>}
+      </div>
       </div>
 
       <div className="label label2">
@@ -168,8 +218,19 @@ function SignUpInfo({ formData, setFormData }) {
             value={formData.prn}
             onChange={(e) => {
               setFormData({ ...formData, prn: e.target.value });
+              
+              if(isTenChars(e.target.value)){
+                prnValidity = true;
+              }else if(e.target.value.length == 0){
+                prnValidity = true;
+              }
+              else if(!isTenChars(e.target.value))
+              {
+                prnValidity=false;
+              }
             }}
           />
+          {!prnValidity && <p class="invalid">Please enter PRN number of 10 digits</p>}
           </div>
         
       </div>

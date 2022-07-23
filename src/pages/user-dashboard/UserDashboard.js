@@ -26,7 +26,7 @@ function User() {
             <button
               href="/#/"
               onClick={() => {
-                // requestQuery("anuj@gmail.com");
+                console.log("help Center")
               }}
             >
               Help Centre

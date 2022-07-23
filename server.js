@@ -30,11 +30,10 @@ app.get("/sendMail",async (req,res)=>{
 })
 
 
-app.get("/MakeCert",async (req,res)=>{
+app.post("/MakeCert",async (req,res)=>{
     console.log("Making Certificate");
     try{
-        await MakeCertificate()
-        res.send("Mailed Perfectely");
+        await MakeCertificate(req.body.data);
     }catch(err){
         console.log("\n\nerror ->"+err)
     }

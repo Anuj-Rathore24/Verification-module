@@ -5,7 +5,6 @@ import "../../styles/VerificationForm.css";
 import { createQuery } from "../../apis/firestoreDatabase";
 import { useNavigate } from "react-router-dom";
 import {upload} from "../../apis/firebasecloud"
-// const upload=require("../../apis/firebasecloud")
 
 function Form() {
   const navigate=useNavigate();
@@ -27,6 +26,7 @@ function Form() {
     NEFT: "",
     paymentSS: "",
     verificationDocument: "",
+    status:"NotVerified"
   });
 
   const FormTitles = [
@@ -92,10 +92,18 @@ function Form() {
           <button
             onClick={async () => {
               if (page === FormTitles.length - 1) {
-                console.log(formData.Documents)
-                const Id = await createQuery(formData);
-                await upload("testing@gmail.com",Id);
-                navigate("/userDashboard");
+                console.log(formData.Documents)  
+                
+                try{
+                  
+                  const Id = await createQuery(formData);
+                  await upload(localStorage.getItem("email"),Id);
+
+                  navigate("/userDashboard");
+                }catch(err){
+                  console.log("new Error =>"+err);
+                  alert("Please Fill all the details properly");
+                }
 
               } else {
                 setPage((currPage) => currPage + 1);

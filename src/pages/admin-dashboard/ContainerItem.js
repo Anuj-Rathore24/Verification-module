@@ -3,44 +3,7 @@ import Cards from "./Card";
 import "../../styles/AdminDashboard.css";
 import { requestQuery } from "../../apis/firestoreDatabase";
 
-let arr = [
-  {
-    Number: 0,
-    Date: "10/10/21",
-    Query: 1,
-    Name: "XYZ",
-  },
-  {
-    Number: 1,
-    Date: "10/10/21",
-    Query: 2,
-    Name: "XYZ",
-  },
-  {
-    Number: 2,
-    Date: "10/10/21",
-    Query: 3,
-    Name: "XYZ",
-  },
-  {
-    Number: 2,
-    Date: "10/10/21",
-    Query: 4,
-    Name: "XYZ",
-  },
-  {
-    Number: 2,
-    Date: "10/10/21",
-    Query: 5,
-    Name: "XYZ",
-  },
-  {
-    Number: 2,
-    Date: "10/10/21",
-    Query: 6,
-    Name: "XYZ",
-  },
-];
+
 
 export default function EventsItem() {
   const [queryArr, changeQueries] = useState([]);
@@ -49,7 +12,7 @@ export default function EventsItem() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const res = await requestQuery("anuj@gmail.com");
+        const res = await requestQuery(localStorage.getItem("admin"));
         const temp = [];
         const tempId = [];
         res.forEach((doc) => {

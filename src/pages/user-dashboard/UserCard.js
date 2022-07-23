@@ -1,7 +1,7 @@
 import { React, useState } from "react";
 import "../../styles/UserCard.css";
 import { Button, Modal } from "react-bootstrap";
-const getfile =require("../../apis/firebasecloud.js");
+import {getfile} from "../../apis/firebasecloud.js"
 
 
 export default function Card(props) {
@@ -27,20 +27,10 @@ export default function Card(props) {
           margin: 5,
         }}
       >
-        <div className="valueContainer">
-          <h2 className="card_heading">{props.date}</h2>
-        </div>
-        <div className="valueContainer">
-          <h2 className="card_heading">{props.queryId}</h2>
-        </div>
-        <div className="valueContainer">
-          <h2 className="card_heading">{props.name}</h2>
-        </div>
-        <div className="valueContainer">
-          <Button variant="primary" onClick={handleShow}>
-            Show
-          </Button>
-        </div>
+        <h2 className="card_heading">{props.queryDate}</h2>
+        <h2 className="card_heading">{props.queryId}</h2>
+        <h2 className="card_heading">{props.firstName}</h2>
+        <h2 className="card_heading">{props.prn}</h2>
 
         {/* Modal for Showing Full Information */}
 
