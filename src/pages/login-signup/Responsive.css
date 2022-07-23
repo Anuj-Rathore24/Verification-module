@@ -185,6 +185,19 @@ body {
         align-self: center;
     }
 
+    
+    .resetPasswordbtn{
+        background-color: transparent;
+        border-color: transparent;
+        margin: 1% 0% 1% 37.5%;
+    }
+    
+    .resetPasswordbtn:hover{
+        background-color: transparent;
+        border-color: transparent;
+        margin: 1% 0% 1% 37.5%;
+    }
+
     .ls_bottomnav {
         background-color: black;
         height: 7vh;

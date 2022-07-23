@@ -1,15 +1,12 @@
 import React, { useState } from 'react'
 import './signupResponsive.css';
 import logo from '../images/logo.png'
-import background from '../images/mit.jpg';
 import Card from "react-bootstrap/Card";
 import Button from 'react-bootstrap/esm/Button';
 import Form from 'react-bootstrap/esm/Form';
-// import Admin from '../images/admin.png'
-// import Student from '../images/student.png'
 import { useNavigate } from 'react-router-dom';
 import * as FireAuth from "../Firebase/Fireauth.js";
-import { RecaptchaVerifier, signInWithPhoneNumber,  } from "firebase/auth";
+import {RecaptchaVerifier, signInWithPhoneNumber, } from "firebase/auth";
 import { auth } from '../Firebase/Firebase';
 import { PageStatus } from './State'
 
@@ -56,7 +53,7 @@ export default function Signup() {
     async function otp_verification(phoneNumber) {
         reCAPTCHA(); //Invisible ReCaptcha Called
         const appVerifier = window.recaptchaVerifier;
-
+       
         signInWithPhoneNumber(auth, phoneNumber, appVerifier)
             .then((confirmationResult) => {
                 // SMS sent. Prompt user to type the code from the message, then sign the
@@ -160,7 +157,7 @@ export default function Signup() {
                     }}> */}
 
                 <div className="ls_Signupshowcase-top">
-                    <img src={logo} alt="MIT Logo"/>
+                    <img src={logo} alt="MIT Logo" />
                 </div>
 
                 {/* <div className="ls_group63"
@@ -199,8 +196,8 @@ export default function Signup() {
                                             paddingLeft: "4%",
                                             marginTop: '-3%',
                                             borderRadius: '7px',
-                                            backgroundColor:'transparent',
-                                        borderColor: 'white',
+                                            backgroundColor: 'transparent',
+                                            borderColor: 'white',
                                             borderWidth: '1.5px'
 
                                         }
@@ -214,9 +211,9 @@ export default function Signup() {
                                         width: '50%'
                                     }}>
                                         {/* <Form.Label>Company /Agency</Form.Label> */}
-                                        <input   className="ls_Sgnpcompanyinput" placeholder="Company/Agency" type="text" name="companyName" id="conpmayName" onChange={handleinput} value={formData.companyName}
+                                        <input className="ls_Sgnpcompanyinput" placeholder="Company/Agency" type="text" name="companyName" id="conpmayName" onChange={handleinput} value={formData.companyName}
                                             style={{
-                                                
+
                                             }}
                                         />
                                     </div>
@@ -484,7 +481,7 @@ export default function Signup() {
                                 <Form.Group className="ls_SgnpPaswdGroup" controlId="formBasicPassword">
                                     {/* <Form.Label>Enter your Password</Form.Label> */}
                                     <br />
-                                    <input className='lsSgnppasswdInput' id="password" type="password" placeholder="Password" name="password" onChange={handleinput} value={formData.password}/>
+                                    <input className='lsSgnppasswdInput' id="password" type="password" placeholder="Password" name="password" onChange={handleinput} value={formData.password} />
                                 </Form.Group>
 
                                 <Button onClick={handleSubmit} id="sign-in-button" variant="primary" type="submit" style={{
@@ -507,7 +504,7 @@ export default function Signup() {
                                         width: '100%',
                                         textAlign: 'center'
                                     }}>
-                                    <Form.Label style={{color:'white'}}>Already have an Account? <a href="/login" style={{
+                                    <Form.Label style={{ color: 'white' }}>Already have an Account? <a href="/login" style={{
                                         textDecoration: 'none'
                                     }}>SignIn</a></Form.Label>
                                 </Form.Group>

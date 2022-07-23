@@ -1,13 +1,9 @@
 import React, { useState } from "react";
 import './Responsive.css';
 import logo from '../images/logo.png';
-import background from '../images/mit.jpg';
-import google from '../images/Google.png';
 import Card from "react-bootstrap/Card";
 import Button from 'react-bootstrap/esm/Button';
 import Form from 'react-bootstrap/esm/Form';
-import Admin from '../images/admin.png'
-import Student from '../images/student.png'
 import { useNavigate } from 'react-router-dom';
 import * as FireAuth from "../Firebase/Fireauth.js";
 
@@ -61,6 +57,12 @@ export default function Login() {
         clickFunctionSignin(formData.email, formData.password) //Passing Email and password collected from the form
     }
 
+    const handleReset = (e) => {
+        console.log("hello");
+        e.preventDefault()
+        FireAuth.resetPassword(formData.email)
+    }
+
     return (
         <>
             <div className="ls_main">
@@ -86,16 +88,10 @@ export default function Login() {
                     <Card.Body>
                         <Card.Title className="ls_cardtitle"><h1 >Sign In</h1></Card.Title>
 
-                        <Button className="ls_googleButton" onClick={() => clickFunctionGoogle()}
+                        {/* <Button className="ls_googleButton" onClick={() => clickFunctionGoogle()}
                             variant="primary">
 
-                            <img src={google} className="ls_googleLogo" alt="Google" style={{
-                                // width: '75px',
-                                // margin: '1% 0% 0% 1%',
-                                // height: "20px",
-                                // objectFit: "contain",
-                                // backgroundColor: 'transparent'
-                            }} /> 
+                            <img src={google} className="ls_googleLogo" alt="Google" />  */}
 
                             {/* <span style={{
                                 color: 'blue',
@@ -103,9 +99,9 @@ export default function Login() {
                                 fontSize: '15px',
 
                             }}>Sign In with Google</span> */}
-                        </Button>
+                        {/* </Button> */}
 
-                        <div className="line" style={{
+                        {/* <div className="line" style={{
                             marginTop:'2%',
                             display:'flex'
                         }}>
@@ -125,7 +121,7 @@ export default function Login() {
                             width:'45%',
                             height:'2px',
                         }}/>
-                        </div>
+                        </div> */}
                         
 
                         <Form className="ls_loginForm" onSubmit={handleSubmit}>
@@ -171,6 +167,9 @@ export default function Login() {
 
                             </Form.Group>
 
+                            <Button className="resetPasswordbtn" onClick={handleReset}>Forgot Password?</Button>
+
+
                             <Button variant="primary" type="submit" style={{
                                 padding: '3% 2% 3% 3%',
                                 marginLeft: '3%',
@@ -183,6 +182,8 @@ export default function Login() {
                             }}>
                                 Sign In
                             </Button>
+
+                            
 
                             <Form.Group className="Signuplink"
                                 style={{
