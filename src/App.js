@@ -1,6 +1,6 @@
 import "./styles/App.css";
 import { useEffect } from "react";
-import { BrowserRouter, Routes, Route,HashRouter } from "react-router-dom";
+import {Routes, Route,HashRouter } from "react-router-dom";
 import VerificationForm from "./pages/form/VerificationForm.js";
 import AdminDashboard from "./pages/admin-dashboard/AdminDashboard.js";
 import UserDashboard from "./pages/user-dashboard/UserDashboard.js";

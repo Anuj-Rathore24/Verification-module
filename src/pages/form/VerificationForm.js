@@ -26,7 +26,7 @@ function Form() {
     NEFT: "",
     paymentSS: "",
     verificationDocument: "",
-    status:"NotVerified"
+    status:"Not Verified"
   });
 
   const FormTitles = [
