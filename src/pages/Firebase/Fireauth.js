@@ -37,6 +37,7 @@ async function register(email, password) {
         // Signed in 
         const user = userCredential.user;
         console.log(email, password);
+        
     })
         .catch((error) => {
             const errorCode = error.code;
@@ -80,8 +81,12 @@ async function signOut() {
 }
 
 async function googleSignIn() {
+    let a=0;
+    
     googleAuthProvider.addScope('profile');
     googleAuthProvider.addScope('email');
+
+    
     await signInWithPopup(auth, googleAuthProvider).then((userCredential) => {
         // Signed in 
         const user = userCredential.user;
@@ -91,10 +96,15 @@ async function googleSignIn() {
             const errorCode = error.code;
             const errorMessage = error.message;
             console.log(errorCode, errorMessage);
+            a=1
             // ..
-            return false;
         });
-    return true;
+        if (a == 0) {
+            return true
+        }
+        else {
+            return false
+        }
 }
 
 
