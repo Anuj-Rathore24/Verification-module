@@ -22,7 +22,8 @@ function App() {
       <Routes>
           <Route exact path="/" element={<Login />} />
           <Route exact path="/Signup" element={<Signup />} />
-          <Route path="/otp" element={<ProtectedRoute/>}/> 
+          {/* <Route path="/otp" element={<ProtectedRoute/>}/>  */}
+          <Route exact path="/otp" element={<OTP />} />
           <Route exact path="/form" element={<VerificationForm />} />
           <Route exact path="/admin" element={<AdminDashboard />} />
           <Route exact path="/UserDashboard" element={<UserDashboard />} />

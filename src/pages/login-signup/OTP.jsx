@@ -45,6 +45,7 @@ export default function OTP() {
 
                 // console.log(localStorage);
                 clickFunctionSignup(localStorage.getItem('email'), localStorage.getItem('password')); //Creating User with email and password signup. Email and password are collected from signup form and stored in local storage.
+                localStorage.removeItem('email');
                 localStorage.removeItem('password'); //Deleting from local storage once password is used
                 navigate("/Userdashboard", { replace: true }) //Navigate to home once signup is complete
 
@@ -63,67 +64,39 @@ export default function OTP() {
 
     return (
         <>
-            <div className="otp_main" style={{
-                        width: '100%',
-                        minHeight: '100vh',
-                        background: 'linear-gradient(to top,white 0%,white 50%,#0089ED 50%,#0089ED 100%)',
-                        display: 'flex',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                }}>
+            <div className="otp_main" 
+            // style={{
+            //             width: '100%',
+            //             minHeight: '100vh',
+            //             background: 'linear-gradient(to top,white 0%,white 50%,#0089ED 50%,#0089ED 100%)',
+            //             display: 'flex',
+            //             justifyContent: 'center',
+            //             alignItems: 'center',
+            //     }}
+            >
 
-                    <div className="showcase-top">
-                        <img src={logo} alt="MIT Logo" style={{
-                            width: '75px',
-                            height: '75px',
-                            margin: '-700% 0% 0% -500%',
-                            backgroundColor: 'white',
-                            borderRadius: '5%',
-                        }} />
+                    <div className="ls_OTPshowcase-top">
+                        <img src={logo} alt="MIT Logo"/>
                     </div>
 
-                    <div className="signinCard1" style={{
-                        zIndex: '1',
-                        boxShadow: '23px 18px 64px -19px rgba(0, 0, 0, 0.75)',
-                    }} >
+                    <div className="ls_OTPCard1">
 
-                        <Card style={{ width: '100%' }}>
+                        <Card className='ls_OTPcard'>
                             <Card.Body>
-                                <Card.Title className="card"><span className='title'>OTP Verification</span></Card.Title>
+                                <Card.Title className="ls_OTPcardtitle"><span className='title'>OTP Verification</span></Card.Title>
 
 
-                                <Form style={{
-                                    marginTop: '5%',
-                                    // marginLeft: '2%',
-                                }}>
-                                    <Form.Group className="mb-3" controlId="formBasicEmail" style={{
-                                        marginLeft: '10%',
-                                        width: '80%',
-                                        padding: '3% 3% 3% 3%',
-                                        backgroundColor: '#D4ECDE',
-                                        borderRadius: '2%',
+                                <Form className='ls_OTPform'>
+                                    <Form.Group className="ls_OTPlabelGroup" controlId="formBasicEmail" style={{
+                                        
                                     }}>
-                                        <Form.Label className="otp_label">We have Sent a Verification Code to Your Phone Number</Form.Label>
+                                        <Form.Label className="ls_OTPlabel">We have Sent a Verification Code to   Your Phone Number</Form.Label>
                                     </Form.Group>
 
-                                    <Form.Group className="mb-3" controlId="formBasicPassword"
-                                        style={{
-                                            width:'80%',
-                                            padding: '1% 0% 8% 6%',
-                                        }}>
-                                        <input className='otp_input' type="password" placeholder="Enter Verification Code"
+                                    <Form.Group className="ls_OTPpassword" controlId="formBasicPassword">
+                                        <input className='ls_OTPpasswordInput' type="password" placeholder="Enter Verification Code"
                                             name="otp" id="otp"
-                                            onChange={handleinput} value={formData.otp}
-                                            style={{
-                                                width:'80%',
-                                                paddingTop: '3%',
-                                                paddingBottom: '3%',
-                                                paddingLeft: "4%",
-                                                marginTop: '1%',
-                                                borderRadius: '2%',
-                                                borderColor: '#4285F4',
-
-                                            }} />
+                                            onChange={handleinput} value={formData.otp} />
                                     </Form.Group>
 
                                 </Form>

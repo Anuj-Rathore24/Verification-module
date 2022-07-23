@@ -1,0 +1,539 @@
+::-webkit-input-placeholder {
+    /* WebKit, Blink, Edge */
+    color: white;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+/* Phone */
+@media only screen and (max-width: 767px) {
+    .ls_Signupmain {
+        height: 110vh !important;
+        width: 100vw;
+        background-image: url("/src/pages/images/mit.jpg");
+        background-position: center;
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        margin-bottom: 3%;
+
+    }
+
+    .ls_Signupshowcase-top img {
+        width: 90%;
+        margin: 1% 0% 0% 1%;
+    }
+
+    /* .group63 {
+        width: 35%;
+    } */
+
+    .ls_signupCard {
+        width: 95%;
+        display: flex;
+        margin-right: 2.5%;
+        margin-top: 15%;
+        border-radius: 7%;
+        float: right;
+        background: rgba(217, 217, 217, 0.09);
+        backdrop-filter: blur(83.6267px);
+    }
+
+    .ls_card {
+        width: 100%;
+        height: 50%;
+        border-radius: 7%;
+        background: rgba(217, 217, 217, 0.09);
+        backdrop-filter: blur(83.6267px);
+        /* marginLeft:'5%' */
+    }
+
+    .ls_Sgnpcardtitle {
+        width: 50%;
+        display: flex;
+        justify-content: left;
+        margin-left: 30%;
+        background-color: transparent;
+        /* fontFamily:Encode Sans;
+        fontStyle:normal; */
+        color: white;
+
+    }
+
+    .ls_googleButton {
+        background-color: transparent;
+        margin-left: 37%;
+        border-color: transparent;
+    }
+
+    .ls_googleLogo {
+        height: 70%;
+        width: 70%;
+    }
+
+    .ls_signupForm {
+        margin-top: 3%;
+        margin-left: 3%;
+    }
+
+    .ls_Sgnpemailgroup {
+        padding: 2% 2% 5% 3%;
+        align-content: center;
+        align-self: center;
+    }
+
+    .ls_Sgnpcompany {
+        display: flex;
+        justify-content: space-around;
+        padding: 1% 2% 1% 3%;
+    }
+
+    .ls_Sgnpcompanyinput {
+        width: 87%;
+        padding-top: 13px;
+        padding-bottom: 13px;
+        padding-left: 4%;
+        margin-top: -3%;
+        border-radius: 7px;
+        background-color: transparent;
+        border-color: white;
+        border-width: 1.5px;
+    }
+
+    .ls_Sgnpcontact {
+        display: flex;
+        width: 100%;
+    }
+
+    .ls_Sgnpcontactselect {
+        font-size: 12px;
+        width: 10%;
+        padding-top: 13px;
+        padding-bottom: 13px;
+        padding-left: 2%;
+        margin-top: -3%;
+        border-radius: 7px;
+        background-color: transparent;
+        border-color: white;
+        border-width: 1.5px;
+        margin-right: 2%;
+    }
+
+    .ls_Sgnpcontactinput {
+        width: 78%;
+        padding-top: 13px;
+        padding-bottom: 13px;
+        padding-left: 4%;
+        margin-top: -3%;
+        border-radius: 7px;
+        background-color: transparent;
+        border-color: white;
+        border-width: 1.5px
+    }
+
+    .ls_SgnpPaswdGroup {
+        padding: 1% 3% 4% 3%;
+    }
+
+    .lsSgnppasswdInput {
+        width: 95%;
+        padding-top: 10px;
+        padding-bottom: 13px;
+        padding-left: 4%;
+
+        margin-top: -3%;
+        border-radius: 7px;
+        background-color: transparent;
+        border-color: white;
+        border-width: 1.5px;
+    }
+
+    .ls_bottomnav {
+        background-color: black;
+        height: 10vh;
+    }
+
+    .ls_siteName {
+        /* width: 20%; */
+        background-color: white;
+        color: black;
+        font-weight: bolder;
+        padding: 1%;
+    }
+
+    .ls_scrollingcontent {
+        /* width: 80%; */
+        padding: 0.8% 0% 0.7% 0%;
+        color: white;
+    }
+
+    /* .profiles {
+        width: 60%;
+    }
+
+    .profile1 img {
+        width: 50%;
+    }
+
+    .profile2 img {
+        width: 50%;
+    } */
+
+
+}
+
+/* laptops */
+@media screen and (min-width:1024px) {
+
+    .ls_Signupmain {
+        height: 93vh;
+        width: 100vw;
+        background-image: url("/src/pages/images/mit.jpg");
+        background-position: center;
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+    }
+
+    .ls_Signupshowcase-top img {
+        margin: 1% 0% 0% 1%;
+        border-radius: 5%;
+    }
+
+    /* .group63 {
+        width: 35%;
+    } */
+
+    .ls_signupCard {
+        width: 30%;
+        display: flex;
+        margin-right: 10%;
+        margin-top: -1.5%;
+        border-radius: 7%;
+        float: right;
+        background: rgba(217, 217, 217, 0.09);
+        backdrop-filter: blur(83.6267px);
+    }
+
+    .ls_card {
+        width: 100%;
+        height: 50%;
+        border-radius: 7%;
+        background: rgba(217, 217, 217, 0.09);
+        backdrop-filter: blur(83.6267px);
+        /* marginLeft:'5%' */
+    }
+
+    .ls_Sgnpcardtitle {
+        width: 50%;
+        display: flex;
+        justify-content: left;
+        margin-left: 27.5%;
+        background-color: transparent;
+        /* fontFamily:Encode Sans;
+        fontStyle:normal; */
+        color: white;
+        font-weight:bolder;
+
+    }
+
+    .ls_googleButton {
+        background-color: transparent;
+        margin-left: 37%;
+        border-color: transparent;
+    }
+
+    .ls_googleLogo {
+        height: 70%;
+        width: 70%;
+    }
+
+    .ls_signupForm {
+        margin-top: 3%;
+        margin-left: 3%;
+    }
+
+    .ls_Sgnpemailgroup {
+        padding: 2% 2% 5% 3%;
+        align-content: center;
+        align-self: center;
+    }
+
+    .ls_Sgnpcompany {
+        display: flex;
+        justify-content: space-around;
+        padding: 1% 2% 1% 3%;
+    }
+
+    .ls_Sgnpcompanyinput {
+        width: 87%;
+        padding-top: 13px;
+        padding-bottom: 13px;
+        padding-left: 4%;
+        margin-top: -3%;
+        border-radius: 7px;
+        background-color: transparent;
+        border-color: white;
+        border-width: 1.5px;
+    }
+
+    .ls_Sgnpcontact {
+        display: flex;
+        width: 100%;
+    }
+
+    .ls_Sgnpcontactselect {
+        font-size: 12px;
+        width: 10%;
+        padding-top: 13px;
+        padding-bottom: 13px;
+        padding-left: 2%;
+        margin-top: -3%;
+        border-radius: 7px;
+        background-color: transparent;
+        border-color: white;
+        border-width: 1.5px;
+        margin-right: 2%;
+    }
+
+    .ls_Sgnpcontactinput {
+        width: 78%;
+        padding-top: 13px;
+        padding-bottom: 13px;
+        padding-left: 4%;
+        margin-top: -3%;
+        border-radius: 7px;
+        background-color: transparent;
+        border-color: white;
+        border-width: 1.5px
+    }
+
+    .ls_SgnpPaswdGroup {
+        padding: 1% 3% 4% 3%;
+    }
+
+    .lsSgnppasswdInput {
+        width: 95%;
+        padding-top: 10px;
+        padding-bottom: 13px;
+        padding-left: 4%;
+
+        margin-top: -3%;
+        border-radius: 7px;
+        background-color: transparent;
+        border-color: white;
+        border-width: 1.5px;
+    }
+
+    .ls_bottomnav {
+        background-color: black;
+        height: 7vh;
+        display: flex;
+    }
+
+    .ls_siteName {
+        width: 20%;
+        background-color: white;
+        color: black;
+        font-weight: bolder;
+        padding: 1%;
+    }
+
+    .ls_scrollingcontent {
+        width: 80%;
+        padding: 0.8% 0% 0.7% 0%;
+        color: white;
+    }
+
+
+    /* .profiles {
+        width: 60%;
+    }
+
+    .profile1 img {
+        width: 50%;
+    }
+
+    .profile2 img {
+        width: 50%;
+    } */
+
+}
+
+/* Tablet */
+@media screen and (max-width:1023px) and (min-width: 768px) {
+    .ls_Signupmain {
+        height: 110vh;
+        width: 100vw;
+        background-image: url("/src/pages/images/mit.jpg");
+        background-position: center;
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+    }
+
+    .ls_Signupshowcase-top img {
+        margin: 1% 0% 0% 1%;
+        border-radius: 5%;
+    }
+
+    /* .group63 {
+        width: 35%;
+    } */
+
+    .ls_signupCard {
+        width: 45%;
+        display: flex;
+        margin-right: 5%;
+        margin-top: 2%;
+        border-radius: 7%;
+        float: right;
+        background: rgba(217, 217, 217, 0.09);
+        backdrop-filter: blur(83.6267px);
+    }
+
+    .ls_card {
+        width: 100%;
+        height: 50%;
+        border-radius: 7%;
+        background: rgba(217, 217, 217, 0.09);
+        backdrop-filter: blur(83.6267px);
+        /* marginLeft:'5%' */
+    }
+
+    .ls_Sgnpcardtitle {
+        width: 50%;
+        display: flex;
+        justify-content: left;
+        margin-left: 30%;
+        background-color: transparent;
+        /* fontFamily:Encode Sans;
+        fontStyle:normal; */
+        color: white;
+
+    }
+
+    .ls_googleButton {
+        background-color: transparent;
+        margin-left: 37%;
+        border-color: transparent;
+    }
+
+    .ls_googleLogo {
+        height: 70%;
+        width: 70%;
+    }
+
+    .ls_signupForm {
+        margin-top: 3%;
+        margin-left: 3%;
+    }
+
+    .ls_Sgnpemailgroup {
+        padding: 2% 2% 5% 3%;
+        align-content: center;
+        align-self: center;
+    }
+
+    .ls_Sgnpcompany {
+        display: flex;
+        justify-content: space-around;
+        padding: 1% 2% 1% 3%;
+    }
+
+    .ls_Sgnpcompanyinput {
+        width: 87%;
+        padding-top: 13px;
+        padding-bottom: 13px;
+        padding-left: 4%;
+        margin-top: -3%;
+        border-radius: 7px;
+        background-color: transparent;
+        border-color: white;
+        border-width: 1.5px;
+    }
+
+    .ls_Sgnpcontact {
+        display: flex;
+        width: 100%;
+    }
+
+    .ls_Sgnpcontactselect {
+        font-size: 12px;
+        width: 10%;
+        padding-top: 13px;
+        padding-bottom: 13px;
+        padding-left: 2%;
+        margin-top: -3%;
+        border-radius: 7px;
+        background-color: transparent;
+        border-color: white;
+        border-width: 1.5px;
+        margin-right: 2%;
+    }
+
+    .ls_Sgnpcontactinput {
+        width: 78%;
+        padding-top: 13px;
+        padding-bottom: 13px;
+        padding-left: 4%;
+        margin-top: -3%;
+        border-radius: 7px;
+        background-color: transparent;
+        border-color: white;
+        border-width: 1.5px
+    }
+
+    .ls_SgnpPaswdGroup {
+        padding: 1% 3% 4% 3%;
+    }
+
+    .lsSgnppasswdInput {
+        width: 95%;
+        padding-top: 10px;
+        padding-bottom: 13px;
+        padding-left: 4%;
+
+        margin-top: -3%;
+        border-radius: 7px;
+        background-color: transparent;
+        border-color: white;
+        border-width: 1.5px;
+    }
+
+    .ls_bottomnav {
+        background-color: black;
+        height: 7vh;
+        display: flex;
+    }
+
+    .ls_siteName {
+        width: 40%;
+        background-color: white;
+        color: black;
+        font-weight: bolder;
+        padding: 1%;
+    }
+
+    .ls_scrollingcontent {
+        width: 80%;
+        padding: 0.8% 0% 0.7% 0%;
+        color: white;
+    }
+
+
+    /* .profiles {
+        width: 60%;
+    }
+
+    .profile1 img {
+        width: 50%;
+    }
+
+    .profile2 img {
+        width: 50%;
+    } */
+
+
+
+}
