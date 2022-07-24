@@ -2,41 +2,41 @@ import { React, useState } from "react";
 import "../../styles/Card.css";
 import { Button, Modal } from "react-bootstrap";
 import axios from "axios";
-import { getfile } from "../../apis/firebasecloud.js";
+import { getfile,getPaymentFile} from "../../apis/firebasecloud.js";
 
-
-//for color of status circles  
-function colorScheme(variable){
-  var color="yellow"
-  if(variable==="Verified") color="green";
-  else if(variable==="Denied") color="red";
+//for color of status circles
+function colorScheme(variable) {
+  var color = "yellow";
+  if (variable === "Verified") color = "green";
+  else if (variable === "Denied") color = "red";
   return color;
 }
 
-//function for hitting apis in backend for send certificates  
+//function for hitting apis in backend for send certificates
 async function verifyDocument(dataObject) {
   await axios.post("/MakeCert", { data: dataObject });
   alert("Mail in Progess");
 }
 
 //
-function btnclick(ele){
-  console.log("testing ->"+document.getElementById("inputDelineAddress").value)
+function btnclick(ele) {
+  console.log(
+    "testing ->" + document.getElementById("inputDelineAddress").value
+  );
 }
 function declineButtonFunction() {
-
   var container = document.getElementById("MainBodyContainer");
-  
-  //creating text input 
+
+  //creating text input
   const inputdecline = document.createElement("textarea");
   inputdecline.rows = 5;
-  inputdecline.id="inputDelineAddress"
+  inputdecline.id = "inputDelineAddress";
   container.appendChild(inputdecline);
-  //creating button  
+  //creating button
   const buttonDecline = document.createElement("button");
   buttonDecline.innerHTML = "Send";
   buttonDecline.className = "btn btn-primary";
-  buttonDecline.onClick=btnclick(inputdecline)
+  buttonDecline.onClick = btnclick(inputdecline);
   container.appendChild(buttonDecline);
 }
 
@@ -65,7 +65,14 @@ export default function Card(props) {
           margin: 5,
         }}
       >
-        <div className="rounded-circle" style={{backgroundColor:colorScheme(props.status),width:"15px",height:"15px"}}></div>
+        <div
+          className="rounded-circle"
+          style={{
+            backgroundColor: colorScheme(props.status),
+            width: "15px",
+            height: "15px",
+          }}
+        ></div>
         <div className="valueContainer">
           <h2 className="card_heading">{props.date}</h2>
         </div>
@@ -87,8 +94,14 @@ export default function Card(props) {
           {/* Header for the modal */}
           <div>
             <Modal.Header closeButton>
-              <Modal.Title style={{fontSize:"1.25rem"}}>ID : {props.queryId}</Modal.Title>
-                <p style={{fontSize:"0.95rem",margin:0,marginLeft:"2.6vw"}}>{props.status}</p>
+              <Modal.Title style={{ fontSize: "1.25rem" }}>
+                ID : {props.queryId}
+              </Modal.Title>
+              <p
+                style={{ fontSize: "0.95rem", margin: 0, marginLeft: "2.6vw" }}
+              >
+                {props.status}
+              </p>
             </Modal.Header>
           </div>
           {/*Main Body of the Modal */}
@@ -170,13 +183,20 @@ export default function Card(props) {
             </div>
           </Modal.Body>
           <Modal.Footer style={{ justifyContent: "center" }}>
-            <Button variant="primary">Send to Verify Payment</Button>
+
+            <Button
+             variant="primary"
+             onClick={async ()=>{
+                await getPaymentFile(props,props.CompEmail, props.queryId);
+             }}
+             >
+              Send to Verify Payment</Button>
             <Button
               disabled={declineButton}
               variant="danger"
               onClick={() => {
                 setdeclineButton(true);
-                declineButtonFunction()
+                declineButtonFunction();
               }}
             >
               Decline Query Request

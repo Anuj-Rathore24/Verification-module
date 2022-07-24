@@ -1,85 +1,18 @@
-body {
-    margin: 0%;
-    padding: 0%;
-    font-family: montserrat, arial, verdana;
-    position: relative;
-    overflow-x: hidden;
-  }
-
-.topbar {
+#DashBoard{
+    display: flex;
+    flex-direction: row;
     width: 100%;
-    height: 15%;
-    background-color: white;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    position: fixed;
-  }
-  
-  .topbarWrap {
-    height: 100%;
-    padding: 10px 40px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
+    justify-content: center;
+    margin-top: 5vw;
 
-  .topRight{
-     display: flex;
-    align-items: center;
-    justify-content: space-between;
 }
-.ad_logo{
-    height: 3em;
+.DashBoardContainers{
+    width: 20vw;
+    height: 20vh;
+    border: 1px solid black;
+    background-color: aqua;
 }
 
-.admin_info{
-    display:flex;
-    font-size: small;
-    justify-content:flex-end
-}
-.avatar{
-    border-radius: 50%;
-    margin-bottom: 5px;
-    height: 4.5em;
-}
-.details{
-    display: none;
-    margin-left:2%
-}
-
-
-.ad_main{
-    /* background-color: #E5E5E5; */
-    height: 100%;
-    max-width: 100%;
-    margin-top: 6em;
-    padding: 2em;
-}
-
-.info-label{
-    height: 15vh;
-    background-color: #F8F4F4;
-    border-radius: 6px;
-    max-width: 100%;
-    margin-bottom: 4%;
-    display: flex;
-    box-shadow: 1px 2px 1px 0px rgb(143, 142, 142);
-}
-
-.d1{
-    background-color: #0089ED;
-    border-radius: 6px;
-    width: 38%;
-    height: 100%;
-}
-
-.d2{
-    background-color: #F8F4F4;
-    border-radius: 6px;
-    width: 62%;
-    height: 100%;
-}
 
 .ChildContainer{
     display: flex;

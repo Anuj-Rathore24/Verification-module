@@ -12,7 +12,7 @@ export default function EventsItem() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const res = await requestQuery(localStorage.getItem("admin"));
+        const res = await requestQuery(localStorage.getItem("email"));
         const temp = [];
         const tempId = [];
         res.forEach((doc) => {
@@ -28,6 +28,21 @@ export default function EventsItem() {
     fetchData();
   }, []);
   return (
+    <>
+      <div id="DashBoard">
+        <div className="DashBoardContainers">
+
+        </div>
+        <div className="DashBoardContainers">
+
+        </div>
+        <div className="DashBoardContainers">
+
+        </div>
+        <div className="DashBoardContainers">
+
+        </div>
+      </div>
     <div id="Main_Item_Container">
       <div className="main_card_container">
         <h2 className="heading"> Date </h2>
@@ -63,5 +78,6 @@ export default function EventsItem() {
         );
       })}
     </div>
+    </>
   );
 }

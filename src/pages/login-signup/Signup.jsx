@@ -505,7 +505,7 @@ export default function Signup() {
                                         textAlign: 'center'
                                     }}>
                                     <Form.Label style={{ color: 'white' }}>Already have an Account? <a href="/login" style={{
-                                        textDecoration: 'none'
+                                        textDecoration: 'none',color:"rgb(0, 137, 237)",fontWeight:"bold"
                                     }}>SignIn</a></Form.Label>
                                 </Form.Group>
 

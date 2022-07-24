@@ -4,14 +4,13 @@ const {
   getStorage,
   getDownloadURL,
   listAll,
-} = require("firebase/storage")
-
-const {app}=require("../pages/Firebase/FirebaseConfig")
+} = require("firebase/storage");
+const { app } = require("../pages/Firebase/FirebaseConfig");
+const axios=require("axios")
 
 // Function for Uploading files on Firebase Cloud
 
 module.exports = {
-  
   upload: async function (userId, queryId) {
     var i = 0;
     const storage = getStorage(app);
@@ -23,23 +22,19 @@ module.exports = {
       var storageref = ref(storage, `/${userId}/${queryId}/File/File${i}`);
 
       //promise for uploading file
-      await uploadBytesResumable(storageref, File).then(
-        (snapshot) => {
-          //status for each Upload
-          console.log("\nFile Number->" + i + " \nStatus :" + snapshot);
-        }
-      );
+      await uploadBytesResumable(storageref, File).then((snapshot) => {
+        //status for each Upload
+        console.log("\nFile Number->" + i + " \nStatus :" + snapshot);
+      });
       i++;
     }
     storageref = ref(storage, `/${userId}/${queryId}/Payment/PaymentFile`);
 
-    let File=document.getElementById("inputPayment").files[0];
-    await uploadBytesResumable(storageref, File).then(
-      (snapshot) => {
-        //status for each Upload
-        console.log("Payment Status :" + snapshot);
-      }
-    );
+    let File = document.getElementById("inputPayment").files[0];
+    await uploadBytesResumable(storageref, File).then((snapshot) => {
+      //status for each Upload
+      console.log("Payment Status :" + snapshot);
+    });
     alert("Form submitted !!");
   },
 
@@ -94,6 +89,9 @@ module.exports = {
                   "\nUnknown error occurred, inspect the server response"
                 );
                 break;
+                default:
+                  console.log("Unhandled Error in getting files from cloud ")
+                  break;
             }
           });
       });
@@ -140,6 +138,9 @@ module.exports = {
                       "\nUnknown error occurred, inspect the server response"
                     );
                     break;
+                    default:
+                      console.log("Unhandled Error in getting files from cloud ")
+                      break;
                 }
               });
           });
@@ -148,5 +149,47 @@ module.exports = {
           console.log("\nError ->" + err);
         });
     });
-  }
+  },
+  getPaymentFile: async function (props,userId, queryId) {
+    const storage = getStorage(app);
+    const filelocation = `gs://verification-module.appspot.com/${userId}/${queryId}/Payment`;
+    const listref = ref(storage, filelocation);
+
+    listAll(listref)
+        .then((res) => {
+          
+          res.items.forEach(async (itemsRef) => {
+            await getDownloadURL(ref(storage, itemsRef))
+              .then((url) => {
+                console.log("The url must be ->"+url)
+                const objectData={info:props,link:url}
+                axios.post("/sendToVerify",{data:objectData})
+              })
+              .catch((error) => {
+                //For Handling Errors
+                switch (error.code) {
+                  case "storage/object-not-found":
+                    console.log("\nFile Not Found");
+                    break;
+                  case "storage/unauthorized":
+                    console.log(
+                      "\n User doesn't have permission to access the object"
+                    );
+                    break;
+                  case "storage/canceled":
+                    console.log("\nUser canceled the upload");
+                    break;
+                  case "storage/unknown":
+                    console.log(
+                      "\nUnknown error occurred, inspect the server response"
+                    );
+                    break;
+                    default:
+                      console.log("Unhandled Error in getting files from cloud ")
+                      break;
+                }
+              });
+          });
+        })
+  },
 };

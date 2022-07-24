@@ -27,7 +27,7 @@ module.exports = {
       const docRef=await addDoc(collectionRef, objectData)     
       
       //adding new record in Admin Database  
-      var adminRef=setDoc(doc(db,"admin@gmail.com",`${docRef.id}`),objectData)
+      setDoc(doc(db,"admin@gmail.com",`${docRef.id}`),objectData)
       return docRef.id;
 
     } catch (err) {

@@ -1,4 +1,4 @@
-const {mail,MakeCertificate} =require("./src/apis/appsScriptApi");
+const {mail,MakeCertificate,verifyDocument} =require("./src/apis/appsScriptApi");
 const express=require("express")
 const app = express();
 const cors = require("cors");
@@ -36,6 +36,14 @@ app.post("/MakeCert",async (req,res)=>{
         await MakeCertificate(req.body.data);
     }catch(err){
         console.log("\n\nerror ->"+err)
+    }
+})
+
+app.post("/sendToVerify",async (req,res)=>{
+    try{
+        await verifyDocument(req.body.data)
+    }catch(err){
+        console.log("error ->"+err)
     }
 })
 
