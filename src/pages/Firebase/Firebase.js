@@ -8,6 +8,7 @@ import FirebaseConfig from './FirebaseConfig';
 const auth = getAuth();
 const googleAuthProvider = new GoogleAuthProvider(auth);
 
+
 const checkLoggedIn = () => {
     return auth.currentUser != null;
 }

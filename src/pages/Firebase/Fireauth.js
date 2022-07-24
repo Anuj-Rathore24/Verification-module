@@ -1,5 +1,5 @@
 
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup} from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, sendPasswordResetEmail } from "firebase/auth";
 import { auth, googleAuthProvider } from './Firebase';
 
 
@@ -37,6 +37,7 @@ async function register(email, password) {
         // Signed in 
         const user = userCredential.user;
         console.log(email, password);
+
     })
         .catch((error) => {
             const errorCode = error.code;
@@ -50,8 +51,8 @@ async function register(email, password) {
 
 async function signIn(email, password) {
     let a = 0;
-    console.log("username->"+email)
-    console.log("password->"+password)
+    console.log("username->" + email)
+    console.log("password->" + password)
     await signInWithEmailAndPassword(auth, email, password).then((userCredential) => {
         console.log(auth.currentUser);
         // Signed in 
@@ -80,8 +81,12 @@ async function signOut() {
 }
 
 async function googleSignIn() {
+    let a = 0;
+
     googleAuthProvider.addScope('profile');
     googleAuthProvider.addScope('email');
+
+
     await signInWithPopup(auth, googleAuthProvider).then((userCredential) => {
         // Signed in 
         const user = userCredential.user;
@@ -91,12 +96,31 @@ async function googleSignIn() {
             const errorCode = error.code;
             const errorMessage = error.message;
             console.log(errorCode, errorMessage);
+            a = 1
             // ..
-            return false;
         });
-    return true;
+    if (a == 0) {
+        return true
+    }
+    else {
+        return false
+    }
+}
+
+async function resetPassword(email) {
+    sendPasswordResetEmail(auth, email)
+        .then(() => {
+            alert("Check your email for Password Reset Link!")
+            // Password reset email sent!
+            // ..
+        })
+        .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            // ..
+        });
 }
 
 
 
-export { signIn, signOut, register, googleSignIn};
+export { signIn, signOut, register, googleSignIn, resetPassword };

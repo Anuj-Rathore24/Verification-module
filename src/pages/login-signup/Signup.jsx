@@ -1,14 +1,12 @@
 import React, { useState } from 'react'
-import './Responsive.css';
+import './signupResponsive.css';
 import logo from '../images/logo.png'
 import Card from "react-bootstrap/Card";
 import Button from 'react-bootstrap/esm/Button';
 import Form from 'react-bootstrap/esm/Form';
-import Admin from '../images/admin.png'
-import Student from '../images/student.png'
 import { useNavigate } from 'react-router-dom';
 import * as FireAuth from "../Firebase/Fireauth.js";
-import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
+import {RecaptchaVerifier, signInWithPhoneNumber, } from "firebase/auth";
 import { auth } from '../Firebase/Firebase';
 import { PageStatus } from './State'
 
@@ -55,7 +53,7 @@ export default function Signup() {
     async function otp_verification(phoneNumber) {
         reCAPTCHA(); //Invisible ReCaptcha Called
         const appVerifier = window.recaptchaVerifier;
-
+       
         signInWithPhoneNumber(auth, phoneNumber, appVerifier)
             .then((confirmationResult) => {
                 // SMS sent. Prompt user to type the code from the message, then sign the
@@ -90,28 +88,26 @@ export default function Signup() {
         // console.log(name, value);
 
         setFormData({ ...formData, [name]: value });
-
-        localStorage.setItem('email', formData.email)
-        localStorage.setItem('password', formData.password)
     }
 
     //Form Submit Function -  Used in the submit button
     const handleSubmit = (e) => {
         // const element = document.getElementById('country');
-        let validateID =  validationRules();
+        let validateID = validationRules();
         console.log(validateID)
-        if (validateID === 1){
+        if (validateID === 1) {
             e.preventDefault();
             requestOTP();
+            localStorage.setItem('email', formData.email)
+            localStorage.setItem('password', formData.password)
         }
-        else if (validateID === 2 )
-        {
+        else if (validateID === 2) {
             e.preventDefault();
             window.alert("Check if entered Email is valid.")
             console.log("Hello mf")
             // navigate('/signup',Element= <Signup/>);
-        } 
-        else if (validateID === 3 ) {
+        }
+        else if (validateID === 3) {
             e.preventDefault();
             window.alert("Minimum Password length should be 6.")
             // navigate("/signup");
@@ -128,15 +124,15 @@ export default function Signup() {
 
     const validateEmail = (email) => {
         if (String(email)
-          .toLowerCase()
-          .match(
-            /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-          )) return true;
+            .toLowerCase()
+            .match(
+                /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+            )) return true;
         else return false;
     };
 
-    const validatePassword = (password) =>{
-        if(String(password).length > 6) return true;
+    const validatePassword = (password) => {
+        if (String(password).length > 6) return true;
         else return false;
 
     }
@@ -146,31 +142,25 @@ export default function Signup() {
         if (!validateEmail(formData.email)) return 2;
         if (!validatePassword(formData.password)) return 3;
     }
-    
+
 
 
     return (
         <>
-            <div className="ls_main">
+            <div className="ls_Signupmain">
 
-                <div className="ls_upper"
+                {/* <div className="ls_upper"
                     style={{
                         width: '100vw',
                         overflow: "auto",
                         backgroundColor: '#0089ED',
-                    }}>
+                    }}> */}
 
-                    <div className="ls_showcase-top">
-                        <img src={logo} alt="MIT Logo" style={{
-                            width: '75px',
-                            height: '75px',
-                            margin: '1% 0% 0% 1%',
-                            backgroundColor: 'white',
-                            borderRadius: '5%',
-                        }} />
-                    </div>
+                <div className="ls_Signupshowcase-top">
+                    <img src={logo} alt="MIT Logo" />
+                </div>
 
-                    <div className="ls_group63"
+                {/* <div className="ls_group63"
                         style={{
                             padding: '2% 3% 0% 3%',
                             color: 'white',
@@ -182,41 +172,20 @@ export default function Signup() {
                             width: '45%',
                             fontSize: '13px'
                         }}>University-side document verification is integral to every student's future academic and professional ventures as it acts as a prerequisite by company or institute-based verification agencies for confirming the authenticity of details submitted by the student with regards to their academic program, CGPA course etc.</p>
-                    </div>
-                </div>
+                    </div> */}
+                {/* </div> */}
 
-                <div className="signinCard"
-                    style={{
-                        display: 'flex',
-                        marginRight: '10%',
-                        marginTop: '-20.5%',
-                        backgroundColor: 'white',
-                        // float: 'right',
-                        borderRadius: '4%',
-                        zIndex: '1',
-                        boxShadow: '23px 18px 64px -19px rgba(0,0,0,0.75)',
-                    }}>
+                <div className="ls_signupCard">
 
-                    <Card style={{ width: '100%', height: "100%" }}>
+                    <Card className='ls_card'>
                         <Card.Body>
-                            <Card.Title className=""><h1
-                                style={{
-                                    width: '50%',
-                                    display: 'flex',
-                                    justifyContent: 'left',
-                                    marginLeft: '5%',
-                                }}>Sign Up</h1>
+                            <Card.Title className="ls_Sgnpcardtitle"><h1>Sign Up</h1>
                             </Card.Title>
 
-                            <Form style={{
-                                marginTop: '5%',
-                                marginLeft: '3%',
-                            }} noValidate>
-                                <Form.Group className="mb-3" controlId="formBasicEmail" style={{
-                                    padding: '2% 2% 3% 3%', alignContent: "center", alignSelf: "center"
-                                }}>
+                            <Form className='signupForm' noValidate>
+                                <Form.Group className="ls_Sgnpemailgroup" controlId="formBasicEmail">
 
-                                    <Form.Label>Enter your Email Address</Form.Label>
+                                    {/* <Form.Label>Enter your Email Address</Form.Label> */}
                                     <br />
                                     <input placeholder="Email Address" type="email" name="email" id="email" onChange={handleinput} value={formData.email}
 
@@ -225,36 +194,26 @@ export default function Signup() {
                                             paddingTop: '13px',
                                             paddingBottom: '13px',
                                             paddingLeft: "4%",
-                                            marginTop: '5px',
+                                            marginTop: '-3%',
                                             borderRadius: '7px',
-                                            borderColor: '#4285F4',
+                                            backgroundColor: 'transparent',
+                                            borderColor: 'white',
                                             borderWidth: '1.5px'
 
                                         }
                                         } required />
-                                        
+
 
                                 </Form.Group>
 
-                                <Form.Group className='mb-3' style={{
-                                    display: 'flex',
-                                    justifyContent: 'space-around',
-                                    padding: '2% 2% 3% 3%',
-                                }}>
+                                <Form.Group className='ls_Sgnpcompany'>
                                     <div className="company" style={{
                                         width: '50%'
                                     }}>
-                                        <Form.Label>Company /Agency</Form.Label>
-                                        <input placeholder="Company/Agency" type="text" name="companyName" id="conpmayName" onChange={handleinput} value={formData.companyName}
+                                        {/* <Form.Label>Company /Agency</Form.Label> */}
+                                        <input className="ls_Sgnpcompanyinput" placeholder="Company/Agency" type="text" name="companyName" id="conpmayName" onChange={handleinput} value={formData.companyName}
                                             style={{
-                                                width: '87%',
-                                                paddingTop: '13px',
-                                                paddingBottom: '13px',
-                                                paddingLeft: "4%",
-                                                marginTop: '5px',
-                                                borderRadius: '7px',
-                                                borderColor: '#4285F4',
-                                                borderWidth: '1.5px'
+
                                             }}
                                         />
                                     </div>
@@ -262,25 +221,11 @@ export default function Signup() {
                                     <div className="contact" style={{
                                         width: '60%'
                                     }} >
-                                        <Form.Label>Contact Number</Form.Label>
-                                        <div className="contactInput" style={{
-                                            display: 'flex',
-                                            width: '100%'
-                                        }}>
+                                        {/* <Form.Label>Contact Number</Form.Label> */}
+                                        <div className="ls_Sgnpcontact">
 
                                             {/* Country Code Values */}
-                                            <select id="country_list" name="contactNumber" value={countrycode} onChange={(e) => { setcountrycode(e.target.value); handleinput(e); }} style={{
-                                                fontSize: "12px",
-                                                width: '10%',
-                                                paddingTop: '13px',
-                                                paddingBottom: '13px',
-                                                paddingLeft: "2%",
-                                                marginTop: '5px',
-                                                borderRadius: '7px',
-                                                borderColor: '#4285F4',
-                                                borderWidth: '1.5px',
-                                                marginRight: '2%'
-                                            }}>
+                                            <select className="ls_Sgnpcontactselect" id="country_list" name="contactNumber" value={countrycode} onChange={(e) => { setcountrycode(e.target.value); handleinput(e); }}>
                                                 <option value="" hidden>Select Country</option>
                                                 <option data-countrycode="AF" value="+93">Afghanistan (+93)</option>
                                                 <option data-countrycode="AL" value="+355">Albania (+355)</option>
@@ -527,42 +472,16 @@ export default function Signup() {
                                                 <option data-countrycode="ZW" value="+263">Zimbabwe (+263)</option>
                                             </select>
 
-                                            <input placeholder="Add Country Code" type="text" name="contactNumber" id="contactNumber" onChange={handleinput} value={formData.contactNumber}
-                                                style={{
-                                                    width: '75%',
-                                                    paddingTop: '13px',
-                                                    paddingBottom: '13px',
-                                                    paddingLeft: "4%",
-                                                    marginTop: '5px',
-                                                    borderRadius: '7px',
-                                                    borderColor: '#4285F4',
-                                                    borderWidth: '1.5px'
-                                                }}
-                                            />
+                                            <input className="ls_Sgnpcontactinput" placeholder="Add Country Code" type="text" name="contactNumber" id="contactNumber" onChange={handleinput} value={formData.contactNumber} />
                                         </div>
                                     </div>
 
                                 </Form.Group>
 
-                                <Form.Group className="mb-3" controlId="formBasicPassword"
-                                    style={{
-                                        padding: '2% 3% 2% 3%',
-                                    }}>
-                                    <Form.Label>Enter your Password</Form.Label>
+                                <Form.Group className="ls_SgnpPaswdGroup" controlId="formBasicPassword">
+                                    {/* <Form.Label>Enter your Password</Form.Label> */}
                                     <br />
-                                    <input id="password" type="password" placeholder="Password" name="password" onChange={handleinput} value={formData.password}
-                                        style={{
-                                            width: '95%',
-                                            paddingTop: '10px',
-                                            paddingBottom: '13px',
-                                            paddingLeft: "4%",
-
-                                            marginTop: '5px',
-                                            borderRadius: '7px',
-                                            borderColor: '#4285F4',
-                                            borderWidth: '1.5px'
-
-                                        }} />
+                                    <input className='lsSgnppasswdInput' id="password" type="password" placeholder="Password" name="password" onChange={handleinput} value={formData.password} />
                                 </Form.Group>
 
                                 <Button onClick={handleSubmit} id="sign-in-button" variant="primary" type="submit" style={{
@@ -585,8 +504,7 @@ export default function Signup() {
                                         width: '100%',
                                         textAlign: 'center'
                                     }}>
-                                    <Form.Label style={{
-                                    }}>Already have an Account? <a href="/login" style={{
+                                    <Form.Label style={{ color: 'white' }}>Already have an Account? <a href="/login" style={{
                                         textDecoration: 'none'
                                     }}>SignIn</a></Form.Label>
                                 </Form.Group>
@@ -598,7 +516,7 @@ export default function Signup() {
                     </Card>
                 </div>
 
-                <div className="SigninAs"
+                {/* <div className="SigninAs"
                     style={{
                         marginTop: '5%',
                         marginLeft: '8%',
@@ -663,6 +581,14 @@ export default function Signup() {
                         </div>
 
                     </div>
+                </div> */}
+            </div>
+            <div className="ls_bottomnav">
+                <div className="ls_siteName">
+                    MIT-WPU Verification System :
+                </div>
+                <div className="ls_scrollingcontent">
+                    <marquee direction="left">University-side document verification is integral to every student's future academic and professional ventures as it  confirms the authenticity of details submitted by the student with regards to their academic program, CGPA course etc.</marquee>
                 </div>
             </div>
         </>

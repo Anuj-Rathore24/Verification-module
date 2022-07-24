@@ -7,7 +7,6 @@ import UserDashboard from "./pages/user-dashboard/UserDashboard.js";
 import Login from "./pages/login-signup/Login.jsx";
 import Signup from "./pages/login-signup/Signup.jsx";
 import ProtectedRoute from './pages/login-signup/ProtectedRoute.jsx'//importing protected route 
-import OTP from "./pages/login-signup/OTP";
 
 function App() {
   

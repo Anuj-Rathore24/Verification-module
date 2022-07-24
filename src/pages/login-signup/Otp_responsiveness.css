@@ -1,77 +1,276 @@
 /* Phones */
 @media only screen and (max-width: 767px) {
     .otp_main {
-        margin: 0;
-        padding: 0;
+        width: 100%;
+        min-height: 100vh;
+        /* background: 'linear-gradient(to top,white 0%,white 50%,#0089ED 50%,#0089ED 100%)', */
+        background-image: url('/src/pages/images/mit.png');
         display: flex;
         flex-direction: column;
     }
 
-    .signinCard1 {
-        align-self: center !important;
-        justify-content: center !important;
-        margin-left: 2.5% !important;
-        margin-top: 20% !important;
-        width: 95% !important;
-        height: 80%;
-        display: flex;
+    .ls_showcase-top img {
+        width: 90%;
+        /* margin: -700% 0% 0% -500%; */
         background-color: white;
-        border-radius: 4%;
-        z-index: 1;
-        box-shadow: 23px 18px 64px -19px rgba(0, 0, 0, 0.75);
+        border-radius: 5%;
+        /* margin-top: 2%; */
     }
 
-    .title {
-        font-size: 150%;
-        font-weight: bold;
+    /* .group63 {
+        width: 35%;
+    } */
+
+    .ls_OTPCard1 {
+        width: 80%;
+        height: 40%;
+        display: flex;
+        margin-top: 15.5%;
+        border-radius: 7%;
+        margin-left: 10%;
+        margin-right: 10%;
+        background: rgba(217, 217, 217, 0.09);
+        backdrop-filter: blur(83.6267px);
+        justify-content: center;
+        align-items: center;
+    }
+
+    .ls_OTPcard {
+        width: 100%;
+        border-radius: 7%;
+        background: rgba(217, 217, 217, 0.09);
+        backdrop-filter: blur(83.6267px);
+        justify-content: center;
+        align-items: center;
+        /* marginLeft:'5%' */
+    }
+
+    .ls_OTPcardtitle {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        background-color: transparent;
+        color: white;
+        font-weight: bolder;
+        font-size: 180%;
+    }
+
+    .ls_OTPForm {
+        margin-top: 5%;
+    }
+
+    .ls_OTPlabelGroup {
         margin-left: 5%;
-    }
-
-    .mb-3{
-        margin-left: 20% !important;
-    width: 60% !important;
-    padding: 3% !important;
-    border-radius: 2% !important;
-    }
-
-    .otp_label{
         width: 90%;
+        padding: 3% 3% 3% 3%;
+        background-color: transparent;
+        color: white;
+        border-radius: 2%;
+
     }
 
-    .otp_input{
+    .ls_OTPlabel {
+        text-align: center;
+    }
+
+    .ls_OTPpassword {
+        width: 80%;
+        padding: 1% 0% 8% 6%;
+    }
+
+    .ls_OTPpasswordInput {
+        width: 120%;
+        padding-top: 3%;
+        padding-bottom: 3%;
+        padding-left: 2%;
+        margin-top: 1%;
+        border-radius: 2%;
+        border-color: white;
+        background-color: transparent;
+    }
+
+
+}
+
+/* laptops */
+@media screen and (min-width:1024px) {
+
+    .otp_main {
+        width: 100%;
+        min-height: 100vh;
+        /* background: 'linear-gradient(to top,white 0%,white 50%,#0089ED 50%,#0089ED 100%)', */
+        background-image: url('/src/pages/images/mit.png');
+        display: flex;
+    }
+
+    .ls_OTPshowcase-top img {
+        border-radius: 5%;
+        /* margin-top: 2%; */
+    }
+
+    /* .group63 {
+        width: 35%;
+    } */
+
+    .ls_OTPCard1 {
+        width: 30%;
+        height: 40%;
+        display: flex;
+        margin-top: 15.5%;
+        border-radius: 7%;
+        margin-left: 10%;
+        background: rgba(217, 217, 217, 0.09);
+        backdrop-filter: blur(83.6267px);
+        justify-content: center;
+        align-items: center;
+    }
+
+    .ls_OTPcard {
+        width: 100%;
+        border-radius: 7%;
+        background: rgba(217, 217, 217, 0.09);
+        backdrop-filter: blur(83.6267px);
+        justify-content: center;
+        align-items: center;
+        /* marginLeft:'5%' */
+    }
+
+    .ls_OTPcardtitle {
         width: 90%;
-        padding-top: 3% !important;
-        padding-bottom: 3% !important;
-        padding-left: 4% !important;
-        margin-top: 1% !important;
-        border-radius: 2% !important;
-        border-color: #4285F4 !important;
+        display: flex;
+        justify-content: left;
+        margin-left: 20%;
+        background-color: transparent;
+        color: white;
+        font-weight: bolder;
+        font-size: 180%;
+    }
+
+    .ls_OTPForm {
+        margin-top: 5%;
+    }
+
+    .ls_OTPlabelGroup {
+        margin-left: 5%;
+        width: 90%;
+        padding: 3% 3% 3% 3%;
+        background-color: transparent;
+        color: white;
+        border-radius: 2%;
+    }
+
+    .ls_OTPlabel {
+        text-align: center;
+    }
+
+    .ls_OTPpassword {
+        width: 80%;
+        padding: 1% 0% 8% 6%;
+    }
+
+    .ls_OTPpasswordInput {
+        width: 80%;
+        padding-top: 3%;
+        padding-bottom: 3%;
+        padding-left: 4%;
+        margin-top: 1%;
+        border-radius: 2%;
+        border-color: white;
+        background-color: transparent;
+        margin-left: 17.5%; 
     }
 }
 
-
-/* Laptops */
-@media only screen and (min-width: 768px) {
-    .title {
-        font-size: 200%;
-        font-weight: bold;
+@media screen and (max-width:1023px) and (min-width: 768px) {
+    
+    .otp_main {
         width: 100%;
-        padding-left: 15%;
-    }
-
-    .signinCard {
-        width: 30%;
-        height: 97%;
+        min-height: 100vh;
+        /* background: 'linear-gradient(to top,white 0%,white 50%,#0089ED 50%,#0089ED 100%)', */
+        background-image: url('/src/pages/images/mit.png');
         display: flex;
-        margin-right: 35%;
-        margin-top: 5%;
-        background-color: white;
-        float: right;
-        border-radius: 5%;
     }
 
-    .otp_input{
-        width: 23.5%;
-        margin-left: 20%;
+    .ls_showcase-top img {
+        width: 75px;
+        height: 75px;
+        margin: -700% 0% 0% -500%;
+        background-color: white;
+        border-radius: 5%;
+        /* margin-top: 2%; */
     }
+
+    /* .group63 {
+        width: 35%;
+    } */
+
+    .ls_OTPCard1 {
+        width: 30%;
+        height: 40%;
+        display: flex;
+        margin-top: 25%;
+        border-radius: 7%;
+        margin-left: 10%;
+        background: rgba(217, 217, 217, 0.09);
+        backdrop-filter: blur(83.6267px);
+        justify-content: center;
+        align-items: center;
+    }
+
+    .ls_OTPcard {
+        width: 100%;
+        border-radius: 7%;
+        background: rgba(217, 217, 217, 0.09);
+        backdrop-filter: blur(83.6267px);
+        justify-content: center;
+        align-items: center;
+        /* marginLeft:'5%' */
+    }
+
+    .ls_OTPcardtitle {
+        width: 90%;
+        display: flex;
+        justify-content: center;
+        background-color: transparent;
+        color: white;
+        font-weight: bolder;
+        font-size: 180%;
+        text-align: center;
+    }
+
+    .ls_OTPForm {
+        margin-top: 5%;
+    }
+
+    .ls_OTPlabelGroup {
+        margin-left: 5%;
+        width: 90%;
+        padding: 3% 3% 3% 3%;
+        background-color: transparent;
+        color: white;
+        border-radius: 2%;
+    }
+
+    .ls_OTPlabel {
+        text-align: center;
+    }
+
+    .ls_OTPpassword {
+        width: 80%;
+        padding: 1% 0% 8% 6%;
+    }
+
+    .ls_OTPpasswordInput {
+        width: 120%;
+        padding-top: 3%;
+        padding-bottom: 3%;
+        padding-left: 4%;
+        margin-top: 1%;
+        border-radius: 2%;
+        border-color: white;
+        background-color: transparent;
+        /* margin-left: 17.5%;  */
+    }
+
+
 }

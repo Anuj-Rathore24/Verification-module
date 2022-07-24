@@ -1,107 +1,313 @@
-body{
+::-webkit-input-placeholder {
+    /* WebKit, Blink, Edge */
+    color: white;
+}
+
+body {
     margin: 0;
     padding: 0;
-} 
+}
+
 /* Phone */
 @media only screen and (max-width: 767px) {
     .ls_main {
-        display: flex;
-        flex-direction: column;
-        /* padding-top: 5%; */
-        width: 100%;
-        /* height: 75%; */
-    }
-
-    .ls_group63 p {
+        height: 110vh !important;
         width: 100vw;
-        /* padding-left: 1%; */
-        /* height: 50vh; */
+        background-image: url('/src/pages/images/mit.png');
+        background-position: center;
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        margin-bottom: 3%;
     }
 
-
-    .signinCard {
-        align-self: center !important;
-        justify-content: center !important;
-        margin-left: 5% !important;
-        margin-right: 5% !important;
-        margin-top: 0% !important;
-        width: 95% !important;
+    .ls_showcase-top img {
+        width: 90%;
+        margin: 5% 2% 5% 2%;
     }
 
-    .SigninAs {
-        margin-top: 20%;
+    .ls_signinCard {
+        width: 95%;
+        display: flex;
+        margin-right: 2.5%;
+        margin-top: 1%;
+        border-radius: 7%;
+        float: right;
+        background: rgba(217, 217, 217, 0.09);
+        backdrop-filter: blur(83.6267px);
+    }
+
+    .ls_card {
+        width: 100%;
+        height: 100%;
+        border-radius: 7%;
+        background: rgba(217, 217, 217, 0.09);
+        backdrop-filter: blur(83.6267px);
+        /* marginLeft:'5%' */
+    }
+
+    .ls_cardtitle {
+        width: 50%;
+        display: flex;
+        justify-content: left;
+        margin-left: 35%;
+        background-color: transparent;
+        /* fontFamily:Encode Sans;
+        fontStyle:normal; */
+        color: white;
+    }
+
+    .ls_googleButton {
+        background-color: transparent;
+        margin-left: 35%;
+        border-color: transparent;
+    }
+
+    .ls_googleLogo {
+        height: 70%;
+        width: 70%;
+    }
+
+    .ls_loginForm {
+        margin-top: -7%;
+        margin-left: 9%;
+    }
+
+    .ls_emailGroup {
+        width: 100%;
+        padding: 0% 2% 0% 3%;
+        align-content: center;
         align-self: center;
     }
 
-    .profiles {
-        width: 80%;
-    }
-
-    .profile1 img {
+    .ls_passwordGroup {
         width: 100%;
+        padding: 0% 2% 0% 3%;
+        align-content: center;
+        align-self: center;
     }
 
-    .profile2 img {
-        width: 100%;
+    .ls_bottomnav {
+        background-color: black;
+        height: 10vh;
     }
 
+    .ls_siteName {
+        /* width: 20%; */
+        background-color: white;
+        padding: 1%;
+        color: black;
+        font-weight: bolder;
+    }
 
+    .ls_scrollingcontent {
+        /* width: 80%; */
+        padding: 0.8% 0% 0.7% 0%;
+        color: white;
+    }
 }
 
 /* laptops */
-@media screen and (min-width:1023px) {
-    .signinCard {
-        width: 30%;
-        margin-top: -18%;
-        margin-right: 10%;
+@media screen and (min-width:1024px) {
+
+    .ls_main {
+        height: 93vh;
+        width: 100vw;
+        background-image: url("/src/pages/images/mit.jpg");
+        background-position: center;
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
     }
 
-    .group63 {
+    .ls_showcase-top img {
+        margin: 1% 0% 0% 1%;
+        border-radius: 5%;
+    }
+
+    /* .group63 {
         width: 35%;
+    } */
+
+    .ls_signinCard {
+        width: 30%;
+        display: flex;
+        margin-right: 10%;
+        margin-top: 1%;
+        border-radius: 7%;
+        float: right;
+        background: rgba(217, 217, 217, 0.09);
+        backdrop-filter: blur(83.6267px);
     }
 
-    .signinCard {
-        margin-top: -10%;
+    .ls_card {
+        width: 100%;
+        height: 50%;
+        border-radius: 7%;
+        background: rgba(217, 217, 217, 0.09);
+        backdrop-filter: blur(83.6267px);
+        /* marginLeft:'5%' */
     }
 
-    .profiles {
-        width: 60%;
-    }
-
-    .profile1 img {
+    .ls_cardtitle {
         width: 50%;
+        display: flex;
+        justify-content: left;
+        margin-left: 32%;
+        background-color: transparent;
+        /* fontFamily:Encode Sans;
+        fontStyle:normal; */
+        color: white;
     }
 
-    .profile2 img {
-        width: 50%;
+    .ls_googleButton {
+        background-color: transparent;
+        margin-left: 37%;
+        border-color: transparent;
     }
 
+    .ls_googleLogo {
+        height: 70%;
+        width: 70%;
+    }
+
+    .ls_loginForm {
+        margin-top: -6%;
+        margin-left: 9%;
+    }
+
+    .ls_signupForm {
+        margin-top: 3%;
+        margin-left: 3%;
+    }
+
+    .ls_emailGroup {
+        padding: 0% 2% 0% 3%;
+        align-content: center;
+        align-self: center;
+    }
+
+    
+    .resetPasswordbtn{
+        background-color: transparent;
+        border-color: transparent;
+        margin: 1% 0% 1% 37.5%;
+    }
+    
+    .resetPasswordbtn:hover{
+        background-color: transparent;
+        border-color: transparent;
+        margin: 1% 0% 1% 37.5%;
+    }
+
+    .ls_bottomnav {
+        background-color: black;
+        height: 7vh;
+        display: flex;
+    }
+
+    .ls_siteName {
+        width: 20%;
+        background-color: white;
+        color: black;
+        font-weight: bolder;
+        padding: 1%;
+    }
+
+    .ls_scrollingcontent {
+        width: 80%;
+        padding: 0.8% 0% 0.7% 0%;
+        color: white;
+    }
 }
 
 /* Tablet */
 @media screen and (max-width:1023px) and (min-width: 768px) {
-    .signinCard {
-        width: 45%;
-        margin-top: -18%;
-        margin-right: 10%;
+    .ls_main {
+        height: 110vh;
+        width: 100vw;
+        background-image: url("/src/pages/images/mit.jpg");
+        background-position: center;
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
     }
 
-    .group63 {
+    .ls_showcase-top img {
+        margin: 1% 0% 0% 1%;
+        border-radius: 5%;
+    }
+
+    /* .group63 {
         width: 35%;
+    } */
+
+    .ls_signinCard {
+        width: 45%;
+        display: flex;
+        margin-right: 5%;
+        margin-top: -1%;
+        border-radius: 7%;
+        float: right;
+        background: rgba(217, 217, 217, 0.09);
+        backdrop-filter: blur(83.6267px);
     }
 
-    .profiles {
+    .ls_card {
+        width: 100%;
+        height: 50%;
+        border-radius: 7%;
+        background: rgba(217, 217, 217, 0.09);
+        backdrop-filter: blur(83.6267px);
+        /* marginLeft:'5%' */
+    }
+
+    .ls_cardtitle {
+        width: 50%;
+        display: flex;
+        justify-content: left;
+        margin-left: 32%;
+        background-color: transparent;
+        /* fontFamily:Encode Sans;
+        fontStyle:normal; */
+        color: white;
+    }
+
+    .ls_googleButton {
+        background-color: transparent;
+        margin-left: 37%;
+        border-color: transparent;
+    }
+
+    .ls_googleLogo {
+        height: 70%;
         width: 70%;
     }
 
-
-    .profile1 img {
-        width: 50%;
+    .ls_loginForm {
+        margin-top: -6%;
+        margin-left: 9%;
     }
 
-    .profile2 img {
-        width: 50%;
+    .ls_emailGroup {
+        padding: 0% 2% 0% 3%;
+        align-content: center;
+        align-self: center;
     }
 
+    .ls_bottomnav {
+        background-color: black;
+        height: 7vh;
+        display: flex;
+    }
 
+    .ls_siteName {
+        width: 25%;
+        background-color: white;
+        color: black;
+        font-weight: bolder;
+    }
+
+    .ls_scrollingcontent {
+        width: 80%;
+        padding: 0.8% 0% 0.7% 0%;
+        color: white;
+    }
 }
