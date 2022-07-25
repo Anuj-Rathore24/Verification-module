@@ -55,6 +55,7 @@ export default function Card(props) {
 
   const [disable, setDisable] = useState(false);
   const [declineButton, setdeclineButton] = useState(false);
+ 
 
   return (
     <div>
@@ -83,8 +84,11 @@ export default function Card(props) {
           <h2 className="card_heading">{props.name}</h2>
         </div>
         <div className="valueContainer">
+          <h2 className="card_heading">{props.prn}</h2>
+        </div>
+        <div className="valueContainer">
           <Button variant="primary" onClick={handleShow}>
-            Show
+            View document
           </Button>
         </div>
 

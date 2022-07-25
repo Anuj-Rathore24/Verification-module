@@ -1,57 +1,90 @@
-#DashBoard{
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    justify-content: center;
-    margin-top: 5vw;
+#mainDashBoardContainer {
+  background-color: #ebedf0;
+  position: absolute;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#DashBoard {
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  justify-content: center;
+  margin-top: 5vw;
+  padding: 2vw;
+  background-color: white;
+  border-radius: 20px;
+}
+
+.headingDashboard {
+    margin: 0;
+  font-family: "Encode Sans";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 34px;
+  color: #707070;
+}
+
+.numbersDashboard {
+    margin: 0;
+  font-family: "Encode Sans";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 50px;
+  line-height: 75px;
+  color: #e77455;
+}
+.DashBoardContainers {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 20vw;
+  height: 18vh;
+  justify-content: center;
 
 }
-.DashBoardContainers{
-    width: 20vw;
+
+.ChildContainer {
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+}
+#Main_Item_Container {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 2%;
+  padding: 2% 10px;
+  background-color: #ffffff;
+  border-radius: 6px;
+  box-shadow: 1px 2px 1px 0px rgb(143, 142, 142);
+}
+@media (min-width: 600px) {
+  .details {
+    display: block;
+  }
+  .logo {
+    height: 5em;
+  }
+  .avatar {
+    height: 6em;
+  }
+  .info-label {
     height: 20vh;
-    border: 1px solid black;
-    background-color: aqua;
+  }
 }
 
-
-.ChildContainer{
-    display: flex;
-    flex-direction: column;
-    margin: 20px;
+@media (max-width: 1000px) {
+  .info-label {
+    height: 15vh;
+  }
 }
-#Main_Item_Container{
-    display: flex;
-    width: 100%;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-top: 2%;
-    padding: 2% 10px;
-    background-color:  #F8F3F3;
-    border-radius: 6px;
-    box-shadow: 1px 2px 1px 0px rgb(143, 142, 142);
-}
-@media (min-width:600px){
-    .details{
-        display: block;
-    }
-    .logo{
-        height: 5em;
-    } 
-    .avatar{
-        height: 6em;
-    }
-    .info-label{
-        height: 20vh;
-    }
-}
-
-@media (max-width:1000px){
-    .info-label{
-        height: 15vh;
-    }
-}
-@media (max-width:650px){
-    .info-label{
-        height: 10vh;
-    }
+@media (max-width: 650px) {
+  .info-label {
+    height: 10vh;
+  }
 }
