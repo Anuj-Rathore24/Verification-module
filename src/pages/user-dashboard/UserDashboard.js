@@ -1,14 +1,12 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import ContainerItem from "./UserContainerItem";
-import Topbar from "./UserTopbar";
 import "../../styles/UserDashboard.css";
 
 function User() {
   const navigate = useNavigate();
   return (
     <div>
-      <Topbar />
       <div className="main">
         <div className="user-info-label">
           <div className="info-d1"> </div>
