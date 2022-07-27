@@ -1,4 +1,4 @@
-const { collection, getDocs, addDoc, doc, setDoc } = require("firebase/firestore");
+const { collection, getDocs, addDoc, doc, setDoc, updateDoc } = require("firebase/firestore");
 const { db } = require("../pages/Firebase/FirebaseConfig");
 
 module.exports = {
@@ -18,7 +18,7 @@ module.exports = {
       Documents: creds.Documents,
       PaymentDate: creds.queryDate,
       NEFTrefNumber: creds.NEFT,
-      status: "notVerified",
+      status: "Not Verified",
     }
     try {
       
@@ -45,4 +45,26 @@ module.exports = {
       console.log("The Error is->" + err);
     }
   },
+  updateQuery:async function (userId,queryId,type){
+    if(type==1){
+
+      try{
+        const docRef=doc(db,`${userId}`,`${queryId}`)
+        await updateDoc(docRef,{
+          status:"Verified"
+        })
+      }catch(err){
+        console.log("error in our new Code ->"+err);
+      }
+    }else if(type==0){
+      try{
+        const docRef=doc(db,`${userId}`,`${queryId}`)
+        await updateDoc(docRef,{
+          status:"Denied"
+        })
+      }catch(err){
+        console.log("error in our new Code ->"+err);
+      }
+    }
+  }
 };

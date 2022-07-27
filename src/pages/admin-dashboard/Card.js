@@ -1,8 +1,9 @@
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 import "../../styles/Card.css";
 import { Button, Modal } from "react-bootstrap";
 import axios from "axios";
-import { getfile,getPaymentFile} from "../../apis/firebasecloud.js";
+import { getfile, getPaymentFile } from "../../apis/firebasecloud.js";
+import { updateQuery } from "../../apis/firestoreDatabase";
 
 //for color of status circles
 function colorScheme(variable) {
@@ -12,32 +13,18 @@ function colorScheme(variable) {
   return color;
 }
 
+async function declineButtonClick(userId, queryId, dmessage) {
+  const element = document.getElementById("inputDelineAddress");
+  console.log("Message ->" + element.innerHTML);
+  axios.post("/declineQuery", { message: dmessage });
+  await updateQuery(userId, queryId, 0);
+}
+
 //function for hitting apis in backend for send certificates
 async function verifyDocument(dataObject) {
   await axios.post("/MakeCert", { data: dataObject });
+  await updateQuery(dataObject.CompEmail, dataObject.queryId, 1);
   alert("Mail in Progess");
-}
-
-//
-function btnclick(ele) {
-  console.log(
-    "testing ->" + document.getElementById("inputDelineAddress").value
-  );
-}
-function declineButtonFunction() {
-  var container = document.getElementById("MainBodyContainer");
-
-  //creating text input
-  const inputdecline = document.createElement("textarea");
-  inputdecline.rows = 5;
-  inputdecline.id = "inputDelineAddress";
-  container.appendChild(inputdecline);
-  //creating button
-  const buttonDecline = document.createElement("button");
-  buttonDecline.innerHTML = "Send";
-  buttonDecline.className = "btn btn-primary";
-  buttonDecline.onClick = btnclick(inputdecline);
-  container.appendChild(buttonDecline);
 }
 
 export default function Card(props) {
@@ -55,7 +42,14 @@ export default function Card(props) {
 
   const [disable, setDisable] = useState(false);
   const [declineButton, setdeclineButton] = useState(false);
- 
+  let [declineMessage, setdeclineMessage] = useState(" ");
+
+  useEffect(() => {
+    try {
+      const element = document.getElementById("inputDelineAddress");
+      element.innerHTML = declineMessage;
+    } catch (err) {}
+  }, [declineMessage]);
 
   return (
     <div>
@@ -187,20 +181,42 @@ export default function Card(props) {
             </div>
           </Modal.Body>
           <Modal.Footer style={{ justifyContent: "center" }}>
-
             <Button
-             variant="primary"
-             onClick={async ()=>{
-                await getPaymentFile(props,props.CompEmail, props.queryId);
-             }}
-             >
-              Send to Verify Payment</Button>
+              variant="primary"
+              onClick={async () => {
+                await getPaymentFile(props, props.CompEmail, props.queryId);
+              }}
+            >
+              Send to Verify Payment
+            </Button>
             <Button
               disabled={declineButton}
               variant="danger"
-              onClick={() => {
+              onClick={async () => {
                 setdeclineButton(true);
-                declineButtonFunction();
+                var container = document.getElementById("MainBodyContainer");
+
+                //creating text input
+                const inputdecline = document.createElement("textarea");
+                inputdecline.rows = 5;
+                inputdecline.id = "inputDelineAddress";
+                inputdecline.onchange = (e) => {
+                  setdeclineMessage(e.target.value);
+                };
+                container.appendChild(inputdecline);
+
+                //creating button
+                const buttonDecline = document.createElement("button");
+                buttonDecline.innerHTML = "Send";
+                buttonDecline.className = "btn btn-primary";
+                buttonDecline.onclick = async () => {
+                  declineButtonClick(
+                    props.CompEmail,
+                    props.queryId,
+                    inputdecline.innerHTML
+                  );
+                };
+                container.appendChild(buttonDecline);
               }}
             >
               Decline Query Request

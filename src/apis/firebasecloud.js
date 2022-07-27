@@ -46,11 +46,9 @@ module.exports = {
     //Location of w.r.t FireBase
     const filelocation = `gs://verification-module.appspot.com/${userId}/${queryId}/`;
 
-    const listref = ref(storage, filelocation + "File/");
-
+    const listref = ref(storage, filelocation + "File");
     //function for getting all the Reference Link in Files Folder
     listAll(listref).then((res) => {
-      console.log(res);
       var Maincontainer = document.getElementById("MainBodyContainer");
       // Maincontainer.innerHTML="";
       const ChildContainer = document.createElement("div");
@@ -96,18 +94,18 @@ module.exports = {
           });
       });
 
-      const listref = ref(storage, filelocation + "Payment/");
+      const listref = ref(storage, filelocation + "Payment");
 
       //function for getting all the Reference Link in Payment Folder
       listAll(listref)
         .then((res) => {
-          console.log(res);
           var Maincontainer = document.getElementById("MainBodyContainer");
           var i = 1;
           const ChildContainer = document.createElement("div");
           ChildContainer.className = "ChildContainer";
           ChildContainer.innerHTML = "Payment Proof";
           Maincontainer.appendChild(ChildContainer);
+
           res.items.forEach(async (itemsRef) => {
             await getDownloadURL(ref(storage, itemsRef))
               .then((url) => {
@@ -163,6 +161,7 @@ module.exports = {
               .then((url) => {
                 console.log("The url must be ->"+url)
                 const objectData={info:props,link:url}
+
                 axios.post("/sendToVerify",{data:objectData})
               })
               .catch((error) => {

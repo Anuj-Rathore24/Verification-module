@@ -18,24 +18,12 @@ app.use(
 app.use(express.json());
 app.use(express.urlencoded());
 
-
-app.get("/sendMail",async (req,res)=>{
-    console.log("Sending Mail");
-    try{
-        await mail(req.query.message)
-        res.send("Mailed Perfectely");
-    }catch(err){
-        console.log("\n\nerror ->"+err)
-    }
-})
-
-
 app.post("/MakeCert",async (req,res)=>{
     console.log("Making Certificate");
     try{
         await MakeCertificate(req.body.data);
     }catch(err){
-        console.log("\n\nerror ->"+err)
+        console.log("\n\nerror ->"+err.data)
     }
 })
 
@@ -44,6 +32,16 @@ app.post("/sendToVerify",async (req,res)=>{
         await verifyDocument(req.body.data)
     }catch(err){
         console.log("error ->"+err)
+    }
+})
+
+app.post("/declineQuery",async (req,res)=>{
+    try{
+        console.log(req.body.message)
+        await mail(req.body.message)
+        res.send("Mailed Perfectely");
+    }catch(err){
+        console.log("\n\nerror ->"+err.data)
     }
 })
 
