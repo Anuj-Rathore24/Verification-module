@@ -2,6 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import ContainerItem from "./UserContainerItem";
 import "../../styles/UserDashboard.css";
+import {FormStatus} from '../login-signup/State'
 
 function User() {
   const navigate = useNavigate();
@@ -16,6 +17,7 @@ function User() {
             <button
               href="/form"
               onClick={() => {
+                FormStatus.formStatus = true;
                 navigate("/form");
               }}
             >

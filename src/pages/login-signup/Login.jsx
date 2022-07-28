@@ -6,6 +6,7 @@ import Button from 'react-bootstrap/esm/Button';
 import Form from 'react-bootstrap/esm/Form';
 import { useNavigate } from 'react-router-dom';
 import * as FireAuth from "../Firebase/Fireauth.js";
+import { LoggedIn } from "./State";
 
 
 
@@ -30,6 +31,7 @@ export default function Login() {
         result = await FireAuth.signIn(email, password);
         console.log(result)
         if (result) {
+            LoggedIn.isLoggedIn = true;
             navigate("/UserDashboard");
         } else {
             alert("Wrong Username or Password")
