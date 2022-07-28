@@ -6,7 +6,7 @@ const {
   listAll,
 } = require("firebase/storage");
 const { app } = require("../pages/Firebase/FirebaseConfig");
-const axios=require("axios")
+const axios = require("axios");
 
 // Function for Uploading files on Firebase Cloud
 
@@ -49,12 +49,19 @@ module.exports = {
     const listref = ref(storage, filelocation + "File");
     //function for getting all the Reference Link in Files Folder
     listAll(listref).then((res) => {
+      console.log(res.items.length);
       var Maincontainer = document.getElementById("MainBodyContainer");
-      // Maincontainer.innerHTML="";
       const ChildContainer = document.createElement("div");
       ChildContainer.className = "ChildContainer";
-      ChildContainer.innerHTML = "Files";
-      Maincontainer.appendChild(ChildContainer);
+
+      //condition if user didn't submit any document or files
+      if (res.items.length == 0) {
+        ChildContainer.innerHTML="No Files Submitted"
+        Maincontainer.appendChild(ChildContainer);
+      }else{
+        ChildContainer.innerHTML = "Files";
+        Maincontainer.appendChild(ChildContainer);
+      }
       var i = 1;
       res.items.forEach(async (itemsRef) => {
         await getDownloadURL(ref(storage, itemsRef))
@@ -87,9 +94,9 @@ module.exports = {
                   "\nUnknown error occurred, inspect the server response"
                 );
                 break;
-                default:
-                  console.log("Unhandled Error in getting files from cloud ")
-                  break;
+              default:
+                console.log("Unhandled Error in getting files from cloud ");
+                break;
             }
           });
       });
@@ -100,11 +107,18 @@ module.exports = {
       listAll(listref)
         .then((res) => {
           var Maincontainer = document.getElementById("MainBodyContainer");
-          var i = 1;
           const ChildContainer = document.createElement("div");
           ChildContainer.className = "ChildContainer";
-          ChildContainer.innerHTML = "Payment Proof";
-          Maincontainer.appendChild(ChildContainer);
+
+          //condition if no files were submitted for payment proof
+          if (res.items.length == 0) {
+            ChildContainer.innerHTML="No Files were Submitted as a payment proof"
+            Maincontainer.appendChild(ChildContainer);
+          }else{
+            ChildContainer.innerHTML = "Payment Proof";
+            Maincontainer.appendChild(ChildContainer);
+          }
+          var i = 1;
 
           res.items.forEach(async (itemsRef) => {
             await getDownloadURL(ref(storage, itemsRef))
@@ -136,9 +150,9 @@ module.exports = {
                       "\nUnknown error occurred, inspect the server response"
                     );
                     break;
-                    default:
-                      console.log("Unhandled Error in getting files from cloud ")
-                      break;
+                  default:
+                    console.log("Unhandled Error in getting files from cloud ");
+                    break;
                 }
               });
           });
@@ -148,47 +162,46 @@ module.exports = {
         });
     });
   },
-  getPaymentFile: async function (props,userId, queryId) {
+  getPaymentFile: async function (props, userId, queryId) {
     const storage = getStorage(app);
     const filelocation = `gs://verification-module.appspot.com/${userId}/${queryId}/Payment`;
     const listref = ref(storage, filelocation);
 
-    listAll(listref)
-        .then((res) => {
-          
-          res.items.forEach(async (itemsRef) => {
-            await getDownloadURL(ref(storage, itemsRef))
-              .then((url) => {
-                console.log("The url must be ->"+url)
-                const objectData={info:props,link:url}
+    listAll(listref).then((res) => {
+      res.items.forEach(async (itemsRef) => {
+        await getDownloadURL(ref(storage, itemsRef))
 
-                axios.post("/sendToVerify",{data:objectData})
-              })
-              .catch((error) => {
-                //For Handling Errors
-                switch (error.code) {
-                  case "storage/object-not-found":
-                    console.log("\nFile Not Found");
-                    break;
-                  case "storage/unauthorized":
-                    console.log(
-                      "\n User doesn't have permission to access the object"
-                    );
-                    break;
-                  case "storage/canceled":
-                    console.log("\nUser canceled the upload");
-                    break;
-                  case "storage/unknown":
-                    console.log(
-                      "\nUnknown error occurred, inspect the server response"
-                    );
-                    break;
-                    default:
-                      console.log("Unhandled Error in getting files from cloud ")
-                      break;
-                }
-              });
+        .then((url) => {
+            const objectData = { info: props, link: url };
+            
+            //request to server for connecting appscript
+            axios.post("/sendToVerify", { data: objectData });
+          })
+          .catch((error) => {
+            //For Handling Errors
+            switch (error.code) {
+              case "storage/object-not-found":
+                console.log("\nFile Not Found");
+                break;
+              case "storage/unauthorized":
+                console.log(
+                  "\n User doesn't have permission to access the object"
+                );
+                break;
+              case "storage/canceled":
+                console.log("\nUser canceled the upload");
+                break;
+              case "storage/unknown":
+                console.log(
+                  "\nUnknown error occurred, inspect the server response"
+                );
+                break;
+              default:
+                console.log("Unhandled Error in getting files from cloud ");
+                break;
+            }
           });
-        })
+      });
+    });
   },
 };

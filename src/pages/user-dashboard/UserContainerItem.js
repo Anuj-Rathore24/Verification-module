@@ -3,6 +3,8 @@ import Cards from "./UserCard";
 import "../../styles/AdminDashboard.css";
 import { requestQuery } from "../../apis/firestoreDatabase";
 import { useState, useEffect } from "react";
+import { auth } from '../Firebase/Firebase';
+
 
 
 export default function EventsItem() {
@@ -11,7 +13,7 @@ export default function EventsItem() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const res = await requestQuery(localStorage.getItem("email"));
+        const res = await requestQuery(auth.currentUser.email);
         const temp=[];
         const tempId=[];
         res.forEach((doc)=>{

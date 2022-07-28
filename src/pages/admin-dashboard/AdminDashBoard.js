@@ -2,6 +2,8 @@ import { React, useState, useEffect } from "react";
 import Cards from "./Card";
 import "../../styles/AdminDashboard.css";
 import { requestQuery } from "../../apis/firestoreDatabase";
+import { auth } from '../Firebase/Firebase';
+
  
 export default function EventsItem() {
   const [queryArr, changeQueries] = useState([]);
@@ -17,7 +19,8 @@ export default function EventsItem() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const res = await requestQuery(localStorage.getItem("email"));
+        // const userName=auth.currentUser
+        const res = await requestQuery(auth.currentUser.email);
         const temp = [];
         const tempId = [];
         res.forEach((doc) => {
@@ -101,7 +104,7 @@ export default function EventsItem() {
             <p className="Info-value">Query</p>
           </div>
           <div className="Option-detail Admin-flex">
-            <p className="Info-property">Admin By</p>
+            <p className="Info-property">Sort By</p>
             <p className="Info-value">Date</p>
           </div>
         </div>

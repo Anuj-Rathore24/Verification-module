@@ -43,9 +43,14 @@ export default function Card(props) {
   const [disable, setDisable] = useState(false);
   const [declineButton, setdeclineButton] = useState(false);
   let [declineMessage, setdeclineMessage] = useState(" ");
-
+  let [statusVerify,setstatusVerify]=useState(false);
   useEffect(() => {
     try {
+
+      if(props.status==="Verified" || props.status==="Denied"){
+        console.log(props.status)
+        setstatusVerify(true)
+      }
       const element = document.getElementById("inputDelineAddress");
       element.innerHTML = declineMessage;
     } catch (err) {}
@@ -232,6 +237,7 @@ export default function Card(props) {
               View Documents
             </Button>
             <Button
+              disabled={statusVerify}
               variant="success"
               onClick={() => {
                 verifyDocument(props);
