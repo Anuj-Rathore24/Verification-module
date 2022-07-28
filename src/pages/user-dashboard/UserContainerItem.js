@@ -30,12 +30,13 @@ export default function EventsItem() {
   return (
     <div id="Main_Item_Container">
       <div className="main_card_container">
-        <h2 className="heading"> Date </h2>
-        <h2 className="heading"> QueryId </h2>
-        <h2 className="heading"> Name </h2>
-        <h2 className="heading" id="btnHeading">
+          <h2 className="heading"> Date </h2>
+          <h2 className="heading"> Query Id </h2>
+          <h2 className="heading"> Name </h2>
+          <h2 className="heading"> PRN </h2>
+          <h2 className="heading" id="btnHeading">
           Show Details
-        </h2>
+          </h2>
       </div>
       {
         

@@ -7,12 +7,14 @@ function User() {
   const navigate = useNavigate();
   return (
     <div>
-      <div className="main">
+      <div id="UserDashBoardContainer">
         <div className="user-info-label">
           <div className="info-d1"> </div>
           <div className="info-d2"> </div>
         </div>
-          <div className="options">
+        <div id="User-Info-container" className="User-flex">
+        <div className="User-details-container User-flex">
+        <div className="options">
             <button
               href="/form"
               onClick={() => {
@@ -30,6 +32,11 @@ function User() {
               Help Centre
             </button>
           </div>
+        </div>
+        <div className="User-Logout-btn-container User-flex">
+          <button className="User-Logout-btn">Logout</button>
+        </div>
+      </div>
         <ContainerItem />
       </div>
     </div>
