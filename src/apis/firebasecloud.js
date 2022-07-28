@@ -55,7 +55,7 @@ module.exports = {
       ChildContainer.className = "ChildContainer";
 
       //condition if user didn't submit any document or files
-      if (res.items.length == 0) {
+      if (res.items.length === 0) {
         ChildContainer.innerHTML="No Files Submitted"
         Maincontainer.appendChild(ChildContainer);
       }else{
@@ -111,7 +111,7 @@ module.exports = {
           ChildContainer.className = "ChildContainer";
 
           //condition if no files were submitted for payment proof
-          if (res.items.length == 0) {
+          if (res.items.length === 0) {
             ChildContainer.innerHTML="No Files were Submitted as a payment proof"
             Maincontainer.appendChild(ChildContainer);
           }else{
