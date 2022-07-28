@@ -7,7 +7,6 @@ import { useNavigate } from 'react-router-dom';
 import { deleteUser} from 'firebase/auth';
 import { auth } from '../Firebase/Firebase';
 import {clickFunctionSignup} from './Signup.jsx'
-import firebaseConfig from '../Firebase/FirebaseConfig';
 import { LoggedIn } from './State';
 
 

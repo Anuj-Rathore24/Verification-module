@@ -6,24 +6,23 @@ import Button from 'react-bootstrap/esm/Button';
 import Form from 'react-bootstrap/esm/Form';
 import { useNavigate } from 'react-router-dom';
 import * as FireAuth from "../Firebase/Fireauth.js";
-import { LoggedIn } from "./State";
-
-
+import { LoggedIn, AdminStatus } from "./State";
+import { auth } from "../Firebase/Firebase";
 
 export default function Login() {
     const navigate = useNavigate();
 
     //Google Sign In
-    async function clickFunctionGoogle() {
-        let result = false;
-        result = await FireAuth.googleSignIn();
-        console.log(result)
-        if (result) {
-            navigate("/UserDashboard");
-        } else {
-            alert("Error")
-        }
-    }
+    // async function clickFunctionGoogle() {
+    //     let result = false;
+    //     result = await FireAuth.googleSignIn();
+    //     console.log(result)
+    //     if (result) {
+    //         navigate("/UserDashboard");
+    //     } else {
+    //         alert("Error")
+    //     }
+    // }
 
     //Email-Password Signin
     async function clickFunctionSignin(email, password) {
@@ -32,7 +31,15 @@ export default function Login() {
         console.log(result)
         if (result) {
             LoggedIn.isLoggedIn = true;
+            let adminID = auth.currentUser.uid;
+            if(adminID === 'QuRWB630HehGruKk7Oe6R3KSgns1')
+            {
+                AdminStatus.adminStatus = true;
+                navigate("/admin")
+            }
+            else{
             navigate("/UserDashboard");
+            }
         } else {
             alert("Wrong Username or Password")
         }
@@ -65,12 +72,14 @@ export default function Login() {
         FireAuth.resetPassword(formData.email)
     }
 
+
+
     return (
         <>
             <div className="ls_main">
 
                 <div className="ls_showcase-top">
-                    <img src={logo} alt="MIT Logo"/>
+                    <img src={logo} alt="MIT Logo" />
                 </div>
 
                 {/* <div className="group63"
@@ -86,11 +95,11 @@ export default function Login() {
 
                 <div className="ls_signinCard">
 
-                <Card className="ls_card">
-                    <Card.Body>
-                        <Card.Title className="ls_cardtitle"><h1 >Sign In</h1></Card.Title>
+                    <Card className="ls_card">
+                        <Card.Body>
+                            <Card.Title className="ls_cardtitle"><h1 >Sign In</h1></Card.Title>
 
-                        {/* <Button className="ls_googleButton" onClick={() => clickFunctionGoogle()}
+                            {/* <Button className="ls_googleButton" onClick={() => clickFunctionGoogle()}
                             variant="primary">
 
                             <img src={google} className="ls_googleLogo" alt="Google" />  */}
@@ -101,9 +110,9 @@ export default function Login() {
                                 fontSize: '15px',
 
                             }}>Sign In with Google</span> */}
-                        {/* </Button> */}
+                            {/* </Button> */}
 
-                        {/* <div className="line" style={{
+                            {/* <div className="line" style={{
                             marginTop:'2%',
                             display:'flex'
                         }}>
@@ -124,88 +133,88 @@ export default function Login() {
                             height:'2px',
                         }}/>
                         </div> */}
-                        
 
-                        <Form className="ls_loginForm" onSubmit={handleSubmit}>
-                            <Form.Group className="ls_emailGroup" controlId="formBasicEmail">
-                                {/* <Form.Label>Enter your Company or Email address</Form.Label> */}
-                                <br />
-                                <input type="email" className="ls_emailInput"
-                                    id="email" name="email" placeholder="Email Address" onChange={handleinput} value={formData.email}
+
+                            <Form className="ls_loginForm" onSubmit={handleSubmit}>
+                                <Form.Group className="ls_emailGroup" controlId="formBasicEmail">
+                                    {/* <Form.Label>Enter your Company or Email address</Form.Label> */}
+                                    <br />
+                                    <input type="email" className="ls_emailInput"
+                                        id="email" name="email" placeholder="Email Address" onChange={handleinput} value={formData.email}
+                                        style={{
+                                            color: 'white',
+                                            width: '90%',
+                                            paddingTop: '13px',
+                                            paddingBottom: '13px',
+                                            paddingLeft: "4%",
+                                            marginTop: '2%',
+                                            borderRadius: '7px',
+                                            backgroundColor: 'transparent',
+                                            borderColor: 'white',
+                                            borderWidth: '1.5px'
+                                        }} />
+                                </Form.Group>
+
+                                <Form.Group className="ls_passwordGroup" controlId="formBasicPassword"
                                     style={{
-                                        color:'white',
-                                        width: '90%',
-                                        paddingTop: '13px',
-                                        paddingBottom: '13px',
-                                        paddingLeft: "4%",
-                                        marginTop: '2%',
-                                        borderRadius: '7px',
-                                        backgroundColor:'transparent',
-                                        borderColor: 'white',
-                                        borderWidth: '1.5px'
-                                    }} />
-                            </Form.Group>
+                                        padding: '0% 2% 3% 3%',
+                                    }}>
+                                    {/* <Form.Label>Password</Form.Label> */}
+                                    <br />
+                                    <input onChange={handleinput} type="password"
+                                        id="passowrd" name="password" value={formData.password} placeholder="Password"
+                                        style={{
+                                            width: '90%',
+                                            paddingTop: '10px',
+                                            paddingBottom: '13px',
+                                            paddingLeft: "4%",
+                                            marginTop: '-3%',
+                                            borderRadius: '7px',
+                                            backgroundColor: 'transparent',
+                                            borderColor: 'white',
+                                            borderWidth: '1.5px'
 
-                            <Form.Group className="ls_passwordGroup" controlId="formBasicPassword"
-                                style={{
-                                    padding: '0% 2% 3% 3%',
+                                        }} />
+
+                                </Form.Group>
+
+                                <Button className="resetPasswordbtn" onClick={handleReset}>Forgot Password?</Button>
+
+
+                                <Button variant="primary" type="submit" style={{
+                                    padding: '3% 2% 3% 3%',
+                                    marginLeft: '3%',
+                                    width: '88%',
+                                    backgroundColor: '#0089ED',
+                                    border: 'none',
+                                    borderRadius: '7px',
+                                    color: 'white',
+                                    fontSize: '15px',
                                 }}>
-                                {/* <Form.Label>Password</Form.Label> */}
-                                <br />
-                                <input onChange={handleinput} type="password"
-                                    id="passowrd" name="password" value={formData.password} placeholder="Password"
+                                    Sign In
+                                </Button>
+
+
+
+                                <Form.Group className="Signuplink"
                                     style={{
-                                        width: '90%',
-                                        paddingTop: '10px',
-                                        paddingBottom: '13px',
-                                        paddingLeft: "4%",
-                                        marginTop: '-3%',
-                                        borderRadius: '7px',
-                                        backgroundColor:'transparent',
-                                        borderColor: 'white',
-                                        borderWidth: '1.5px'
-
-                                    }} />
-
-                            </Form.Group>
-
-                            <Button className="resetPasswordbtn" onClick={handleReset}>Forgot Password?</Button>
+                                        marginTop: '5%',
+                                        marginBottom: '5%',
+                                        textAlign: 'center',
+                                    }}>
+                                    <Form.Label style={{ color: 'white' }}>Don't have an Account? <a href="/#/signup" style={{
+                                        textDecoration: 'none', color: "rgb(0, 137, 237)", fontWeight: "bold"
+                                    }}>SignUP</a></Form.Label>
+                                </Form.Group>
 
 
-                            <Button variant="primary" type="submit" style={{
-                                padding: '3% 2% 3% 3%',
-                                marginLeft: '3%',
-                                width: '88%',
-                                backgroundColor: '#0089ED',
-                                border: 'none',
-                                borderRadius: '7px',
-                                color: 'white',
-                                fontSize: '15px',
-                            }}>
-                                Sign In
-                            </Button>
+                            </Form>
 
-                            
+                        </Card.Body>
+                    </Card>
+                </div>
 
-                            <Form.Group className="Signuplink"
-                                style={{
-                                    marginTop: '5%',
-                                    marginBottom: '5%',
-                                    textAlign: 'center',
-                                }}>
-                                <Form.Label style={{color:'white'}}>Don't have an Account? <a href="/#/signup" style={{
-                                    textDecoration: 'none',color:"rgb(0, 137, 237)",fontWeight:"bold"
-                                }}>SignUP</a></Form.Label>
-                            </Form.Group>
-
-
-                        </Form>
-
-                    </Card.Body>
-                </Card>
-            </div>
-
-            {/* <div className="SigninAs"
+                {/* <div className="SigninAs"
                     style={{
                         marginTop: '8%',
                         marginLeft: '8%',
@@ -269,15 +278,15 @@ export default function Login() {
 
                     </div>
                 </div> */}
-        </div>
-        <div className="ls_bottomnav">
-                    <div className="ls_siteName">
-                        MIT-WPU Verification System :
-                    </div>
-                    <div className="ls_scrollingcontent">
-                        <marquee direction="left">University-side document verification is integral to every student's future academic and professional ventures as it  confirms the authenticity of details submitted by the student with regards to their academic program, CGPA course etc.</marquee>
-                    </div>
+            </div>
+            <div className="ls_bottomnav">
+                <div className="ls_siteName">
+                    MIT-WPU Verification System :
                 </div>
+                <div className="ls_scrollingcontent">
+                    <marquee direction="left">University-side document verification is integral to every student's future academic and professional ventures as it  confirms the authenticity of details submitted by the student with regards to their academic program, CGPA course etc.</marquee>
+                </div>
+            </div>
         </>
     )
 }

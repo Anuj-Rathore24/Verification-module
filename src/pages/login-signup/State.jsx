@@ -15,4 +15,8 @@ class FormStatus{
     static formStatus = false;
 }
 
-export {PageStatus, LoggedIn, FormStatus}
+class AdminStatus{
+    static adminStatus = false;
+}
+
+export {PageStatus, LoggedIn, FormStatus, AdminStatus}

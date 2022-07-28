@@ -1,10 +1,12 @@
 
 import React from "react";
 import { Navigate } from "react-router-dom";
-import { FormStatus, LoggedIn, PageStatus } from "./State";
+import { AdminStatus, FormStatus, LoggedIn, PageStatus } from "./State";
 import OTP from './OTP'
 import UserDashboard from "../user-dashboard/UserDashboard";
 import VerificationForm from "../form/VerificationForm";
+import AdminDashBoard from "../admin-dashboard/AdminDashBoard.js";
+
 
 
 // Protected Route function for OTP Page so the user cannot directly go to OTP with URL Manipulation.
@@ -18,7 +20,10 @@ const ProtectedRoute2 = () => {
 
 const ProtectedRoute3 = () => {
     return FormStatus.formStatus ? <VerificationForm/> : <Navigate to = "/"/>    
-
 };
 
-export { ProtectedRoute1, ProtectedRoute2, ProtectedRoute3 }
+const ProtectedRoute4 = () => {
+    return AdminStatus.adminStatus ? <AdminDashBoard/> : <Navigate to = "/"/>
+}
+
+export { ProtectedRoute1, ProtectedRoute2, ProtectedRoute3, ProtectedRoute4 }
