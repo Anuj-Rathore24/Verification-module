@@ -2,7 +2,7 @@ import { React, useState, useEffect } from "react";
 import Cards from "./Card";
 import "../../styles/AdminDashboard.css";
 import { requestQuery } from "../../apis/firestoreDatabase";
-
+ 
 export default function EventsItem() {
   const [queryArr, changeQueries] = useState([]);
   const [queryId, changeQueryId] = useState([]);
@@ -94,6 +94,21 @@ export default function EventsItem() {
           <p className="numbersDashboard">{dashboardValues.declined}</p>
         </div>
       </div>
+      <div id="Admin-Info-container" className="Admin-flex">
+        <div className="Admin-Option-details-container Admin-flex">
+          <div className="Option-detail Admin-flex">
+            <p className="Info-property">Showing</p>
+            <p className="Info-value">Query</p>
+          </div>
+          <div className="Option-detail Admin-flex">
+            <p className="Info-property">Admin By</p>
+            <p className="Info-value">Date</p>
+          </div>
+        </div>
+        <div className="Admin-Logout-btn-container Admin-flex">
+          <button className="Admin-Logout-btn">Logout</button>
+        </div>
+      </div>
       <div id="Main_Item_Container">
         <div className="main_card_container">
           <h2 className="heading"> Date Received </h2>
@@ -101,7 +116,7 @@ export default function EventsItem() {
           <h2 className="heading"> Name </h2>
           <h2 className="heading"> PRN </h2>
           <h2 className="heading" id="btnHeading">
-            Details
+            Option-details
           </h2>
         </div>
         {queryArr.map((element, i) => {
