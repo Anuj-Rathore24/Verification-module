@@ -10,7 +10,7 @@
     "@testing-library/user-event": "^12.1.10",
     "axios": "^0.27.2",
     "cors": "^2.8.5",
-    "firebase": "^9.8.0",
+    "firebase": "^9.9.1",
     "gh-pages": "^4.0.0",
     "googleapis": "^39.2.0",
     "http2": "^3.3.7",

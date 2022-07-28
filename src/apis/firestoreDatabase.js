@@ -46,7 +46,7 @@ module.exports = {
     }
   },
   updateQuery:async function (userId,queryId,type){
-    if(type==1){
+    if(type===1){
 
       try{
         const docRef=doc(db,`${userId}`,`${queryId}`)
@@ -56,7 +56,7 @@ module.exports = {
       }catch(err){
         console.log("error in our new Code ->"+err);
       }
-    }else if(type==0){
+    }else if(type===0){
       try{
         const docRef=doc(db,`${userId}`,`${queryId}`)
         await updateDoc(docRef,{

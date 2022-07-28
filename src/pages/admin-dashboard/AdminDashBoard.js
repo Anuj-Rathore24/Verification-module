@@ -2,12 +2,13 @@ import { React, useState, useEffect } from "react";
 import Cards from "./Card";
 import "../../styles/AdminDashboard.css";
 import { requestQuery } from "../../apis/firestoreDatabase";
-import { auth } from '../Firebase/Firebase';
+import { auth } from "../Firebase/Firebase";
+import { useNavigate } from "react-router-dom";
 
- 
 export default function EventsItem() {
   const [queryArr, changeQueries] = useState([]);
   const [queryId, changeQueryId] = useState([]);
+  let navigate = useNavigate();
 
   const [dashboardValues, setdashboardValues] = useState({
     totalQueries: 0,
@@ -17,10 +18,10 @@ export default function EventsItem() {
   });
 
   useEffect(() => {
-    async function fetchData() {
-      try {
-        // const userName=auth.currentUser
-        const res = await requestQuery(auth.currentUser.email);
+    // const userName=auth.currentUser
+    auth.onAuthStateChanged(async (user) => {
+        try {
+        const res = await requestQuery(user.email);
         const temp = [];
         const tempId = [];
         res.forEach((doc) => {
@@ -31,50 +32,48 @@ export default function EventsItem() {
 
           setdashboardValues({
             ...dashboardValues,
-            totalQueries:dashboardValues.totalQueries++,
+            totalQueries: dashboardValues.totalQueries++,
           });
-          
+
           //For Calculating Number of declined Queries
           if (doc.data().status === "Denied") {
             setdashboardValues({
               ...dashboardValues,
-              declined:dashboardValues.declined++,
+              declined: dashboardValues.declined++,
             });
-          
-          //For Calculating Number of Verified Queries
-          }else if(doc.data().status==="Verified"){
+
+            //For Calculating Number of Verified Queries
+          } else if (doc.data().status === "Verified") {
             setdashboardValues({
               ...dashboardValues,
-              Completed:dashboardValues.Completed++,
+              Completed: dashboardValues.Completed++,
             });
           }
 
           //For Calculating Number of pending queries
           setdashboardValues({
             ...dashboardValues,
-            Pending:dashboardValues.totalQueries-dashboardValues.declined-dashboardValues.Completed,
+            Pending:
+              dashboardValues.totalQueries -
+              dashboardValues.declined -
+              dashboardValues.Completed,
           });
-          
         });
 
-        
         changeQueries(temp);
         changeQueryId(tempId);
       } catch (err) {
         console.log(err);
       }
-    }
-    fetchData();
+      });
   }, []);
 
-  async function logOut(){
-    let result = false;
-    result = await FireAuth.signOut();
-    console.log(result)
-    if(result){
-        navigate("/")
-    }
-}
+  async function logOut() {
+    
+    navigate("/");
+    await auth.signOut();
+    
+  }
 
   return (
     <div id="mainDashBoardContainer">
@@ -91,9 +90,7 @@ export default function EventsItem() {
           style={{ borderRight: "1px solid #DEDEDE" }}
         >
           <p className="headingDashboard">Completed</p>
-          <p className="numbersDashboard">
-            {dashboardValues.Completed}
-          </p>
+          <p className="numbersDashboard">{dashboardValues.Completed}</p>
         </div>
         <div
           className="DashBoardContainers"
@@ -119,7 +116,9 @@ export default function EventsItem() {
           </div>
         </div>
         <div className="Admin-Logout-btn-container Admin-flex">
-          <button className="Admin-Logout-btn" onClick={logOut}>Logout</button>
+          <button className="Admin-Logout-btn" onClick={() => logOut()}>
+            Logout
+          </button>
         </div>
       </div>
       <div id="Main_Item_Container">
@@ -133,7 +132,6 @@ export default function EventsItem() {
           </h2>
         </div>
         {queryArr.map((element, i) => {
-          
           return (
             <>
               <Cards
