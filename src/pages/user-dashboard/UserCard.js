@@ -154,7 +154,7 @@ export default function Card(props) {
               disabled={disable}
               variant="primary"
               onClick={async () => {
-                await getfile();
+                await getfile(props.CompEmail,props.queryId);
                 setDisable(true);
               }}
             >

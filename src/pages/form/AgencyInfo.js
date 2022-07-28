@@ -29,7 +29,6 @@ function SignUpInfo({ formData, setFormData }) {
               value={formData.firstName}
               onChange={(e) => {
                 setFormData({ ...formData, firstName: e.target.value });
-                console.log(e.target.value);
               }}
             />
          </div>

@@ -1,10 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Encode+Sans:wght@100;500&display=swap');
+
 #mainDashBoardContainer {
   background-color: #ebedf0;
   position: absolute;
   height: 100vh;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  font-family: "Encode Sans";
 }
 
 #DashBoard {
@@ -15,7 +19,7 @@
   margin-top: 5vw;
   padding: 2vw;
   background-color: white;
-  border-radius: 20px;
+  border-radius: 20px; 
 }
 
 .headingDashboard {
@@ -47,44 +51,141 @@
 
 }
 
+.Admin-flex{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#Admin-Info-container { 
+  width: 98%;
+  height: 10%;
+  margin-top: 2%;
+  padding: 2%;
+  justify-content: space-between;
+  background: #F3F3F5;
+  border-radius: 16px 16px 0px 0px;
+}
+
+.Admin-Option-details-container{
+  width: 50%;
+  gap: 20%;
+  justify-content: flex-start;
+}
+
+.Option-detail{
+  gap: 10%;
+  width: 16%;
+}
+
+.Info-property{
+  font-Weight: 600;
+  color: #023473;
+}
+
+.Info-value{
+  color: #787878;
+  font-weight: 500;
+}
+
+.Admin-Logout-btn-container{
+  width: 50%;
+  justify-content: end;
+}
+
+.Admin-Logout-btn{  
+  border: none;
+  padding: 1% 5%;
+  background: #316EBC;
+  box-shadow: 4px 4px 19px rgba(0, 0, 0, 0.15);
+  border-radius: 5px;
+  color: #ffffff;
+}
+
 .ChildContainer {
   display: flex;
   flex-direction: column;
   margin: 20px;
 }
+
 #Main_Item_Container {
   display: flex;
   width: 100%;
   flex-wrap: wrap;
   justify-content: center;
-  margin-top: 2%;
-  padding: 2% 10px;
+  padding: 1%;
   background-color: #ffffff;
   border-radius: 6px;
   box-shadow: 1px 2px 1px 0px rgb(143, 142, 142);
 }
-@media (min-width: 600px) {
-  .details {
-    display: block;
-  }
-  .logo {
-    height: 5em;
-  }
-  .avatar {
-    height: 6em;
-  }
-  .info-label {
-    height: 20vh;
+
+@media (max-width: 1300px) {
+  .Option-detail{
+    width: 22%;
   }
 }
 
-@media (max-width: 1000px) {
-  .info-label {
-    height: 15vh;
+@media (max-width: 950px) {
+  .Option-detail{
+    width: 35%;
   }
 }
-@media (max-width: 650px) {
-  .info-label {
+
+@media (max-width: 700px) {
+  .Option-detail{
+    width: 50%;
+  }
+
+  .Info-property{
+    font-size: 0.9em;
+  }
+  
+  .Info-value{
+    font-size: 0.8em;
+  }
+  .Admin-Logout-btn{
+    font-size: 0.8em;
+  }
+  .headingDashboard{
+    font-size: 15px;
+  }
+  .numbersDashboard{
+    font-size: 30px;
+    line-height: 1;
+  }
+  .DashBoardContainers{
     height: 10vh;
   }
+
 }
+
+@media (max-width: 475px) {
+  .Option-detail{
+    width: 50%;
+  }
+
+  .Info-property{
+    font-size: 0.7em;
+  }
+  
+  .Info-value{
+    font-size: 0.6em;
+  }
+
+  .Admin-Logout-btn{
+    font-size: 0.7em;
+  }
+  .headingDashboard{
+    font-size: 10px;
+  }
+  .numbersDashboard{
+    font-size: 20px;
+    line-height: 1;
+  }
+  .DashBoardContainers{
+    height: 5vh;
+  }
+  #Admin-Info-container{
+    height: 5%;
+  }
+} 

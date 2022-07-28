@@ -5,6 +5,8 @@ import "../../styles/VerificationForm.css";
 import { createQuery } from "../../apis/firestoreDatabase";
 import { useNavigate } from "react-router-dom";
 import {upload} from "../../apis/firebasecloud"
+import { auth } from '../Firebase/Firebase';
+
 
 function Form() {
   const navigate=useNavigate();
@@ -97,7 +99,7 @@ function Form() {
                 try{
                   
                   const Id = await createQuery(formData);
-                  await upload(localStorage.getItem("email"),Id);
+                  await upload(auth.currentUser.email,Id);
 
                   navigate("/userDashboard");
                 }catch(err){
