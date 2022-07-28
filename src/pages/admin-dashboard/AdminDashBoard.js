@@ -66,6 +66,16 @@ export default function EventsItem() {
     }
     fetchData();
   }, []);
+
+  async function logOut(){
+    let result = false;
+    result = await FireAuth.signOut();
+    console.log(result)
+    if(result){
+        navigate("/")
+    }
+}
+
   return (
     <div id="mainDashBoardContainer">
       <div id="DashBoard">
@@ -109,7 +119,7 @@ export default function EventsItem() {
           </div>
         </div>
         <div className="Admin-Logout-btn-container Admin-flex">
-          <button className="Admin-Logout-btn">Logout</button>
+          <button className="Admin-Logout-btn" onClick={logOut}>Logout</button>
         </div>
       </div>
       <div id="Main_Item_Container">

@@ -2,9 +2,18 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import ContainerItem from "./UserContainerItem";
 import "../../styles/UserDashboard.css";
+import * as FireAuth from "../Firebase/Fireauth";
 
 function User() {
   const navigate = useNavigate();
+  async function logOut(){
+    let result = false;
+    result = await FireAuth.signOut();
+    console.log(result)
+    if(result){
+        navigate("/")
+    }
+}
   return (
     <div>
       <div id="UserDashBoardContainer">
@@ -34,7 +43,7 @@ function User() {
           </div>
         </div>
         <div className="User-Logout-btn-container User-flex">
-          <button className="User-Logout-btn">Logout</button>
+          <button className="User-Logout-btn" onClick={logOut}>Logout</button>
         </div>
       </div>
         <ContainerItem />
