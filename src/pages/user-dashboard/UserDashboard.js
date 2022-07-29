@@ -1,192 +1,57 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import Cards from "./UserCard";
-import "../../styles/AdminDashboard.css";
+import ContainerItem from "./UserContainerItem";
 import "../../styles/UserDashboard.css";
-import { requestQuery } from "../../apis/firestoreDatabase";
-import { useState, useEffect } from "react";
-import { auth } from "../Firebase/Firebase";
+import {FormStatus} from '../login-signup/State'
+import * as FireAuth from "../Firebase/Fireauth";
 
-export default function EventsItem() {
+function User() {
   const navigate = useNavigate();
-  const [queryArr, changeQueries] = useState([]);
-  const [queryId, changeQueryId] = useState([]);
-
-  const [dashboardValues, setdashboardValues] = useState({
-    totalQueries: 0,
-    Completed: 0,
-    Pending: 0,
-    declined: 0,
-  });
-
-  useEffect(() => {
-    auth.onAuthStateChanged(async (user) => {
-        try {
-          const res = await requestQuery(user.email);
-          const temp = [];
-          const tempId = [];
-          res.forEach((doc) => {
-            temp.push(doc.data());
-            tempId.push(doc.id);
-
-            setdashboardValues({
-              ...dashboardValues,
-              totalQueries: dashboardValues.totalQueries++,
-            });
-
-            //For Calculating Number of declined Queries
-            if (doc.data().status === "Denied") {
-              setdashboardValues({
-                ...dashboardValues,
-                declined: dashboardValues.declined++,
-              });
-
-              //For Calculating Number of Verified Queries
-            } else if (doc.data().status === "Verified") {
-              setdashboardValues({
-                ...dashboardValues,
-                Completed: dashboardValues.Completed++,
-              });
-            }
-
-            //For Calculating Number of pending queries
-            setdashboardValues({
-              ...dashboardValues,
-              Pending:
-                dashboardValues.totalQueries -
-                dashboardValues.declined -
-                dashboardValues.Completed,
-            });
-          });
-          changeQueries(temp);
-          changeQueryId(tempId);
-        } catch (err) {
-          console.log(err);
-        }
-      
-    });
-  }, []);
-
-  async function logOut() {
-    navigate("/");
-    await auth.signOut();
-  }
-
+  async function logOut(){
+    let result = false;
+    result = await FireAuth.signOut();
+    console.log(result)
+    if(result){
+        navigate("/")
+    }
+}
   return (
-    <div
-      id="Main_Item_Container"
-      style={{
-        backgroundColor: "#ebedf0",
-        position: "absolute",
-        width: "100%",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        fontFamily: "Encode Sans",
-      }}
-    >
-      <div id="DashBoard">
-        <div
-          className="DashBoardContainers"
-          style={{ borderRight: "1px solid #DEDEDE" }}
-        >
-          <p className="headingDashboard">Total Queries</p>
-          <p className="numbersDashboard">{dashboardValues.totalQueries}</p>
+    <div>
+      <div id="UserDashBoardContainer">
+        <div className="user-info-label">
+          <div className="info-d1"> </div>
+          <div className="info-d2"> </div>
         </div>
-        <div
-          className="DashBoardContainers"
-          style={{ borderRight: "1px solid #DEDEDE" }}
-        >
-          <p className="headingDashboard">Completed</p>
-          <p className="numbersDashboard">{dashboardValues.Completed}</p>
-        </div>
-        <div
-          className="DashBoardContainers"
-          style={{ borderRight: "1px solid #DEDEDE" }}
-        >
-          <p className="headingDashboard">Pending</p>
-          <p className="numbersDashboard">{dashboardValues.Pending}</p>
-        </div>
-        <div className="DashBoardContainers">
-          <p className="headingDashboard">Declined</p>
-          <p className="numbersDashboard">{dashboardValues.declined}</p>
-        </div>
-      </div>
-
-      <div className="options">
-        <button
-          className="btn btn-primary"
-          href="/form"
-          onClick={() => {
-            navigate("/form");
-          }}
-        >
-          Submit a query
-        </button>
-        <button
-          className="btn btn-primary"
-          href="/#/"
-          onClick={() => {
-            console.log("help Center");
-          }}
-        >
-          Help Centre
-        </button>
-      </div>
-
-      <div id="User-Info-container" className="User-flex">
+        <div id="User-Info-container" className="User-flex">
         <div className="User-details-container User-flex">
-          <div className="Option-detail Admin-flex">
-            <p className="Info-property">Showing</p>
-            <p className="Info-value">Query</p>
-          </div>
-          <div className="Option-detail Admin-flex">
-            <p className="Info-property">Sort By</p>
-            <p className="Info-value">Date</p>
+        <div className="options">
+            <button
+              href="/form"
+              onClick={() => {
+                FormStatus.formStatus = true;
+                navigate("/form");
+              }}
+            >
+              Submit a query
+            </button>
+            <button
+              href="/#/"
+              onClick={() => {
+                console.log("help Center")
+              }}
+            >
+              Help Centre
+            </button>
           </div>
         </div>
         <div className="User-Logout-btn-container User-flex">
-          <button className="btn btn-primary" onClick={logOut}>
-            Logout
-          </button>
+          <button className="User-Logout-btn" onClick={logOut}>Logout</button>
         </div>
       </div>
-      <div id="Main_Item_Container">
-        <div className="main_card_container">
-          <h2 className="heading"> Date </h2>
-          <h2 className="heading"> Query Id </h2>
-          <h2 className="heading"> Name </h2>
-          <h2 className="heading"> PRN </h2>
-          <h2 className="heading" id="btnHeading">
-            Show Details
-          </h2>
-        </div>
-        {queryArr.map((element, i) => {
-          return (
-            <>
-              <Cards
-                key={i}
-                date={element.PaymentDate}
-                docs={element.Documents}
-                email={element.Email}
-                NEFT={element.NEFTrefNumber}
-                prn={element.PRN}
-                PYear={element.PassingYear}
-                Prog={element.Program}
-                Uni={element.Univerity}
-                compContactNumber={element.companyContactNumber}
-                compContactPersonal={element.companyContactPersonal}
-                CompEmail={element.companyEmail}
-                CompName={element.companyName}
-                queryId={queryId[i]}
-                name={element.candidateName}
-                status={element.status}
-                color={element.Query % 2 === 0 ? "#D1D1D1" : "#FFFFFF"}
-              />
-            </>
-          );
-        })}
+        <ContainerItem />
       </div>
     </div>
   );
 }
+
+export default User;
