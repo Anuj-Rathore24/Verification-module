@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import SignUpInfo from "./AgencyInfo.js";
-import OtherInfo from "./DocumentVerification.js";
+import AgencyInfo from "./AgencyInfo";
+import PaymentInfo from "./PaymentInfo";
 import "../../styles/VerificationForm.css";
 import { createQuery } from "../../apis/firestoreDatabase";
 import { useNavigate } from "react-router-dom";
@@ -17,8 +17,7 @@ function Form() {
     agencyEmail: "",
     Designation: "",
     agencyNo: "",
-    firstName: "",
-    lastName: "",
+    candidateName: "",
     universityName: "",
     progamName: "",
     prn: "",
@@ -28,95 +27,102 @@ function Form() {
     NEFT: "",
     paymentSS: "",
     verificationDocument: "",
-    status:"Not Verified"
+    status:"Not Verified",
   });
 
   const FormTitles = [
     "Ageny-Details",
     "Payement-Info",
-    "Document-verification",
   ];
 
   const PageDisplay = () => {
     if (page === 0) {
-      return <SignUpInfo formData={formData} setFormData={setFormData} />;
+      return <AgencyInfo formData={formData} setFormData={setFormData} />;
     }
-    // else if (page === 1) {
-    //   return <Payement-page formData={formData} setFormData={setFormData} />;
-    // }
     else {
-      return <OtherInfo formData={formData} setFormData={setFormData} />;
+      return <PaymentInfo formData={formData} setFormData={setFormData} />;
     }
   };
 
   return (
     <div className="form">
-      <div className="progressbar">
-        <div
-          onClick={() => {
-            setPage(0);
-          }}
-          style={{
-            backgroundColor:
-              page === 0 ? "white" : page === 1 ? "#FFC107" : "#FFC107",
-          }}
-        ></div>
-        <div
-          onClick={() => {
-            setPage(1);
-          }}
-          style={{
-            backgroundColor:
-              page === 0 ? "#FFC107" : page === 1 ? "white" : "#FFC107",
-          }}
-        ></div>
-        <div
-          onClick={() => {
-            setPage(2);
-          }}
-          style={{
-            backgroundColor:
-              page === 0 ? "#FFC107" : page === 1 ? "#FFC107" : "white",
-          }}
-        ></div>
-      </div>
-      <div className="form-container">
-        <div className="vf_body">{PageDisplay()}</div>
-        <div className="pageChange">
-          <button
-            disabled={page === 0}
+      <div className="progressbar-container">
+        <div className="progressbar-title">
+          <p>Form</p>
+          <p>Payment Details</p>
+        </div>
+        <div className="progressbar">
+          <div className="progress-form"
             onClick={() => {
-              setPage((currPage) => currPage - 1);
+              setPage(0);
+              document.querySelector('.pageChange-btn1').focus();
+              document.querySelector('.form-submit-btn').style.display = 'none';
             }}
-          >
-            Prev
-          </button>
-          <button
-            onClick={async () => {
-              if (page === FormTitles.length - 1) {
-                console.log(formData.Documents)  
-                
-                try{
-                  
-                  const Id = await createQuery(formData);
-                  await upload(auth.currentUser.email,Id);
-
-                  navigate("/userDashboard");
-                }catch(err){
-                  console.log("new Error =>"+err);
-                  alert("Please Fill all the details properly");
-                }
-
-              } else {
-                setPage((currPage) => currPage + 1);
-              }
+            style={{
+              backgroundColor:
+                page === 0 ? "#E77455" : page === 1 ? "#E8EDFF" : "#E77455",
             }}
-          >
-            {page === FormTitles.length - 1 ? "Submit" : "Next"}
-          </button>
+          ></div>
+
+          <div className="progress-payment"
+            onClick={() => {
+              setPage(1);
+              document.querySelector('.pageChange-btn2').focus();
+              document.querySelector('.pageChange-btn1').classList.remove('focus');
+              document.querySelector('.form-submit-btn').style.display = 'block';
+            }}
+            style={{
+              backgroundColor:
+                page === 0 ? "#E8EDFF" : page === 1 ? "#E77455" : "#E77455",
+            }}
+          ></div>
         </div>
       </div>
+      <div className="form-container">
+        <div className="form-body">{PageDisplay()}</div>
+        <button className="form-submit-btn" style={{ display: 'none' }}
+          onClick={async () => {
+
+            // console.log(formData.Documents)
+            try{     
+              const Id = await createQuery(formData);
+              await upload(auth.currentUser.email,Id);
+
+              navigate("/userDashboard");
+            }
+            catch(err){
+              console.log("new Error =>"+err);
+              alert("Please Fill all the details properly");
+            }
+          }}
+        >Submit
+        </button>
+        <div className="pageChange">
+          <button className="pageChange-btn1 focus"
+            onClick={() => {
+              if (page === FormTitles.length - 1)
+                setPage((currPage) => currPage - 1);
+              document.querySelector('.form-submit-btn').style.display = 'none';
+              document.querySelector('.pageChange-btn2').classList.remove('focus');
+              document.querySelector('.pageChange-btn1').classList.add('focus');
+            }}
+          >
+            1
+          </button>
+          <button className="pageChange-btn2"
+            onClick={async () => {
+                setPage((currPage) => currPage + 1);
+                document.querySelector('.pageChange-btn1').classList.remove('focus');
+                document.querySelector('.pageChange-btn2').classList.add('focus');
+                document.querySelector('.form-submit-btn').style.display = 'block';
+            }}
+          >
+          2
+        </button>
+
+      </div>
     </div>
+    </div >
   );
 }
 
