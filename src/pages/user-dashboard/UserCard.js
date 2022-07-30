@@ -49,9 +49,12 @@ export default function Card(props) {
           <h2 className="card_heading">{props.name}</h2>
         </div>
         <div className="valueContainer">
-          <Button variant="primary" onClick={handleShow}>
-            Show
-          </Button>
+          <h2 className="card_heading">{props.prn}</h2>
+        </div>
+        <div className="valueContainer">
+        <a className="link-primary linkViewDocument"  variant="primary" onClick={handleShow}>
+            View document
+          </a>
         </div>
 
         {/* Modal for Showing Full Information */}

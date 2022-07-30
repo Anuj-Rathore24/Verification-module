@@ -7,7 +7,7 @@ const {
 } = require("firebase/storage");
 const { app } = require("../pages/Firebase/FirebaseConfig");
 const axios = require("axios");
-
+const loader = require('../pages/loader');
 // Function for Uploading files on Firebase Cloud
 
 module.exports = {

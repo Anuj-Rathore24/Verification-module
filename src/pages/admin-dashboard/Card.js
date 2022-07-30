@@ -4,7 +4,7 @@ import { Button, Modal } from "react-bootstrap";
 import axios from "axios";
 import { getfile, getPaymentFile } from "../../apis/firebasecloud.js";
 import { updateQuery } from "../../apis/firestoreDatabase";
-
+import Loader from '../loader';
 //for color of status circles
 function colorScheme(variable) {
   var color = "yellow";
@@ -32,7 +32,7 @@ async function verifyDocument(dataObject) {
 
 export default function Card(props) {
   //Use State for invoking close and open button
-
+  const [loader, setLoader] = useState(false);
   const [show, setShow] = useState(false);
   const handleClose = () => {
     setDisable(false);
@@ -60,7 +60,7 @@ export default function Card(props) {
 
   return (
     <div>
-      <div
+        <div
         className="main_card_container"
         style={{
           backgroundColor: `${props.color}`,
@@ -88,9 +88,9 @@ export default function Card(props) {
           <h2 className="card_heading">{props.prn}</h2>
         </div>
         <div className="valueContainer">
-          <Button variant="primary" onClick={handleShow}>
+          <a className="link-primary linkViewDocument"  variant="primary" onClick={handleShow}>
             View document
-          </Button>
+          </a>
         </div>
 
         {/* Modal for Showing Full Information */}
@@ -232,6 +232,7 @@ export default function Card(props) {
               disabled={disable}
               variant="primary"
               onClick={async () => {
+                //setLoader(true);
                 await getfile(props.CompEmail, props.queryId);
                 setDisable(true);
               }}

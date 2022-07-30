@@ -62,7 +62,9 @@
 .content{
     margin: 5px;
 }
-
+.linkViewDocument:hover{
+    cursor: pointer;
+}
 #btnHeading{
     margin-left: 5%;
     margin-right: 5%;

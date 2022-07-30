@@ -10,7 +10,7 @@ module.exports = {
       companyEmail: creds.agencyEmail,
       companyContactPersonal: creds.Designation,
       companyContactNumber: creds.agencyNo,
-      candidateName: creds.firstName + " " + creds.lastName,
+      candidateName: creds.candidateName,
       Univerity: creds.universityName,
       Program: creds.progamName,
       PRN: creds.prn,
