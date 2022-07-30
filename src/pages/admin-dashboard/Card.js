@@ -17,14 +17,17 @@ async function declineButtonClick(userId, queryId, dmessage) {
   const element = document.getElementById("inputDelineAddress");
   console.log("Message ->" + element.innerHTML);
   axios.post("/declineQuery", { message: dmessage });
+  await updateQuery("admin@gmail.com", queryId, 0);
   await updateQuery(userId, queryId, 0);
 }
 
 //function for hitting apis in backend for send certificates
 async function verifyDocument(dataObject) {
-  await axios.post("/MakeCert", { data: dataObject });
+  await updateQuery("admin@gmail.com", dataObject.queryId, 1);
   await updateQuery(dataObject.CompEmail, dataObject.queryId, 1);
   alert("Mail in Progess");
+  await axios.post("/MakeCert", { data: dataObject })
+  
 }
 
 export default function Card(props) {
@@ -48,7 +51,6 @@ export default function Card(props) {
     try {
 
       if(props.status==="Verified" || props.status==="Denied"){
-        console.log(props.status)
         setstatusVerify(true)
       }
       const element = document.getElementById("inputDelineAddress");

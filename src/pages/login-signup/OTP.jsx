@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { deleteUser} from 'firebase/auth';
 import { auth } from '../Firebase/Firebase';
 import {clickFunctionSignup} from './Signup.jsx'
-import firebaseConfig from '../Firebase/FirebaseConfig';
+import { LoggedIn } from './State';
 
 
 export default function OTP() {
@@ -45,6 +45,7 @@ export default function OTP() {
                 clickFunctionSignup(localStorage.getItem('email'), localStorage.getItem('password')); //Creating User with email and password signup. Email and password are collected from signup form and stored in local storage.
                 localStorage.removeItem('email');
                 localStorage.removeItem('password'); //Deleting from local storage once password is used
+                LoggedIn.isLoggedIn = true;
                 navigate("/Userdashboard", { replace: true }) //Navigate to home once signup is complete
 
                 // ...

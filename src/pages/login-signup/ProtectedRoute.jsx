@@ -1,12 +1,67 @@
 
-import React from "react";
+import {React,useEffect,useState} from "react";
 import { Navigate } from "react-router-dom";
-import { PageStatus } from "./State";
+import { LoggedIn,PageStatus } from "./State";
 import OTP from './OTP'
+import UserDashboard from "../user-dashboard/UserDashboard";
+import VerificationForm from "../form/VerificationForm";
+import AdminDashBoard from "../admin-dashboard/AdminDashBoard.js";
+import { auth } from "../Firebase/Firebase";
 
-// Proteted Route function for OTP Page so the user cannot directly go to OTP with URL Manipulation.
-const ProtectedRoute = () => {
-    return PageStatus.pageStatus ? <OTP/> : <Navigate to="/Signup"/> // If pagestatus state is set as true then only it will go to the OTP page else it will go back to Signup Page
+
+
+
+
+
+
+// Protected Route function for OTP Page so the user cannot directly go to OTP with URL Manipulation.
+const ProtectedRoute1 = () => {
+    return PageStatus.pageStatus ? <OTP/> : <Navigate to="/Signup"/>
+         // If pagestatus state is set as true then only it will go to the OTP page else it will go back to Signup Page
+};
+const ProtectedRoute2 = () => {
+    var [userLoggedIn,setUser] = useState({})
+    useEffect(() => {
+        try{
+            auth.onAuthStateChanged((user)=>{
+                if(user) setUser(user.uid!==" "?true:false)
+                else{
+                    setUser(false)
+                }
+            })
+        }catch(err){
+            console.log("Something Wrong ->"+err)
+        }
+    }, [userLoggedIn])
+    console.log(LoggedIn.isLoggedIn)
+
+    return userLoggedIn ? <UserDashboard/> : <Navigate to = "/"/>    
+
 };
 
-export default ProtectedRoute;
+const ProtectedRoute3 = () => {
+ 
+
+    return LoggedIn.isLoggedIn ? <VerificationForm/> : <Navigate to = "/"/>    
+
+
+};
+
+const ProtectedRoute4 = () => {
+    var [userLoggedIn,setUser] = useState({})
+    useEffect(() => {
+        try{
+            auth.onAuthStateChanged((user)=>{
+                if(user) setUser(user.uid==="QuRWB630HehGruKk7Oe6R3KSgns1"?true:false)
+                else{
+                    setUser(false)
+                }
+            })
+        }catch(err){
+            console.log("Something Wrong ->"+err)
+        }
+    }, [userLoggedIn])
+    return userLoggedIn ? <AdminDashBoard/> : <Navigate to = "/"/>
+}
+
+export { ProtectedRoute1, ProtectedRoute2, ProtectedRoute3, ProtectedRoute4 }

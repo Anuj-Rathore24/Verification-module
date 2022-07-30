@@ -63,7 +63,7 @@ async function signIn(email, password) {
             a = 1;
             // ..
         });
-    if (a == 0) {
+    if (a === 0) {
         return true
     }
     else {
@@ -95,7 +95,7 @@ async function googleSignIn() {
             a = 1
             // ..
         });
-    if (a == 0) {
+    if (a === 0) {
         return true
     }
     else {

@@ -104,13 +104,10 @@ export default function Signup() {
         else if (validateID === 2) {
             e.preventDefault();
             window.alert("Check if entered Email is valid.")
-            console.log("Hello mf")
-            // navigate('/signup',Element= <Signup/>);
         }
         else if (validateID === 3) {
             e.preventDefault();
             window.alert("Minimum Password length should be 6.")
-            // navigate("/signup");
         }
     }
 
