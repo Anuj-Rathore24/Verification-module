@@ -47,7 +47,6 @@ module.exports = {
   },
   updateQuery:async function (userId,queryId,type){
     if(type===1){
-      console.log("working")
       try{
         const docRef=doc(db,`${userId}`,`${queryId}`)
         console.log("working")
