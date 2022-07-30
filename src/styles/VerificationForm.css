@@ -1,280 +1,404 @@
 @import url(https://fonts.googleapis.com/css?family=Montserrat);
+@import url('https://fonts.googleapis.com/css2?family=Encode+Sans:wght@100;500&display=swap');
 
 .main {
-  margin: 0%;
-  padding: 0%;
-  font-family: montserrat, arial, verdana;
-  position: relative;
-  overflow-x: hidden;
+    margin: 0%;
+    padding: 0%;
+    font-family: 'Encode Sans';
+    position: relative;
+    overflow-x: hidden;
 }
-.vf_body{
-  background: white;
-  padding: 2%;
-  border-radius: 10px;
-}
+
 .form {
-  width: 100%;
-  height: 100%;
-  margin-top: 80px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  overflow-x: hidden;
-  background-color: white;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+    background-color: white;
+    font-family: 'Encode Sans';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    color: #6F6F6F;
 }
 
 
 /* PROGRESS BAR */
-.progressbar {
-  display: flex;
-  width: 65%;
-  max-width: 700px;
-  height: 60px;
-  justify-content: space-around;
-  background-color: #0089ED;
-  margin-bottom: 25px;
-  margin-top: 25px;
-  border-radius: 2px;
+.progressbar-container {
+    margin-top: 85px;
+    width: 30%;
+    max-width: 484px;
+    min-width: 12rem;
+    font-weight: 600;
+    font-size: 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
-.progressbar div {
-  width: 30.3%;
-  margin: 0px 5px;
-  height: 80%;
-  justify-self: center;
-  align-self: center;
-  border-radius: 10px;
+.progressbar-title {
+    display: flex;
+    justify-content: space-around;
 }
-.progressbar div:hover{
-  cursor:pointer;
+
+.progressbar {
+    display: flex;
+    width: 100%;
+    height: 5px;
+    background-color: #E8EDFF;
+    margin-bottom: 25px;
+    border-radius: 10px;
+}
+
+.progress-form {
+    width: 35.5%;
+    height: 100%;
+    border-radius: 10px;
+}
+
+.progress-payment {
+    width: 64.5%;
+    height: 100%;
+    border-radius: 10px;
+}
+
+.progressbar div:hover {
+    cursor: pointer;
 }
 
 .form-container {
-  width: 90%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.name {
-  width: 100%;
+.form-body {
+    width: 60%;
 }
 
-.data{
-  font-size: 20px;
+.label {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
 }
 
-.label,
-.label2 {
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-  width: 100%;
+.form-radios input {
+    margin-right: 0;
 }
 
-.label-name {
-  display: flex;
-  flex-direction: column;
-  align-items: baseline;
-  width: 100%;
+div.form-radios {
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
-.radios label, .checkboxes label {
-  padding: 1rem;
-  padding-left: 0;
-}
-
-.radios input{
-  margin-right: 0;
-}
-
-div.radios{
-  margin-top:0;
-  margin-bottom: 0;
-}
-#l2{
-  margin-top: 1em;
+#l2 {
+    margin-top: 1em;
 }
 
 .Ageny-Details-container,
 .Candidate-Info-container,
 .document-container {
-  height: 100%;
-  width: 100%;
-  margin-right: 5em;
-  display: flex;
-  flex-direction: column;
-  font-size: 15px;
-  font-weight: bold;
-  /* margin-bottom: 20px; */
+    height: 100%;
+    width: 100%;
+    margin-right: 5em;
+    display: flex;
+    flex-direction: column;
+    font-size: 15px;
+    font-weight: 500;
 }
 
 
 .Ageny-Details-container input,
 .Candidate-Info-container input,
 .document-container input {
-  width: 100%;
-  height: 2.5em;
-  padding-left: 5px;
-  font-size: 15px;
-  margin-bottom: 1.5rem;
+    width: 100%;
+    height: 2.5em;
+    padding-left: 5px;
+    font-size: 15px;
+    margin-bottom: 1.5rem;
 }
 
 
 input {
-  border: 2px solid #0089ED;
-  border-radius: 5px;
+    background: #F7FAFD;
+    border: 2px solid #E1E1E1;
+    border-radius: 10px;
+    color: #6F6F6F;
 }
 
 input:focus {
-  border: 3px solid #0089ED;
-
-}
-/* .checkboxes input{
-  width: 30%;
-} */
-input[type=radio], input[type=checkbox] {
-  margin: 3%;
-  width: 5%;
-  height: 14px;
+    border: 3px solid #0089ED;
 }
 
-.select-image-btn input[type=file] {
-  padding-top:0.2rem;
-  }
-
-.radios,.checkboxes {
-  display: flex;
-  align-self: normal;
-  margin: 2%;
-  font-size: 15px;
+input[type=radio],
+input[type=checkbox] {
+    width: 5%;
+    height: 14px;
 }
 
-div.checkboxes{
-  margin-top: 0;
-  margin-bottom: 0;
+input[name="university-radio"] {
+    accent-color: #FE724C;
+
 }
 
-/* .checkboxes{
-  justify-content: space-between;
-} */
+.form-radios label,
+.form-checkboxes label {
+    font-weight: 500;
+}
 
+input[type=file] {
+    display: none;
+}
+
+.payementSS {
+    display: flex;
+    justify-content: space-between;
+}
+
+.payement-image-btn,
+.document-upload-btn {
+    border: 2px solid #6c5ce7;
+    height: 3em;
+    background: #3A71CE;
+    border-radius: 6px;
+    line-height: 3em;
+    text-align: center;
+    padding: 0em 1.4em;
+    color: white;
+}
+
+.form-radios,
+.form-checkboxes {
+    display: flex;
+    align-self: normal;
+}
+
+div.form-checkboxes {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+.cb-container{
+    width: 90%;
+}
+.verification-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.charges-details {
+    width: 70%;
+    padding: 20px;
+    background: #F7FAFD;
+    border: 2px solid #E1E1E1;
+    border-radius: 10px;
+    color: #6F6F6F;
+}
+
+.document-upload-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    margin-top: 1.5rem;
+    width: 100%;
+    background: #F7FAFD;
+    border: 2px solid #E1E1E1;
+    border-radius: 10px;
+    color: #6F6F6F;
+}
+
+.payimg-container {
+    width: 10%;
+    position: relative;
+    right: -3em;
+}
+
+.payimg-container img {
+    width: 500%;
+    height: 500%;
+}
+
+.doc-flex img{
+    width: 300%;
+}
+
+.form-submit-btn{
+    border: 1px solid #6c5ce7;
+    height: 2em;
+    font-size: 1.4em;
+    background: #3A71CE;
+    border-radius: 5px;
+    line-height: 2em;
+    text-align: center;
+    padding: 0em 2.4em;
+    width: 12em;
+    margin-top: 1em;
+    align-self: center;
+    color: white;
+    font-family: 'Encode Sans';
+}
 .form-container .pageChange {
-  flex: 20%;
-  width: 45%;
-  display: flex;
-  justify-content: space-between;
-  margin-top: 30px;
-  margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 
-.form-container .pageChange button {
-  border-radius: 7px;
-  width: 7.5em;
-  height: 40px;
-  background-color: #0089ED;
-  font-weight: bold;
-  color: white;
-  border: 0 none;
-  border-radius: 1px;
-  cursor: pointer;
-  padding: 10px 5px;
-  margin: 5px;
+.pageChange-btn1,
+.pageChange-btn2 {
+    border-radius: 7px;
+    width: 3.5em;
+    height: 40px;
+    background-color: white;
+    color: #0089ED;
+    border: 2px solid #0089ED;
+    font-weight: bold;
+    border-radius: 1px;
+    cursor: pointer;
+    padding: 10px 5px;
+    margin: 5px;
 }
 
-.invalid{
-  color:red;
+.form-container .pageChange button:focus {
+    background-color: #0089ED;
+    color: white;
+    border: 2px solid #6F6F6F;
 }
 
+.focus {
+    background-color: #0089ED;
+    color: white;
+    border: 2px solid #6F6F6F;
+}
 
 @media (min-width:750px) {
-  .name {
-    display: flex;
-    gap: 1.5em;
-  }
+    .name {
+        display: flex;
+        gap: 1.5em;
+    }
 
-  .flex {
-    display: flex;
-    gap: 2.5em;
-  }
-  
-  .document-container{
-    margin: 0em 20em 0 0;
-  }
+    .form-flex {
+        display: flex;
+        gap: 2.5em;
+    }
+
+    .document-container {
+        margin: 0em 20em 0 0;
+    }
+
+    .doc-flex {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
 }
 
-@media (max-width:750px) and (min-width:550px) {
-  .name {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5em;
-  }
-  .document-container{
-    margin: 1em 0em 0 0;
-  }
+@media (max-width:750px) and (min-width:700px) {
+    .name {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5em;
+    }
 
-  .Ageny-Details-container input,
-  .Candidate-Info-container input,.document-container input  {
-    width: 95%;
-    height: 2em;
-    padding-left: 5px;
-    font-size: 15px;
-  }
+    .document-container {
+        margin: 1em 0em 0 0;
+    }
 
-  .label-name {
-    width: 49%;
-  }
+    .Ageny-Details-container input,
+    .Candidate-Info-container input,
+    .document-container input {
+        width: 95%;
+        height: 2em;
+        padding-left: 5px;
+        font-size: 15px;
+    }
 
-  .flex {
-    display: flex;
-    gap: 0.5em;
-  }
+    .label-name {
+        width: 49%;
+    }
 
+    .form-flex {
+        display: flex;
+        gap: 0.5em;
+    }
 
+    #ln {
+        width: 215%;
+    }
 
-  #ln {
-    width: 215%;
-  }
-  /* .checkboxes input{
-    width: 20%;
-  } */
+    input[type=radio],
+    input[type=checkbox] {
+        margin: 2%;
+        width: 4%;
+        height: 14px;
+    }
 
-  input[type=radio], input[type=checkbox]  {
-    margin: 3%;
-    width: 5%;
-    height: 14px;
-  }
-  
-  /* .checkboxes{
-    justify-content: space-between;
-  } */
+    .doc-flex img{
+        display: none;
+    }
 }
 
-@media (max-width:550px) {
+@media (max-width:700px) {
+    .progressbar-container {
+        font-size: 95%;
+    }
 
-  .Ageny-Details-container input,
-  .Candidate-Info-container input  {
-    width: 90%;
-    height: 2em;
-    padding-left: 5px;
-    font-size: 15px;
-  }
-  .document-container{
-    width: 80%;
-    margin: 1em -5em 0 0;
-  }
-  /* .checkboxes input{
-    width: 20%;
-  } */
-   
-  input[type=radio], input[type=checkbox]  {
-    margin: 3%;
-    width: 5%;
-    height: 14px;
-  }
-  /* .checkboxes{
-    justify-content: space-between;
-  } */
-  
+    .Ageny-Details-container input,
+    .Candidate-Info-container input {
+        width: 90%;
+        height: 2em;
+        padding-left: 5px;
+        font-size: 15px;
+    }
+
+    .document-container {
+        width: 80%;
+        margin: 1em -5em 0 0;
+    }
+
+    input[type=radio],
+    input[type=checkbox] {
+        margin: 2%;
+        width: 6%;
+        height: 16px;
+    }
+    .doc-flex img,.payimg-container{
+        display: none;
+    }
+    .payementSS {
+        flex-direction: column;
+    }
+
+    .document-upload-container{
+        flex-direction: column;
+    }
+
+    .verification-info {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .charges-details {
+        width: 100%;
+        overflow-x: auto;
+        overflow-y: hidden;
+        white-space: nowrap;
+    }
+
+    .form-radios label,
+    .form-checkboxes label {
+        padding: 5px;
+        font-size: 12px;
+    }
+    
+    .form-submit-btn {
+        padding: 0em 1.4em;
+        width: 8em;
+        margin: 1em 0 0 2em;
+    }
 }
