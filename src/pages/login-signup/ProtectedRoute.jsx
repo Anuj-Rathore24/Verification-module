@@ -33,16 +33,27 @@ const ProtectedRoute2 = () => {
             console.log("Something Wrong ->"+err)
         }
     }, [userLoggedIn])
-    console.log(LoggedIn.isLoggedIn)
 
     return userLoggedIn ? <UserDashboard/> : <Navigate to = "/"/>    
 
 };
 
 const ProtectedRoute3 = () => {
- 
+    var [userLoggedIn,setUser] = useState({})
+    useEffect(() => {
+        try{
+            auth.onAuthStateChanged((user)=>{
+                if(user) setUser(user!==" "?true:false)
+                else{
+                    setUser(false)
+                }
+            })
+        }catch(err){
+            console.log("Something Wrong ->"+err)
+        }
+    }, [userLoggedIn])
 
-    return LoggedIn.isLoggedIn ? <VerificationForm/> : <Navigate to = "/"/>    
+    return userLoggedIn ? <VerificationForm/> : <Navigate to = "/"/>    
 
 
 };
