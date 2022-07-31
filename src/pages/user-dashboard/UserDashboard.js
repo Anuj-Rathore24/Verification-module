@@ -5,12 +5,20 @@ import "../../styles/AdminDashboard.css";
 import "../../styles/UserDashboard.css";
 import { requestQuery } from "../../apis/firestoreDatabase";
 import { useState, useEffect } from "react";
+import { Modal } from "react-bootstrap";
 import { auth } from "../Firebase/Firebase";
 
 export default function EventsItem() {
   const navigate = useNavigate();
   const [queryArr, changeQueries] = useState([]);
   const [queryId, changeQueryId] = useState([]);
+  //Use State for invoking close and open button
+
+  const [show, setShow] = useState(false);
+  const handleClose = () => { 
+    setShow(false);
+  };
+  const handleShow = () => setShow(true);
 
   const [dashboardValues, setdashboardValues] = useState({
     totalQueries: 0,
@@ -126,13 +134,51 @@ export default function EventsItem() {
         <button
           className="btn btn-primary"
           href="/#/"
-          onClick={() => {
-            console.log("help Center");
-          }}
+          onClick={handleShow}
         >
           Help Centre
         </button>
       </div>
+
+      
+         {/* Modal for help center */}
+
+         <Modal show={show} onHide={handleClose} animation={false}>
+          {/* Header for the modal */}
+          <div>
+            <Modal.Header closeButton>
+              <Modal.Title style={{ fontSize: "1.25rem",marginLeft:"40%"}}>
+               Help Center
+              </Modal.Title>
+            </Modal.Header>
+          </div>
+          {/*Main Body of the Modal */}
+
+          <Modal.Body
+            id="ModalBodyContainer"
+            style={{ display: "flex", flexDirection: "column" }}
+          >
+            <div
+              style={{
+                overflow: "auto",
+                height: "200px",
+              }}
+            >
+              <div style={{ display: "flex", flexDirection: "row" }}>
+                <p className="contactInfo">Helpline Number :</p>
+                <p className="contactInfo"></p>
+              </div>
+              <hr></hr>
+              <div style={{ display: "flex", flexDirection: "row" }}>
+                <p className="contactInfo">Contact Email :</p>
+                <p className="contactInfo"></p>
+              </div>
+              <hr></hr>
+            
+            </div>
+          </Modal.Body>
+         
+        </Modal>
 
       <div id="User-Info-container" className="User-flex">
         <div className="User-details-container User-flex">
