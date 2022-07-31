@@ -1,6 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Encode+Sans:wght@100;500&display=swap');
 
-#UserDashBoardContainer{
+#Main_Item_Container_page {
+    /* background-color: #ebedf0; */
+    background-image: url('/src/pages/images/mit.png');
+    position: absolute;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: Encode Sans;
+    height: auto;
+}
+
+#UserDashBoardContainer {
     background-color: #ebedf0;
     position: absolute;
     height: 100vh;
@@ -9,9 +21,9 @@
     flex-direction: column;
     align-items: center;
     font-family: "Encode Sans";
-  }
- 
-.user-info-label{
+}
+
+.user-info-label {
     height: 15vh;
     background-color: #F8F4F4;
     border-radius: 6px;
@@ -22,136 +34,150 @@
     box-shadow: 1px 2px 1px 0px rgb(143, 142, 142);
 }
 
-.info-d1{
+.info-d1 {
     background-color: #2a0359;
     border-radius: 6px;
     width: 38%;
     height: 100%;
 }
 
-.info-d2{
+.info-d2 {
     background-color: #F8F4F4;
     border-radius: 6px;
     width: 62%;
     height: 100%;
 }
 
-.options{
+.options {
     margin-top: 1.5%;
     width: 70%;
     display: flex;
     justify-content: center;
 }
-.options button{
-    padding:1%;
+
+.options button {
+    padding: 1%;
     margin: 20px;
     border-radius: 6px;
-    text-decoration:none;
-    box-shadow: 1px 2px 1px 0px rgb(207, 206, 206);
+    text-decoration: none;
+    /* box-shadow: 1px 2px 1px 0px rgb(207, 206, 206); */
 }
-.options button:hover{
+
+.options button:hover {
     background-color: #FFC107;
 }
 
-.User-flex{
+.User-flex {
     display: flex;
     justify-content: space-between;
     align-items: center;
-  }
-  
-  #User-Info-container { 
+}
+
+#User-Info-container {
     width: 98%;
     height: 10%;
-    margin-top: 2%;
-    padding: 2%;
+    margin-top: 1%;
+    padding: 1%;
     justify-content: space-between;
     background: #F3F3F5;
     border-radius: 16px 16px 0px 0px;
-  }
-  
-  .User-details-container{
+}
+
+.User-details-container {
     width: 50%;
     gap: 20%;
     justify-content: flex-start;
-  }
-  
-  .User-Logout-btn-container{
+}
+
+.User-Logout-btn-container {
     width: 50%;
     justify-content: end;
-  }
-  
-  .User-Logout-btn{  
+}
+
+.User-Logout-btn {
     border: none;
     padding: 1% 5%;
     background: #316EBC;
     box-shadow: 4px 4px 19px rgba(0, 0, 0, 0.15);
     border-radius: 5px;
     color: #ffffff;
-  }
+}
 
-  .ChildContainer {
+.ChildContainer {
     display: flex;
     flex-direction: column;
     margin: 20px;
-  }
-  
-  #Main_Item_Container {
+}
+
+#Main_Item_Container {
     display: flex;
-    width: 100%;
+    width: 98%;
     flex-wrap: wrap;
     justify-content: center;
     padding: 1%;
-    background-color: #ffffff;
-    border-radius: 6px;
-    box-shadow: 1px 2px 1px 0px rgb(143, 142, 142);
-  }
+    background: rgba(217, 217, 217, 0.0);
+    backdrop-filter: blur(83.6267px);
+    border-radius: 0 0 6px 6px;
+    margin-bottom: 2%;
+}
 
-@media (min-width:600px){
-    .user-info-label{
+@media (min-width:600px) {
+    .user-info-label {
         height: 20vh;
     }
 }
 
-@media (max-width:1000px){
-    .user-info-label{
+@media (max-width:1000px) {
+    .user-info-label {
         height: 15vh;
     }
-    .options{
+
+    .options {
         width: 100%;
     }
-    #User-Info-containerr{
+
+    #User-Info-containerr {
         height: 7%;
-      }
-}
-@media (max-width:650px){
-    .user-info-label{
-        height: 10vh;
     }
-    .User-details-container{
-        width: 60%;
-    }
-    .User-Logout-btn-container{
-        width: 40%;
-    }
-    .options{
-        font-size: 0.75em;
-    }
-    #User-Info-containerr{
-        height: 7%;
-      }
 }
 
-@media (max-width:450px){
-    #User-Info-container{
+@media (max-width:650px) {
+    .user-info-label {
+        height: 10vh;
+    }
+
+    .User-details-container {
+        width: 60%;
+    }
+
+    .User-Logout-btn-container {
+        width: 40%;
+    }
+
+    .options {
+        font-size: 0.75em;
+    }
+
+    #User-Info-containerr {
         height: 7%;
-      }
-    .User-details-container{
-        width: 75%;
     }
-    .User-Logout-btn-container{
-        width: 25%;
+}
+
+@media (max-width:450px) {
+    #User-Info-container {
+        height: 7%;
     }
-    .options{
+
+    .User-details-container {
+        width: 60%;
+    }
+
+    .User-Logout-btn-container {
+        width: 20%;
+        margin-right: 3%;
+    }
+
+    .options {
         font-size: 0.75em;
         width: 100%;
     }
