@@ -1,6 +1,8 @@
 import React from "react";
 import Payimg from "../../images/pay.svg";
 // import { useState } from "react";
+const isTwelveChars = (value) => value.trim().length === 12;
+let neftReferenceValidity=true;
 
 function PaymentInfo({ formData, setFormData }) {
 
@@ -22,8 +24,18 @@ function PaymentInfo({ formData, setFormData }) {
           value={formData.NEFT}
           onChange={(e) => {
             setFormData({ ...formData, NEFT: e.target.value });
+            if(isTwelveChars(e.target.value)){
+              neftReferenceValidity = true;
+            }else if(e.target.value.length === 0){
+              neftReferenceValidity = true;
+            }
+            else if(!isTwelveChars(e.target.value))
+            {
+              neftReferenceValidity=false;
+            }
           }}
         />
+        {!neftReferenceValidity && <p class="invalid">Please enter NEFT Reference number of 12 digits</p>}
 
 
         <div className="document-upload-container payementSS">
@@ -32,7 +44,7 @@ function PaymentInfo({ formData, setFormData }) {
             type="file" id="inputPayment"
             accept='application/pdf, images/png, images/jpg'
           />
-          <label htmlFor="inputPayment" className="payement-image-btn">Upload</label>
+          <label htmlFor="inputPayment" className="payement-image-btn" value="">Upload</label>
         </div>
 
         <div className="document-upload-container">
