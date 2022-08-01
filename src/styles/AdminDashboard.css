@@ -1,9 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Encode+Sans:wght@100;500&display=swap');
 
 #mainDashBoardContainer {
-  background-color: #ebedf0;
+  /* background-color: #ebedf0; */
+  background-image: url('/src/pages/images/mit.png');
+  background-size: cover;
   position: absolute;
-  height: 100vh;
+  height: auto;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -19,28 +21,32 @@
   margin-top: 5vw;
   padding: 2vw;
   background-color: white;
-  border-radius: 20px; 
+  border-radius: 20px;
+  background: rgba(217, 217, 217, 0.0);
+  backdrop-filter: blur(83.6267px);
 }
 
 .headingDashboard {
-    margin: 0;
+  margin: 0;
   font-family: "Encode Sans";
   font-style: normal;
   font-weight: 600;
   font-size: 20px;
   line-height: 34px;
-  color: #707070;
+  color: #ffffff;
+
 }
 
 .numbersDashboard {
-    margin: 0;
+  margin: 0;
   font-family: "Encode Sans";
   font-style: normal;
   font-weight: 600;
   font-size: 50px;
   line-height: 75px;
-  color: #e77455;
+  color: #ffffff;
 }
+
 .DashBoardContainers {
   display: flex;
   flex-direction: column;
@@ -51,49 +57,53 @@
 
 }
 
-.Admin-flex{
+.Admin-flex {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-#Admin-Info-container { 
+#Admin-Info-container {
   width: 98%;
-  height: 10%;
+  height: 4%;
   margin-top: 2%;
-  padding: 2%;
+  padding: 1%;
   justify-content: space-between;
   background: #F3F3F5;
   border-radius: 16px 16px 0px 0px;
+
 }
 
-.Admin-Option-details-container{
+.Admin-Option-details-container {
   width: 50%;
-  gap: 20%;
+  gap: 30%;
+  padding-top: 1%;
   justify-content: flex-start;
 }
 
-.Option-detail{
-  gap: 10%;
-  width: 16%;
+.Option-detail {
+  gap: 5%;
+  width: 20%;
 }
 
-.Info-property{
+.Info-property {
+  font-size: large;
   font-Weight: 600;
   color: #023473;
 }
 
-.Info-value{
+.Info-value {
+  font-size: large;
   color: #787878;
   font-weight: 500;
 }
 
-.Admin-Logout-btn-container{
+.Admin-Logout-btn-container {
   width: 50%;
   justify-content: end;
 }
 
-.Admin-Logout-btn{  
+.Admin-Logout-btn {
   border: none;
   padding: 1% 5%;
   background: #316EBC;
@@ -108,84 +118,102 @@
   margin: 20px;
 }
 
-#Main_Item_Container {
+#Main_Item_Container_admin {
   display: flex;
-  width: 100%;
+  width: 98%;
   flex-wrap: wrap;
   justify-content: center;
   padding: 1%;
-  background-color: #ffffff;
-  border-radius: 6px;
-  box-shadow: 1px 2px 1px 0px rgb(143, 142, 142);
+  /* margin-top: -0.%; */
+  border-radius: 0 0 6px 6px;
+  border-left: solid #ffffff;
+  border-right: solid #ffffff;
+  border-bottom: solid #ffffff;
+  background: rgba(217, 217, 217, 0.0);
+  backdrop-filter: blur(83.6267px);
+  margin-bottom: 2%;
 }
 
 @media (max-width: 1300px) {
-  .Option-detail{
+  .Option-detail {
     width: 22%;
   }
 }
 
 @media (max-width: 950px) {
-  .Option-detail{
+  .Option-detail {
     width: 35%;
   }
 }
 
 @media (max-width: 700px) {
-  .Option-detail{
+  .Option-detail {
     width: 50%;
   }
 
-  .Info-property{
+  .Info-property {
     font-size: 0.9em;
   }
-  
-  .Info-value{
+
+  .Info-value {
     font-size: 0.8em;
   }
-  .Admin-Logout-btn{
+
+  .Admin-Logout-btn {
     font-size: 0.8em;
   }
-  .headingDashboard{
+
+  .headingDashboard {
     font-size: 15px;
   }
-  .numbersDashboard{
+
+  .numbersDashboard {
     font-size: 30px;
     line-height: 1;
   }
-  .DashBoardContainers{
+
+  .DashBoardContainers {
     height: 10vh;
   }
 
 }
 
 @media (max-width: 475px) {
-  .Option-detail{
+  .Option-detail {
     width: 50%;
   }
 
-  .Info-property{
+  .Info-property {
     font-size: 0.7em;
+    margin-left: 5%;
   }
-  
-  .Info-value{
+
+  .Info-value {
     font-size: 0.6em;
   }
 
-  .Admin-Logout-btn{
+.Admin-Option-details-container {
+  width: 90%;
+}
+
+  .Admin-Logout-btn {
     font-size: 0.7em;
   }
-  .headingDashboard{
+
+  .headingDashboard {
     font-size: 10px;
   }
-  .numbersDashboard{
+
+  .numbersDashboard {
     font-size: 20px;
     line-height: 1;
   }
-  .DashBoardContainers{
-    height: 5vh;
+
+  .DashBoardContainers {
+    height: 10vh;
   }
-  #Admin-Info-container{
+
+  #Admin-Info-container {
     height: 5%;
   }
-} 
+}

@@ -121,7 +121,7 @@ export default function EventsItem() {
           </button>
         </div>
       </div>
-      <div id="Main_Item_Container">
+      <div id="Main_Item_Container_admin">
         <div className="main_card_container">
           <h2 className="heading"> Date Received </h2>
           <h2 className="heading"> Query Id </h2>

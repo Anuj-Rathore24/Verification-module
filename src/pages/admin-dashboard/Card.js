@@ -1,5 +1,5 @@
 import { React, useState, useEffect } from "react";
-import "../../styles/Card.css";
+import "../../styles/UserCard.css";
 import { Button, Modal } from "react-bootstrap";
 import axios from "axios";
 import { getfile, getPaymentFile } from "../../apis/firebasecloud.js";
@@ -63,32 +63,51 @@ export default function Card(props) {
         <div
         className="main_card_container"
         style={{
-          backgroundColor: `${props.color}`,
+          background: 'rgba(217, 217, 217, 0.0)',
+          backdropFilter: 'blur(83.6267px)',
           margin: 5,
+          border:'solid',
+          borderWidth:'1px'
         }}
       >
         <div
           className="rounded-circle"
           style={{
             backgroundColor: colorScheme(props.status),
-            width: "15px",
-            height: "15px",
           }}
         ></div>
         <div className="valueContainer">
           <h2 className="card_heading">{props.date}</h2>
         </div>
-        <div className="valueContainer">
+        <div className="valueContainer" style={{
+          marginLeft:'7%'
+        }}>
           <h2 className="card_heading">{props.queryId}</h2>
         </div>
-        <div className="valueContainer">
+        <div className="valueContainer" style={{
+          marginLeft:'7%'
+        }}> 
           <h2 className="card_heading">{props.name}</h2>
         </div>
         <div className="valueContainer">
           <h2 className="card_heading">{props.prn}</h2>
         </div>
-        <div className="valueContainer">
-          <a className="link-primary linkViewDocument"  variant="primary" onClick={handleShow}>
+        <div className="valueContainer" style={{
+          padding:'0.5%',
+          width:'11%',
+          height:'80%',
+          backgroundColor:'#316EBC',
+          marginLeft:'6%',
+          borderStyle:'solid',
+          borderWidth:'1px',
+          borderColor:'white',
+          borderRadius:'3px',
+
+        }}>
+          <a className="link-primary_linkViewDocument" variant="primary" onClick={handleShow} style={{
+            textDecoration: "none",
+            color: "white",
+          }}>
             View document
           </a>
         </div>

@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import Cards from "./UserCard";
-import "../../styles/AdminDashboard.css";
+// import "../../styles/AdminDashboard.css";
 import "../../styles/UserDashboard.css";
 import { requestQuery } from "../../apis/firestoreDatabase";
 import { useState, useEffect } from "react";
@@ -73,18 +73,8 @@ export default function EventsItem() {
   }
 
   return (
-    <div
-      id="Main_Item_Container"
-      style={{
-        backgroundColor: "#ebedf0",
-        position: "absolute",
-        width: "100%",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        fontFamily: "Encode Sans",
-      }}
-    >
+    <div 
+      id="Main_Item_Container_page">
       <div id="DashBoard">
         <div
           className="DashBoardContainers"
