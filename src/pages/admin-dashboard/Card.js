@@ -63,11 +63,7 @@ export default function Card(props) {
         <div
         className="main_card_container"
         style={{
-          background: 'rgba(217, 217, 217, 0.0)',
-          backdropFilter: 'blur(83.6267px)',
-          margin: 5,
-          border:'solid',
-          borderWidth:'1px'
+          background: props.color,
         }}
       >
         <div
@@ -104,7 +100,7 @@ export default function Card(props) {
           borderRadius:'3px',
 
         }}>
-          <a className="link-primary_linkViewDocument" variant="primary" onClick={handleShow} style={{
+          <a className="link-primary_linkViewDocument ViewDocumentButton" variant="primary" onClick={handleShow} style={{
             textDecoration: "none",
             color: "white",
           }}>

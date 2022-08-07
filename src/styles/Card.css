@@ -25,7 +25,9 @@
 .modal-dialog{
     box-shadow: 5px 10px 21.8px 0.7px #9d9d9d80;
 }
-
+.ViewDocumentButton:hover{
+    cursor: pointer;
+}
 .heading{
     font-size: 1.8vw;
     font-family: "Encode Sans";

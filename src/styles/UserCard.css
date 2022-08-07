@@ -9,19 +9,17 @@
   align-items: center;
   justify-content: space-evenly;
   position: relative;
-  background: rgba(217, 217, 217, 0.0);
-  backdrop-filter: blur(83.6267px);
   color: #fff;
   font-family: "Encode Sans";
-  border-radius: 10px;
-  border-style: solid;
-  border-width: 1px;
-}
 
+}
+.mainHeaderContainer{
+  background-color: #7839C5;
+}
 .card_heading {
   color: #ffffff;
   padding: 1.5vw;
-  font-size: 1vw;
+  font-size: 1.1vw;
   font-family: "Poppins", sans-serif;
   font-weight: bold;
   margin-right: 4%;
@@ -33,11 +31,15 @@
 
 .heading {
   margin-top: 1%;
-  font-size: 1.8vw;
+  font-size: 1.4vw;
   font-family: "Encode Sans";
   font-weight: 500;
   margin-left: 5%;
   margin-right: 5%;
+}
+
+.ViewDocumentButton:hover{
+  cursor: pointer;
 }
 
 .card_button {

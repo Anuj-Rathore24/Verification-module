@@ -27,7 +27,8 @@ export default function Card(props) {
       <div
         className="main_card_container"
         style={{
-          marginTop: '1%',
+          backgroundColor:props.color,
+          padding:"2px",
         }}
       >
         <div
@@ -71,7 +72,7 @@ export default function Card(props) {
           borderColor:'white',
           borderRadius:'3px', 
         }}>
-        <a className="link-primary_linkViewDocument"  variant="primary" onClick={handleShow} style={{
+        <a className="link-primary_linkViewDocument ViewDocumentButton"  variant="primary" onClick={handleShow} style={{
           textDecoration: "none",
           color: "white",
         }}>
@@ -176,6 +177,7 @@ export default function Card(props) {
           </Modal.Body>
           <Modal.Footer style={{ justifyContent: "center" }}>
             <Button
+              style={{}}
               disabled={disable}
               variant="primary"
               onClick={async () => {

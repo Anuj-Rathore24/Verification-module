@@ -122,7 +122,7 @@ export default function EventsItem() {
         </div>
       </div>
       <div id="Main_Item_Container_admin">
-        <div className="main_card_container">
+        <div className="main_card_container mainHeaderContainer">
           <h2 className="heading"> Date Received </h2>
           <h2 className="heading"> Query Id </h2>
           <h2 className="heading"> Name </h2>
@@ -151,7 +151,7 @@ export default function EventsItem() {
                 queryId={queryId[i]}
                 name={element.candidateName}
                 status={element.status}
-                color={element.Query % 2 === 0 ? "#D1D1D1" : "#FFFFFF"}
+                color={i % 2 === 0 ? "rgba(255, 255, 255, 0.2)" : "rgba(0, 0, 0, 0.1)"}
               />
             </>
           );
