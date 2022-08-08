@@ -217,6 +217,7 @@ export default function EventsItem() {
                 queryId={queryId[i]}
                 name={element.candidateName}
                 status={element.status}
+                statusDate={element.statusDate}
                 color={i % 2 === 0 ? "rgba(255, 255, 255, 0.2)" : "rgba(0, 0, 0, 0.1)"}
               />
             </>

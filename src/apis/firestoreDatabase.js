@@ -19,6 +19,7 @@ module.exports = {
       PaymentDate: creds.queryDate,
       NEFTrefNumber: creds.NEFT,
       status: "Not Verified",
+      statusDate:creds.statusDate
     }
     try {
       
@@ -46,12 +47,13 @@ module.exports = {
     }
   },
   updateQuery:async function (userId,queryId,type){
+    const time=new Date();
     if(type===1){
       try{
         const docRef=doc(db,`${userId}`,`${queryId}`)
-        console.log("working")
         await updateDoc(docRef,{
-          status:"Verified"
+          status:"Verified",
+          statusDate:`${time.getDate()+"/"+time.getMonth()+"/"+time.getFullYear()+"\t"+time.getHours()+":"+time.getMinutes()}`
         })
         console.log(userId,queryId)
       }catch(err){
@@ -61,7 +63,8 @@ module.exports = {
       try{
         const docRef=doc(db,`${userId}`,`${queryId}`)
         await updateDoc(docRef,{
-          status:"Denied"
+          status:"Denied",
+          statusDate:`${time.getDate()+"/"+time.getMonth()+"/"+time.getFullYear()+"\t"+time.getHours()+":"+time.getMinutes()}`
         })
       }catch(err){
         console.log("error in our new Code ->"+err);
