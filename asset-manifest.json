@@ -1,26 +1,27 @@
 {
   "files": {
-    "main.css": "/Verification-module/static/css/main.8ba3fde4.chunk.css",
-    "main.js": "/Verification-module/static/js/main.a3b1ad60.chunk.js",
-    "main.js.map": "/Verification-module/static/js/main.a3b1ad60.chunk.js.map",
-    "runtime-main.js": "/Verification-module/static/js/runtime-main.0306d3b9.js",
-    "runtime-main.js.map": "/Verification-module/static/js/runtime-main.0306d3b9.js.map",
-    "static/js/2.55e866aa.chunk.js": "/Verification-module/static/js/2.55e866aa.chunk.js",
-    "static/js/2.55e866aa.chunk.js.map": "/Verification-module/static/js/2.55e866aa.chunk.js.map",
-    "static/js/3.b1bf33ff.chunk.js": "/Verification-module/static/js/3.b1bf33ff.chunk.js",
-    "static/js/3.b1bf33ff.chunk.js.map": "/Verification-module/static/js/3.b1bf33ff.chunk.js.map",
+    "main.css": "/Verification-module/static/css/main.3f926089.chunk.css",
+    "main.js": "/Verification-module/static/js/main.74023aba.chunk.js",
+    "main.js.map": "/Verification-module/static/js/main.74023aba.chunk.js.map",
+    "runtime-main.js": "/Verification-module/static/js/runtime-main.8f6b9349.js",
+    "runtime-main.js.map": "/Verification-module/static/js/runtime-main.8f6b9349.js.map",
+    "static/js/2.8a9fa920.chunk.js": "/Verification-module/static/js/2.8a9fa920.chunk.js",
+    "static/js/2.8a9fa920.chunk.js.map": "/Verification-module/static/js/2.8a9fa920.chunk.js.map",
+    "static/js/3.23a1a71a.chunk.js": "/Verification-module/static/js/3.23a1a71a.chunk.js",
+    "static/js/3.23a1a71a.chunk.js.map": "/Verification-module/static/js/3.23a1a71a.chunk.js.map",
     "index.html": "/Verification-module/index.html",
-    "static/css/main.8ba3fde4.chunk.css.map": "/Verification-module/static/css/main.8ba3fde4.chunk.css.map",
-    "static/js/2.55e866aa.chunk.js.LICENSE.txt": "/Verification-module/static/js/2.55e866aa.chunk.js.LICENSE.txt",
-    "static/media/admin.2cf29ba4.png": "/Verification-module/static/media/admin.2cf29ba4.png",
-    "static/media/admin.86b65556.svg": "/Verification-module/static/media/admin.86b65556.svg",
-    "static/media/logo.8c9beb56.svg": "/Verification-module/static/media/logo.8c9beb56.svg",
-    "static/media/student.6e08d05d.png": "/Verification-module/static/media/student.6e08d05d.png"
+    "static/css/main.3f926089.chunk.css.map": "/Verification-module/static/css/main.3f926089.chunk.css.map",
+    "static/js/2.8a9fa920.chunk.js.LICENSE.txt": "/Verification-module/static/js/2.8a9fa920.chunk.js.LICENSE.txt",
+    "static/media/documentMan.5c301126.svg": "/Verification-module/static/media/documentMan.5c301126.svg",
+    "static/media/logo.b5aae01e.png": "/Verification-module/static/media/logo.b5aae01e.png",
+    "static/media/signupResponsive.css": "/Verification-module/static/media/mit.7124c4aa.jpg",
+    "static/media/UserDashboard.css": "/Verification-module/static/media/mit.77077e00.png",
+    "static/media/pay.1ae9c40e.svg": "/Verification-module/static/media/pay.1ae9c40e.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.0306d3b9.js",
-    "static/js/2.55e866aa.chunk.js",
-    "static/css/main.8ba3fde4.chunk.css",
-    "static/js/main.a3b1ad60.chunk.js"
+    "static/js/runtime-main.8f6b9349.js",
+    "static/js/2.8a9fa920.chunk.js",
+    "static/css/main.3f926089.chunk.css",
+    "static/js/main.74023aba.chunk.js"
   ]
 }
