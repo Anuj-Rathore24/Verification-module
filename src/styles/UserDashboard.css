@@ -2,7 +2,7 @@
 
 #Main_Item_Container_page {
     /* background-color: #ebedf0; */
-    background-image: url('/src/pages/images/mit.png');
+    background-image: url('../pages/images/bg.png');
     position: absolute;
     width: 100%;
     display: flex;
