@@ -1,10 +1,11 @@
 import React from 'react';
 import '../styles/loader.css';
 
-const Spinner = () =>{
+const Spinner = (props) =>{
 
         return <>
-                <span class="loader"></span>
+                {console.log("WOrking in loader")}
+                <span className="loader"></span>
         </>
 
 }

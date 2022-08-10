@@ -14,20 +14,22 @@ function colorScheme(variable) {
 }
 
 async function declineButtonClick(userId, queryId, dmessage) {
+  alert("Mailing in progress")
   const element = document.getElementById("inputDelineAddress");
-  console.log("Message ->" + element.innerHTML);
-  axios.post("/declineQuery", { message: dmessage });
-  await updateQuery("admin@gmail.com", queryId, 0);
+  const status=await axios.post("/declineQuery", { message: dmessage });
+  await updateQuery("admin@gmail.com", queryId, 0)
   await updateQuery(userId, queryId, 0);
+  console.log(status.data)
+  alert(status.data)
 }
 
-//function for hitting apis in backend for send certificates
+//function for sending request to the backend
 async function verifyDocument(dataObject) {
+  alert("Mailing in progress")
   await updateQuery("admin@gmail.com", dataObject.queryId, 1);
   await updateQuery(dataObject.CompEmail, dataObject.queryId, 1);
-  alert("Mail in Progess");
-  await axios.post("/MakeCert", { data: dataObject })
-  
+  const status = await axios.post("/MakeCert", { data: dataObject })
+  alert(status.data)
 }
 
 export default function Card(props) {

@@ -10,8 +10,8 @@ const axios = require("axios");
 const loader = require('../pages/loader');
 // Function for Uploading files on Firebase Cloud
 
-module.exports = {
-  upload: async function (userId, queryId) {
+
+   export async function upload(userId, queryId) {
     var i = 0;
     const storage = getStorage(app);
 
@@ -36,11 +36,11 @@ module.exports = {
       console.log("Payment Status :" + snapshot);
     });
     alert("Form submitted !!");
-  },
+  }
 
   //Function for getting Files From Firebase Cloud
 
-  getfile: async function (userId, queryId) {
+  export async function getfile(userId, queryId) {
     const storage = getStorage(app);
 
     //Location of w.r.t FireBase
@@ -161,8 +161,8 @@ module.exports = {
           console.log("\nError ->" + err);
         });
     });
-  },
-  getPaymentFile: async function (props, userId, queryId) {
+  }
+  export async function getPaymentFile(props, userId, queryId) {
     const storage = getStorage(app);
     const filelocation = `gs://verification-module.appspot.com/${userId}/${queryId}/Payment`;
     const listref = ref(storage, filelocation);
@@ -203,5 +203,4 @@ module.exports = {
           });
       });
     });
-  },
-};
+  }
