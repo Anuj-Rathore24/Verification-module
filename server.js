@@ -25,6 +25,7 @@ app.post("/MakeCert",async (req,res)=>{
         res.send(resps);
     }catch(err){
         console.log("\n\nerror ->"+err.data)
+        res.send("error from backend ->"+err)
     }
 })
 
@@ -35,6 +36,7 @@ app.post("/sendToVerify",async (req,res)=>{
         res.send(resps)
     }catch(err){
         console.log("error from backend ->"+err)
+        res.send("error from backend ->"+err)
     }
 })
 
@@ -45,6 +47,7 @@ app.post("/declineQuery",async (req,res)=>{
         res.send(resps)
     }catch(err){
         console.log("error from backend ->"+err)
+        res.send("error from backend ->"+err)
     }
 })
 

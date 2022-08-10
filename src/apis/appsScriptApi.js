@@ -19,13 +19,17 @@ module.exports = {
     const TOKEN_PATH = "./src/apis/token.json";
 
     // Load client secrets from a local file.
-    return new Promise((resolve) => {
+    return new Promise((resolve,reject) => {
       fs.readFile("./src/apis/credentials.json", async (err, content) => {
-        if (err) return console.log("Error loading client secret file:", err);
+        if (err) {
+          reject("Error loading client secret file:", err)
+          return console.log("Error loading client secret file:", err)};
         // Authorize a client with credentials, then call the Google Apps Script API.
         await authorize(JSON.parse(content), callAppsScript).then((res) => {
           status = res;
           resolve(status);
+        },(err)=>{
+          reject(err)
         });
       });
 
@@ -44,10 +48,12 @@ module.exports = {
         );
 
         // Check if we have previously stored a token.
-        return new Promise((resolve) => {
+        return new Promise((resolve,reject) => {
           var status = "Not changed";
           fs.readFile(TOKEN_PATH, async (err, token) => {
-            if (err) return getAccessToken(oAuth2Client, callback);
+            if (err) {
+              reject("Token Expired/NotAvailable")
+              return getAccessToken(oAuth2Client, callback);}
             oAuth2Client.setCredentials(JSON.parse(token));
             status = await callback(oAuth2Client);
             resolve(status);
@@ -116,7 +122,11 @@ module.exports = {
             //Response that the function or script returns
             console.log("\n\tresponse:", resp.data.response.result);
             status = resp.data.response.result;
-          });
+          }).catch((err)=>{
+            status="Encountered an Error While sending Mail(OuterScript)";
+            console.log("The i made recently +"+err.error)
+          }
+          )
         return "\n\nThe new Response:", status;
       }
     });
@@ -137,13 +147,17 @@ module.exports = {
     // The file token.json stores the user's access and refresh tokens, and is
     // created automatically when the authorization flow completes for the first
     // time.
-    return new Promise((resolve) => {
+    return new Promise((resolve,reject) => {
       fs.readFile("./src/apis/credentials.json", async (err, content) => {
-        if (err) return console.log("Error loading client secret file:", err);
+        if (err) {
+          reject("Error loading client secret file:", err)
+          return console.log("Error loading client secret file:", err)};
         // Authorize a client with credentials, then call the Google Apps Script API.
         await authorize(JSON.parse(content), callAppsScript).then((res) => {
           status = res;
           resolve(status);
+        },(err)=>{
+          reject(err)
         });
       });
 
@@ -160,10 +174,12 @@ module.exports = {
           client_secret,
           redirect_uris[0]
         );
-        return new Promise((resolve) => {
+        return new Promise((resolve,reject) => {
           var status = "Not changed";
           fs.readFile(TOKEN_PATH, async (err, token) => {
-            if (err) return getAccessToken(oAuth2Client, callback);
+            if (err) {
+              reject("Token Expired/NotAvailable")
+              return getAccessToken(oAuth2Client, callback);}
             oAuth2Client.setCredentials(JSON.parse(token));
             status = await callback(oAuth2Client);
             resolve(status);
@@ -233,7 +249,11 @@ module.exports = {
             //Response that the function or script returns
             console.log("\n\tresponse:", resp.data.response.result);
             status = resp.data.response.result;
-          });
+          }).catch((err)=>{
+            status="Encountered an Error While sending Mail(OuterScript)";
+            console.log("The i made recently +"+err.error)
+          }
+          )
         return "\n\nThe new Response:", status;
       }
     });
@@ -253,18 +273,17 @@ module.exports = {
     const TOKEN_PATH = "./src/apis/token.json";
     var status="starting"
 
-    return new Promise((resolve,reject)=>{
-
+    return new Promise((resolve,reject) => {
       fs.readFile("./src/apis/credentials.json", async (err, content) => {
         if (err) {
           reject("Error loading client secret file:", err)
-          return console.log("Error loading client secret file:", err)
-          
-        };
+          return console.log("Error loading client secret file:", err)};
         // Authorize a client with credentials, then call the Google Apps Script API.
         await authorize(JSON.parse(content), callAppsScript).then((res) => {
           status = res;
           resolve(status);
+        },(err)=>{
+          reject(err)
         });
       });
   
@@ -287,8 +306,8 @@ module.exports = {
           var status = "Not changed";
           fs.readFile(TOKEN_PATH, async (err, token) => {
             if (err) {
-              return getAccessToken(oAuth2Client, callback)
-            };
+              reject("Token Expired/NotAvailable")
+              return getAccessToken(oAuth2Client, callback);}
             oAuth2Client.setCredentials(JSON.parse(token));
             status = await callback(oAuth2Client);
             resolve(status);
@@ -356,7 +375,11 @@ module.exports = {
             //Response that the function or script returns
             console.log("\n\tresponse:", resp.data.response.result);
             status = resp.data.response.result;
-          });
+          }).catch((err)=>{
+            status="Encountered an Error While sending Mail(OuterScript)";
+            console.log("The i made recently +"+err.error)
+          }
+          )
         return "\n\nThe new Response:", status;
       }
     })
