@@ -251,100 +251,114 @@ module.exports = {
     // created automatically when the authorization flow completes for the first
     // time.
     const TOKEN_PATH = "./src/apis/token.json";
+    var status="starting"
 
-    // Load client secrets from a local file.
-    fs.readFile("./src/apis/credentials.json", (err, content) => {
-      if (err) return console.log("Error loading client secret file:", err);
-      // Authorize a client with credentials, then call the Google Apps Script API.
-      authorize(JSON.parse(content), callAppsScript);
-    });
+    return new Promise((resolve,reject)=>{
 
-    /**
-     * Create an OAuth2 client with the given credentials, and then execute the
-     * given callback function.
-     * @param {Object} credentials The authorization client credentials.
-     * @param {function} callback The callback to call with the authorized client.
-     */
-    function authorize(credentials, callback) {
-      const { client_secret, client_id, redirect_uris } = credentials;
-      const oAuth2Client = new google.auth.OAuth2(
-        client_id,
-        client_secret,
-        redirect_uris[0]
-      );
-
-      // Check if we have previously stored a token.
-      fs.readFile(TOKEN_PATH, (err, token) => {
-        if (err) return getAccessToken(oAuth2Client, callback);
-        oAuth2Client.setCredentials(JSON.parse(token));
-        callback(oAuth2Client);
+      fs.readFile("./src/apis/credentials.json", async (err, content) => {
+        if (err) {
+          reject("Error loading client secret file:", err)
+          return console.log("Error loading client secret file:", err)
+          
+        };
+        // Authorize a client with credentials, then call the Google Apps Script API.
+        await authorize(JSON.parse(content), callAppsScript).then((res) => {
+          status = res;
+          resolve(status);
+        });
       });
-    }
+  
+      /**
+       * Create an OAuth2 client with the given credentials, and then execute the
+       * given callback function.
+       * @param {Object} credentials The authorization client credentials.
+       * @param {function} callback The callback to call with the authorized client.
+       */
+       async function authorize(credentials, callback) {
+        const { client_secret, client_id, redirect_uris } = credentials;
+        const oAuth2Client = new google.auth.OAuth2(
+          client_id,
+          client_secret,
+          redirect_uris[0]
+        );
 
-    /**
-     * Get and store new token after prompting for user authorization, and then
-     * execute the given callback with the authorized OAuth2 client.
-     * @param {google.auth.OAuth2} oAuth2Client The OAuth2 client to get token for.
-     * @param {getEventsCallback} callback The callback for the authorized client.
-     */
-    function getAccessToken(oAuth2Client, callback) {
-      const authUrl = oAuth2Client.generateAuthUrl({
-        approval_prompt: "force",
-        access_type: "offline",
-        scope: SCOPES,
-      });
-      console.log("Authorize this app by visiting this url:", authUrl);
-      const rl = readline.createInterface({
-        input: process.stdin,
-        output: process.stdout,
-      });
-      rl.question("Enter the code from that page here: ", (code) => {
-        rl.close();
-        oAuth2Client.getToken(code, (err, token) => {
-          if (err) return console.error("Error retrieving access token", err);
-          oAuth2Client.setCredentials(token);
-          // Store the token to disk for later program executions
-          fs.writeFile(TOKEN_PATH, JSON.stringify(token), (err) => {
-            if (err) return console.error(err);
-            console.log("Token stored to", TOKEN_PATH);
+        // Check if we have previously stored a token.
+        return new Promise((resolve,reject) => {
+          var status = "Not changed";
+          fs.readFile(TOKEN_PATH, async (err, token) => {
+            if (err) {
+              return getAccessToken(oAuth2Client, callback)
+            };
+            oAuth2Client.setCredentials(JSON.parse(token));
+            status = await callback(oAuth2Client);
+            resolve(status);
           });
-          callback(oAuth2Client);
+          return status;
         });
-      });
-    }
-
-    /**
-     * Creates a new script project, upload a file, and log the script's URL.
-     * @param {google.auth.OAuth2} auth An authorized OAuth2 client.
-     */
-
-    var scriptId = "1JI5y3eTll4inwaN06cxRZAcRDgfEjQf4FSLN_3-_4ljsiKltWjLMklPN";
-    function callAppsScript(auth) {
-      const script = google.script({ version: "v1", auth });
-      script.scripts
-        .run({
-          scriptId: scriptId,
-          resource: {
-            function: "sendToVerify",
-            parameters: document,
-            devMode: true,
-          },
-        })
-        .then(function (resp) {
-          //for handling errors
-          if (resp.data.error) console.log("Error :" + resp.data.error.details);
-
-          //Response that the function or script returns
-          console.log("\n\tresponse:", resp.data.response.result);
+      }
+  
+      /**
+       * Get and store new token after prompting for user authorization, and then
+       * execute the given callback with the authorized OAuth2 client.
+       * @param {google.auth.OAuth2} oAuth2Client The OAuth2 client to get token for.
+       * @param {getEventsCallback} callback The callback for the authorized client.
+       */
+      function getAccessToken(oAuth2Client, callback) {
+        const authUrl = oAuth2Client.generateAuthUrl({
+          approval_prompt: "force",
+          access_type: "offline",
+          scope: SCOPES,
         });
-    }
+        console.log("Authorize this app by visiting this url:", authUrl);
+        const rl = readline.createInterface({
+          input: process.stdin,
+          output: process.stdout,
+        });
+        rl.question("Enter the code from that page here: ", (code) => {
+          rl.close();
+          oAuth2Client.getToken(code, (err, token) => {
+            if (err) return console.error("Error retrieving access token", err);
+            oAuth2Client.setCredentials(token);
+            // Store the token to disk for later program executions
+            fs.writeFile(TOKEN_PATH, JSON.stringify(token), (err) => {
+              if (err) return console.error(err);
+              console.log("Token stored to", TOKEN_PATH);
+            });
+            callback(oAuth2Client);
+          });
+        });
+      }
+  
+      /**
+       * Creates a new script project, upload a file, and log the script's URL.
+       * @param {google.auth.OAuth2} auth An authorized OAuth2 client.
+       */
+  
+      var scriptId = "1JI5y3eTll4inwaN06cxRZAcRDgfEjQf4FSLN_3-_4ljsiKltWjLMklPN";
+      async function callAppsScript(auth) {
+        const script = google.script({ version: "v1", auth });
+        await script.scripts
+          .run({
+            scriptId: scriptId,
+            resource: {
+              function: "sendToVerify",
+              parameters: document,
+              devMode: true,
+            },
+          })
+          .then(function (resp) {
+            //for handling errors
+            if (resp.data.error) {
+              status = resp.data.error.details;
+              console.log("Error :" + resp.data.error.details);
+            }
+
+            //Response that the function or script returns
+            console.log("\n\tresponse:", resp.data.response.result);
+            status = resp.data.response.result;
+          });
+        return "\n\nThe new Response:", status;
+      }
+    })
   },
 };
-
-/*possible Solutions for error
-1)Give Permissions Again googleaccount>security>ManageThirdPartyApps
-2)Didn't toggle "run function" button in apps script permission
-3)Scope not set auth0 screen
-4)Not using web type service
-5)Use Email given by google rather than service id   
-*/

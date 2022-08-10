@@ -213,7 +213,14 @@ export default function Card(props) {
             <Button
               variant="primary"
               onClick={async () => {
-                await getPaymentFile(props, props.CompEmail, props.queryId);
+                alert("Mail in Progress!")
+                try{
+                  const status = await getPaymentFile(props, props.CompEmail, props.queryId);
+                  console.log(status)
+                  alert(status.data)
+                }catch(err){
+                  alert(err)
+                }
               }}
             >
               Send to Verify Payment
