@@ -173,6 +173,11 @@ export default function Card(props) {
                 <p className="content">{props.NEFT}</p>
               </div>
               <hr></hr>
+              <div style={{ display: "flex", flexDirection: "row" }}>
+                <p className="content">Status Date :</p>
+                <p className="content">{props.statusDate}</p>
+              </div>
+              <hr></hr>
             </div>
           </Modal.Body>
           <Modal.Footer style={{ justifyContent: "center" }}>

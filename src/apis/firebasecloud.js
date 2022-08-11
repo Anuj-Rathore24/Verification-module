@@ -10,8 +10,8 @@ const axios = require("axios");
 const loader = require('../pages/loader');
 // Function for Uploading files on Firebase Cloud
 
-module.exports = {
-  upload: async function (userId, queryId) {
+
+   export async function upload(userId, queryId) {
     var i = 0;
     const storage = getStorage(app);
 
@@ -36,11 +36,11 @@ module.exports = {
       console.log("Payment Status :" + snapshot);
     });
     alert("Form submitted !!");
-  },
+  }
 
   //Function for getting Files From Firebase Cloud
 
-  getfile: async function (userId, queryId) {
+  export async function getfile(userId, queryId) {
     const storage = getStorage(app);
 
     //Location of w.r.t FireBase
@@ -161,47 +161,59 @@ module.exports = {
           console.log("\nError ->" + err);
         });
     });
-  },
-  getPaymentFile: async function (props, userId, queryId) {
+  }
+  export async function getPaymentFile(props, userId, queryId) {
     const storage = getStorage(app);
     const filelocation = `gs://verification-module.appspot.com/${userId}/${queryId}/Payment`;
     const listref = ref(storage, filelocation);
 
-    listAll(listref).then((res) => {
-      res.items.forEach(async (itemsRef) => {
-        await getDownloadURL(ref(storage, itemsRef))
-
-        .then((url) => {
-            const objectData = { info: props, link: url };
-            
-            //request to server for connecting appscript
-            axios.post("/sendToVerify", { data: objectData });
-          })
-          .catch((error) => {
-            //For Handling Errors
-            switch (error.code) {
-              case "storage/object-not-found":
-                console.log("\nFile Not Found");
-                break;
-              case "storage/unauthorized":
-                console.log(
-                  "\n User doesn't have permission to access the object"
-                );
-                break;
-              case "storage/canceled":
-                console.log("\nUser canceled the upload");
-                break;
-              case "storage/unknown":
-                console.log(
-                  "\nUnknown error occurred, inspect the server response"
-                );
-                break;
-              default:
-                console.log("Unhandled Error in getting files from cloud ");
-                break;
-            }
-          });
-      });
-    });
-  },
-};
+    var status="starting";
+    return new Promise((resolve,reject)=>{
+      try{
+       listAll(listref)
+       .then((res) => {
+        res.items.forEach(async (itemsRef) => {
+          await getDownloadURL(ref(storage, itemsRef))
+  
+          .then(async (url) => {
+              const objectData = { info: props, link: url };
+              
+              //request to server for connecting appscript
+              status = await axios.post("/sendToVerify", { data: objectData });
+              resolve(status)
+            })
+            .catch((error) => {
+              //For Handling Errors
+              switch (error.code) {
+                case "storage/object-not-found":
+                  reject("\nFile Not Found");
+                  break;
+                case "storage/unauthorized":
+                  reject(
+                    "\n User doesn't have permission to access the object"
+                  );
+                  break;
+                case "storage/canceled":
+                  reject("\nUser canceled the upload");
+                  break;
+                case "storage/unknown":
+                  reject(
+                    "\nUnknown error occurred, inspect the server response"
+                  );
+                  break;
+                default:
+                  reject("Unhandled Error in getting files from cloud ");
+                  break;
+              }
+            });
+        });
+      })
+      .catch((err)=>{
+        reject("error in promise "+err)
+      })
+    }
+      catch(err){
+        reject("Error from firebaseCloud"+err)
+      }
+    })
+  }

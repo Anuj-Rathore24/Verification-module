@@ -7,8 +7,11 @@ import { requestQuery } from "../../apis/firestoreDatabase";
 import { useState, useEffect } from "react";
 import { Modal } from "react-bootstrap";
 import { auth } from "../Firebase/Firebase";
+import Loader from "../loader";
 
 export default function EventsItem() {
+  const [stateLoader, setStateLoader] = useState("block");
+
   const navigate = useNavigate();
   const [queryArr, changeQueries] = useState([]);
   const [queryId, changeQueryId] = useState([]);
@@ -30,6 +33,7 @@ export default function EventsItem() {
   useEffect(() => {
     auth.onAuthStateChanged(async (user) => {
         try {
+          setStateLoader("block")
           const res = await requestQuery(user.email);
           const temp = [];
           const tempId = [];
@@ -68,7 +72,9 @@ export default function EventsItem() {
           });
           changeQueries(temp);
           changeQueryId(tempId);
+          setStateLoader("none")
         } catch (err) {
+        setStateLoader("none")
           console.log(err);
         }
       
@@ -81,6 +87,7 @@ export default function EventsItem() {
   }
 
   return (
+    (stateLoader==="block")?<Loader/>:
     <div 
       id="Main_Item_Container_page">
       <div id="DashBoard">
@@ -217,6 +224,7 @@ export default function EventsItem() {
                 queryId={queryId[i]}
                 name={element.candidateName}
                 status={element.status}
+                statusDate={element.statusDate}
                 color={i % 2 === 0 ? "rgba(255, 255, 255, 0.2)" : "rgba(0, 0, 0, 0.1)"}
               />
             </>

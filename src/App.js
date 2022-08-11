@@ -4,6 +4,7 @@ import {Routes, Route,HashRouter } from "react-router-dom";
 import Login from "./pages/login-signup/Login.jsx";
 import Signup from "./pages/login-signup/Signup.jsx";
 import { ProtectedRoute1, ProtectedRoute2, ProtectedRoute3, ProtectedRoute4 } from './pages/login-signup/ProtectedRoute.jsx'//importing protected route 
+import Spinner from "./pages/loader";
 
 
 
@@ -24,6 +25,8 @@ function App() {
           <Route exact path="/form" element={<ProtectedRoute3 />} />
           <Route exact path="/admin" element={<ProtectedRoute4 />} />
           <Route exact path="/UserDashboard" element={<ProtectedRoute2 />} />
+          <Route exact path="/loader" element={<Spinner />} />
+
       </Routes>
       </HashRouter>
     </>

@@ -4,6 +4,8 @@ import "../../styles/AdminDashboard.css";
 import { requestQuery } from "../../apis/firestoreDatabase";
 import { auth } from "../Firebase/Firebase";
 import { useNavigate } from "react-router-dom";
+import Loader from "../loader";
+
 
 export default function EventsItem() {
   const [queryArr, changeQueries] = useState([]);
@@ -16,11 +18,13 @@ export default function EventsItem() {
     Pending: 0,
     declined: 0,
   });
+  const [stateLoader, setStateLoader] = useState("block");
 
   useEffect(() => {
     // const userName=auth.currentUser
     auth.onAuthStateChanged(async (user) => {
         try {
+        setStateLoader("block")
         const res = await requestQuery(user.email);
         const temp = [];
         const tempId = [];
@@ -62,7 +66,10 @@ export default function EventsItem() {
 
         changeQueries(temp);
         changeQueryId(tempId);
+        setStateLoader("none")
+
       } catch (err) {
+        setStateLoader("none")
         console.log(err);
       }
       });
@@ -76,6 +83,7 @@ export default function EventsItem() {
   }
 
   return (
+    (stateLoader==="block")?<Loader/>:
     <div id="mainDashBoardContainer">
       <div id="DashBoard">
         <div
@@ -151,6 +159,7 @@ export default function EventsItem() {
                 queryId={queryId[i]}
                 name={element.candidateName}
                 status={element.status}
+                statusDate={element.statusDate}
                 color={i % 2 === 0 ? "rgba(255, 255, 255, 0.2)" : "rgba(0, 0, 0, 0.1)"}
               />
             </>

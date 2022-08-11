@@ -13,7 +13,6 @@ app.use(
   })
 );
 
-
 // middleware
 app.use(express.json());
 app.use(express.urlencoded());
@@ -21,27 +20,34 @@ app.use(express.urlencoded());
 app.post("/MakeCert",async (req,res)=>{
     console.log("Making Certificate");
     try{
-        await MakeCertificate(req.body.data);
+        const resps=await MakeCertificate(req.body.data);
+        console.log("Mailing status from backend ->"+resps)
+        res.send(resps);
     }catch(err){
         console.log("\n\nerror ->"+err.data)
+        res.send("error from backend ->"+err)
     }
 })
 
 app.post("/sendToVerify",async (req,res)=>{
     try{
-        await verifyDocument(req.body.data)
+        const resps=await verifyDocument(req.body.data)
+        console.log("Mailing Status from backend ->"+resps)
+        res.send(resps)
     }catch(err){
-        console.log("error ->"+err)
+        console.log("error from backend ->"+err)
+        res.send("error from backend ->"+err)
     }
 })
 
 app.post("/declineQuery",async (req,res)=>{
     try{
-        console.log(req.body.message)
-        await mail(req.body.message)
-        res.send("Mailed Perfectely");
+        const resps=await mail(req.body.message)
+        console.log("Mailing Status from backend ->"+resps)
+        res.send(resps)
     }catch(err){
-        console.log("\n\nerror ->"+err.data)
+        console.log("error from backend ->"+err)
+        res.send("error from backend ->"+err)
     }
 })
 

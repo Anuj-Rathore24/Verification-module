@@ -1,9 +1,8 @@
 const { collection, getDocs, addDoc, doc, setDoc, updateDoc } = require("firebase/firestore");
 const { db } = require("../pages/Firebase/FirebaseConfig");
 
-module.exports = {
   //function for creating query and storing its value on firestore database
-  createQuery: async function (creds) {
+  export async function createQuery(creds) {
     const objectData={
       Email: creds.email,
       companyName: creds.agencyName,
@@ -19,6 +18,7 @@ module.exports = {
       PaymentDate: creds.queryDate,
       NEFTrefNumber: creds.NEFT,
       status: "Not Verified",
+      statusDate:creds.statusDate
     }
     try {
       
@@ -33,25 +33,26 @@ module.exports = {
     } catch (err) {
       throw(err);
     }
-  },
+  }
 
   //function for requesting query from firestore database
 
-  requestQuery: async function (userID) {
+  export async function requestQuery(userID) {
     try {
       const querySnapshot = await getDocs(collection(db, `${userID}`));
       return querySnapshot;
     } catch (err) {
       console.log("The Error is->" + err);
     }
-  },
-  updateQuery:async function (userId,queryId,type){
+  }
+  export async function updateQuery(userId,queryId,type){
+    const time=new Date();
     if(type===1){
       try{
         const docRef=doc(db,`${userId}`,`${queryId}`)
-        console.log("working")
         await updateDoc(docRef,{
-          status:"Verified"
+          status:"Verified",
+          statusDate:`${time.toLocaleString()}`
         })
         console.log(userId,queryId)
       }catch(err){
@@ -61,11 +62,11 @@ module.exports = {
       try{
         const docRef=doc(db,`${userId}`,`${queryId}`)
         await updateDoc(docRef,{
-          status:"Denied"
+          status:"Denied",
+          statusDate:`${time.toLocaleString()}`
         })
       }catch(err){
         console.log("error in our new Code ->"+err);
       }
     }
   }
-};

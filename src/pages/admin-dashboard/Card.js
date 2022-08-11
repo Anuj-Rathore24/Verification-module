@@ -4,7 +4,8 @@ import { Button, Modal } from "react-bootstrap";
 import axios from "axios";
 import { getfile, getPaymentFile } from "../../apis/firebasecloud.js";
 import { updateQuery } from "../../apis/firestoreDatabase";
-import Loader from '../loader';
+import Loader from "../loader";
+
 //for color of status circles
 function colorScheme(variable) {
   var color = "yellow";
@@ -13,26 +14,9 @@ function colorScheme(variable) {
   return color;
 }
 
-async function declineButtonClick(userId, queryId, dmessage) {
-  const element = document.getElementById("inputDelineAddress");
-  console.log("Message ->" + element.innerHTML);
-  axios.post("/declineQuery", { message: dmessage });
-  await updateQuery("admin@gmail.com", queryId, 0);
-  await updateQuery(userId, queryId, 0);
-}
-
-//function for hitting apis in backend for send certificates
-async function verifyDocument(dataObject) {
-  await updateQuery("admin@gmail.com", dataObject.queryId, 1);
-  await updateQuery(dataObject.CompEmail, dataObject.queryId, 1);
-  alert("Mail in Progess");
-  await axios.post("/MakeCert", { data: dataObject })
-  
-}
-
 export default function Card(props) {
   //Use State for invoking close and open button
-  const [loader, setLoader] = useState(false);
+  const [stateLoader, setStateLoader] = useState("none");
   const [show, setShow] = useState(false);
   const handleClose = () => {
     setDisable(false);
@@ -46,21 +30,45 @@ export default function Card(props) {
   const [disable, setDisable] = useState(false);
   const [declineButton, setdeclineButton] = useState(false);
   let [declineMessage, setdeclineMessage] = useState(" ");
-  let [statusVerify,setstatusVerify]=useState(false);
+  let [statusVerify, setstatusVerify] = useState(false);
+
+  //function for sending request to the backend
+  async function declineButtonClick(userId, queryId, dmessage) {
+    alert("Mailing in progress");
+    const element = document.getElementById("inputDelineAddress");
+    setStateLoader("block");
+    const status = await axios.post("/declineQuery", { message: dmessage });
+    await updateQuery("admin@gmail.com", queryId, 0);
+    await updateQuery(userId, queryId, 0);
+    console.log(status.data);
+    alert(status.data);
+    setStateLoader("none");
+  }
+  async function verifyDocument(dataObject) {
+    alert("Mailing in progress");
+    setStateLoader("block");
+    await updateQuery("admin@gmail.com", dataObject.queryId, 1);
+    await updateQuery(dataObject.CompEmail, dataObject.queryId, 1);
+    const status = await axios.post("/MakeCert", { data: dataObject });
+    alert(status.data);
+    setStateLoader("none");
+  }
+
   useEffect(() => {
     try {
-
-      if(props.status==="Verified" || props.status==="Denied"){
-        setstatusVerify(true)
+      if (props.status === "Verified" || props.status === "Denied") {
+        setstatusVerify(true);
       }
       const element = document.getElementById("inputDelineAddress");
       element.innerHTML = declineMessage;
     } catch (err) {}
   }, [declineMessage]);
 
-  return (
+  return stateLoader === "block" ? (
+    <Loader />
+  ) : (
     <div>
-        <div
+      <div
         className="main_card_container"
         style={{
           background: props.color,
@@ -75,14 +83,20 @@ export default function Card(props) {
         <div className="valueContainer">
           <h2 className="card_heading">{props.date}</h2>
         </div>
-        <div className="valueContainer" style={{
-          marginLeft:'7%'
-        }}>
+        <div
+          className="valueContainer"
+          style={{
+            marginLeft: "7%",
+          }}
+        >
           <h2 className="card_heading">{props.queryId}</h2>
         </div>
-        <div className="valueContainer" style={{
-          marginLeft:'7%'
-        }}> 
+        <div
+          className="valueContainer"
+          style={{
+            marginLeft: "7%",
+          }}
+        >
           <h2 className="card_heading">{props.name}</h2>
         </div>
         <div className="valueContainer">
@@ -201,13 +215,32 @@ export default function Card(props) {
                 <p className="content">NEFT :</p>
                 <p className="content">{props.NEFT}</p>
               </div>
+              <hr></hr>
+              <div style={{ display: "flex", flexDirection: "row" }}>
+                <p className="content">Status Date :</p>
+                <p className="content">{props.statusDate}</p>
+              </div>
             </div>
           </Modal.Body>
           <Modal.Footer style={{ justifyContent: "center" }}>
             <Button
               variant="primary"
               onClick={async () => {
-                await getPaymentFile(props, props.CompEmail, props.queryId);
+                alert("Mail in Progress!");
+                try {
+                  setStateLoader("block");
+                  const status = await getPaymentFile(
+                    props,
+                    props.CompEmail,
+                    props.queryId
+                  );
+                  console.log(status);
+                  alert(status.data);
+                  setStateLoader("none");
+                } catch (err) {
+                  setStateLoader("none");
+                  alert(err);
+                }
               }}
             >
               Send to Verify Payment
