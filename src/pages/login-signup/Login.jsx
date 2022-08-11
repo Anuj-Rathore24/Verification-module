@@ -22,8 +22,7 @@ export default function Login() {
       LoggedIn.isLoggedIn = true;
       let adminID = auth.currentUser.uid;
       console.log(adminID);
-      if (adminID === "QuRWB630HehGruKk7Oe6R3KSgns1") {
-
+      if (adminID === "rnYz2JgIlgT6bkgguEgULe9HRL32") {
         navigate("/admin");
       } else {
         navigate("/UserDashboard");
