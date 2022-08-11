@@ -94,11 +94,12 @@ export default function Card(props) {
           // height:'80%',
           backgroundColor:'#316EBC',
           marginLeft:'6%',
+          marginRight:'5%',
           borderStyle:'solid',
           borderWidth:'1px',
           borderColor:'white',
           borderRadius:'3px',
-          paddingLeft:'4%'
+          paddingLeft:'1%'
         }}>
           <a className="link-primary_linkViewDocument ViewDocumentButton" variant="primary" onClick={handleShow} style={{
             textDecoration: "none",

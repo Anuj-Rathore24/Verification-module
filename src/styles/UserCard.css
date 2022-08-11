@@ -2,7 +2,7 @@
 
 .main_card_container {
   width: 93vw;
-  height: 4vw;
+  /* height: 4vw; */
   overflow: hidden;
   display: flex;
   flex-direction: row;

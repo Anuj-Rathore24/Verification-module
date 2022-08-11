@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState} from "react";
 import "./Responsive.css";
 import logo from "../images/logo.png";
 import Card from "react-bootstrap/Card";
@@ -6,9 +6,8 @@ import Button from "react-bootstrap/esm/Button";
 import Form from "react-bootstrap/esm/Form";
 import { useNavigate } from "react-router-dom";
 import * as FireAuth from "../Firebase/Fireauth.js";
-import { LoggedIn, AdminStatus } from "./State";
+import { LoggedIn } from "./State";
 import { auth } from "../Firebase/Firebase";
-import AdminDashBoard from "../admin-dashboard/AdminDashBoard.js";
 
 
 export default function Login() {

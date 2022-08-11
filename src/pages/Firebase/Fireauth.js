@@ -37,6 +37,7 @@ async function register(email, password) {
         // Signed in 
         const user = userCredential.user;
         console.log(email, password);
+        console.log(user)
 
     })
         .catch((error) => {
@@ -54,7 +55,7 @@ async function signIn(email, password) {
     await signInWithEmailAndPassword(auth, email, password).then((userCredential) => {
         // Signed in 
         const user = userCredential.user;
-
+        console.log(user)
     })
         .catch((error) => {
             const errorCode = error.code;
@@ -86,6 +87,7 @@ async function googleSignIn() {
     await signInWithPopup(auth, googleAuthProvider).then((userCredential) => {
         // Signed in 
         const user = userCredential.user;
+        console.log(user)
 
     })
         .catch((error) => {
@@ -113,6 +115,7 @@ async function resetPassword(email) {
         .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
+            console.log(errorCode, errorMessage);
             // ..
         });
 }

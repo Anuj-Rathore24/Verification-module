@@ -1,7 +1,7 @@
 
 import {React,useEffect,useState} from "react";
 import { Navigate } from "react-router-dom";
-import { LoggedIn,PageStatus } from "./State";
+import { PageStatus } from "./State";
 import OTP from './OTP'
 import UserDashboard from "../user-dashboard/UserDashboard";
 import VerificationForm from "../form/VerificationForm";
