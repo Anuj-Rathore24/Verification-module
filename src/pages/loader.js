@@ -1,13 +1,12 @@
-import React from 'react';
-import '../styles/loader.css';
+import React from "react";
+import "../styles/loader.css";
 
-const Spinner = (props) =>{
-
-        return <>
-                {console.log("WOrking in loader")}
-                <span className="loader"></span>
-        </>
-
-}
+const Spinner = (props) => {
+  return (
+    <>
+      <span className="loader" style={{display:props.setDisplay}}></span>
+    </>
+  );
+};
 
 export default Spinner;
