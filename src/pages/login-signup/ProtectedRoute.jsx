@@ -1,7 +1,7 @@
 
 import {React,useEffect,useState} from "react";
 import { Navigate } from "react-router-dom";
-import { LoggedIn,PageStatus } from "./State";
+import { PageStatus } from "./State";
 import OTP from './OTP'
 import UserDashboard from "../user-dashboard/UserDashboard";
 import VerificationForm from "../form/VerificationForm";
@@ -63,7 +63,7 @@ const ProtectedRoute4 = () => {
     useEffect(() => {
         try{
             auth.onAuthStateChanged((user)=>{
-                if(user) setUser(user.uid==="QuRWB630HehGruKk7Oe6R3KSgns1"?true:false)
+                if(user) setUser(user.uid==="rnYz2JgIlgT6bkgguEgULe9HRL32"?true:false)
                 else{
                     setUser(false)
                 }

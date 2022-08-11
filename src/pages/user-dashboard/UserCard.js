@@ -182,7 +182,9 @@ export default function Card(props) {
           </Modal.Body>
           <Modal.Footer style={{ justifyContent: "center" }}>
             <Button
-              style={{}}
+              style={{
+                width:'100%'
+              }}
               disabled={disable}
               variant="primary"
               onClick={async () => {

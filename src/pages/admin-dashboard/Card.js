@@ -102,30 +102,23 @@ export default function Card(props) {
         <div className="valueContainer">
           <h2 className="card_heading">{props.prn}</h2>
         </div>
-        <div
-          className="valueContainer"
-          style={{
-            padding: "0.5%",
-            width: "11%",
-            // height:'80%',
-            backgroundColor: "#316EBC",
-            marginLeft: "6%",
-            borderStyle: "solid",
-            borderWidth: "1px",
-            borderColor: "white",
-            borderRadius: "3px",
-            paddingLeft: "4%",
-          }}
-        >
-          <a
-            className="link-primary_linkViewDocument ViewDocumentButton"
-            variant="primary"
-            onClick={handleShow}
-            style={{
-              textDecoration: "none",
-              color: "white",
-            }}
-          >
+        <div className="valueContainer" style={{
+          padding:'0.5%',
+          width:'11%',
+          // height:'80%',
+          backgroundColor:'#316EBC',
+          marginLeft:'6%',
+          marginRight:'5%',
+          borderStyle:'solid',
+          borderWidth:'1px',
+          borderColor:'white',
+          borderRadius:'3px',
+          paddingLeft:'1%'
+        }}>
+          <a className="link-primary_linkViewDocument ViewDocumentButton" variant="primary" onClick={handleShow} style={{
+            textDecoration: "none",
+            color: "white",
+          }}>
             View document
           </a>
         </div>

@@ -1,6 +1,5 @@
 import * as firebase from 'firebase/app';
 import { getAuth, GoogleAuthProvider } from 'firebase/auth';
-
 import FirebaseConfig from './FirebaseConfig';
 
 // firebase.initializeApp(FirebaseConfig);
