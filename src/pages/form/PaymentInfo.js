@@ -35,7 +35,7 @@ function PaymentInfo({ formData, setFormData }) {
             }
           }}
         />
-        {!neftReferenceValidity && <p class="invalid">Please enter NEFT Reference number of 12 digits</p>}
+        {!neftReferenceValidity && <p className="invalid">Please enter NEFT Reference number of 12 digits</p>}
 
 
         <div className="document-upload-container payementSS">
