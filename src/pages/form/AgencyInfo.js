@@ -1,3 +1,4 @@
+/* eslint-disable */     //To disable rule warnings in an entire file using ESLint comment.
 import React from "react";
 import {useEffect} from "react";
 import docimg from "../../images/documentMan.svg"
@@ -21,6 +22,7 @@ let agencyPhoneValidity=true;
 function AgencyInfo({ formData, setFormData }) {
 
   useEffect(()=>{
+    //Adding all the Selected Checkboxes' name to formdata documents
     var checkboxes = document.querySelectorAll('input[type="checkbox"]');
     var values = [];
     for (let i = 0; i < checkboxes.length; i++) {
@@ -61,7 +63,7 @@ function AgencyInfo({ formData, setFormData }) {
           setFormData({ ...formData, email: event.target.value })
           if(isEmail(event.target.value)){
             emailValidity = true;
-          }else if(event.target.value.length == 0){
+          }else if(event.target.value.length === 0){
             emailValidity = true;
           }
           else if(!isEmail(event.target.value))
@@ -70,7 +72,7 @@ function AgencyInfo({ formData, setFormData }) {
           }
         } }    
       />
-      {!emailValidity && <p class="invalid">Please enter a valid Email Address</p>}
+      {!emailValidity && <p className="invalid">Please enter a valid Email Address</p>}
       </div>
        <div className="label">
      <p className="data">Agency Contact No :</p>
@@ -90,7 +92,7 @@ function AgencyInfo({ formData, setFormData }) {
           }
         }}
       />
-      {!agencyPhoneValidity && <p class="invalid">Please enter Phone number of 10 digits</p>}
+      {!agencyPhoneValidity && <p className="invalid">Please enter Phone number of 10 digits</p>}
       </div>
       </div>
       <div className="form-flex">
@@ -113,7 +115,7 @@ function AgencyInfo({ formData, setFormData }) {
           setFormData({ ...formData, agencyEmail: event.target.value })
           if(isEmail(event.target.value)){
             agencyEmailValidity = true;
-          }else if(event.target.value.length == 0){
+          }else if(event.target.value.length === 0){
             agencyEmailValidity = true;
           }
           else if(!isEmail(event.target.value))
@@ -122,7 +124,7 @@ function AgencyInfo({ formData, setFormData }) {
           }
         }}
       />
-      {!agencyEmailValidity && <p class="invalid">Please enter a valid Email Address</p>}
+      {!agencyEmailValidity && <p className="invalid">Please enter a valid Email Address</p>}
       </div>
       </div>
 
@@ -204,7 +206,7 @@ function AgencyInfo({ formData, setFormData }) {
               
               if(isTenChars(e.target.value)){
                 prnValidity = true;
-              }else if(e.target.value.length == 0){
+              }else if(e.target.value.length === 0){
                 prnValidity = true;
               }
               else if(!isTenChars(e.target.value))

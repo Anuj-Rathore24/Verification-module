@@ -51,7 +51,7 @@ function Form() {
               <p>Form</p>
               <p>Payment Details</p>
             </div>
-            <div className="progressbar">
+            <div className="progressbar"> {/*Progress Bar to show which page we are on*/}
               <div
                 className="progress-form"
                 onClick={() => {
@@ -86,7 +86,7 @@ function Form() {
           </div>
           <div className="form-container">
             <div className="form-body">{PageDisplay()}</div>
-            <button
+            <button //button to submit the formdata as query based on useremail
               className="form-submit-btn"
               style={{ display: "none" }}
               onClick={async () => {
@@ -108,7 +108,7 @@ function Form() {
               <button
                 className="pageChange-btn1 focus"
                 onClick={() => {
-                  if (page === FormTitles.length - 1)
+                  if (page === FormTitles.length - 1) //if page is not the 1st page then decreamenting the page state by 1
                     setPage((currPage) => currPage - 1);
                   document.querySelector(".form-submit-btn").style.display =
                     "none";
@@ -125,7 +125,7 @@ function Form() {
               <button
                 className="pageChange-btn2"
                 onClick={async () => {
-                  setPage((currPage) => currPage + 1);
+                  setPage((currPage) => currPage + 1); //increamenting the page state by 1
                   document
                     .querySelector(".pageChange-btn1")
                     .classList.remove("focus");

@@ -76,6 +76,8 @@
     align-items: center;
 }
 
+/* main form body */
+
 .form-body {
     width: 60%;
 }
@@ -242,6 +244,9 @@ div.form-checkboxes {
     color: white;
     font-family: 'Encode Sans';
 }
+
+/* page change buttons */
+
 .form-container .pageChange {
     display: flex;
     justify-content: center;
